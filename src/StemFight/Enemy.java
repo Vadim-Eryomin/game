@@ -1,8 +1,6 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
+import Engine.*;
 import static Engine.Max.range;
 
 import java.util.ArrayList;

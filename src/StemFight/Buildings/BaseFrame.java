@@ -1,24 +1,18 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
 import Engine.Renderer;
 import StemFight.Game;
 
+
 import java.awt.event.KeyEvent;
 
-public class BaseFrame {
-    ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png",0,0);
-    ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
+public class BaseFrame extends BuildingFrame{
 
-
-
-    String name = "Base";
-    boolean visible = false;
+    public BaseFrame(String pathFon, String pathBase, String name, boolean angrys) {
+        super(pathFon, pathBase, name, angrys);
+    }
     public void create(int x, int y){
-        fon.x = x;
-        fon.y = y;
-        base.x = fon.x;
-        base.y = fon.y + 20;
+        super.create(x,y);
     }
     public void setVisible(boolean visible){
         this.visible = visible;

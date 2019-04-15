@@ -4,13 +4,15 @@ import Engine.ImageXY;
 import Engine.Renderer;
 import StemFight.Building;
 import StemFight.Game;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import java.awt.event.KeyEvent;
 
 public class Base extends Building {
     public boolean made = false;
     public ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
-    BaseFrame bf = new BaseFrame();
+    BaseFrame bf = new BaseFrame("../StemFight/Using/fonBase.png","../StemFight/Using/base.png","Base", false);
+
     public void create(int x, int y, int createX, int createY) {
         base.x = createX;
         base.y = createY;

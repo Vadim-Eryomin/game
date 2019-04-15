@@ -6,10 +6,10 @@ public class portalRenderer {
             new Thread(){
                 @Override
                 public void run() {
-                    for (int i = 0; i < 100; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         game.gc.renderer.drawText("Go to the portal!", 650,0,0xffffffff);
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -23,10 +23,10 @@ public class portalRenderer {
             new Thread(){
                 @Override
                 public void run() {
-                    for (int i = 0; i < 100; i++) {
+                    for (int i = 0; i < 1000; i++) {
                         game.gc.renderer.drawText("Pick more bricks!", 650,0,0xffffffff);
                         try {
-                            Thread.sleep(10);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
