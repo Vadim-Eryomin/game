@@ -21,6 +21,9 @@ public class BaseFrame {
     int stringX = 0;
     int stringY = 0;
 
+    Integer buildHp = 0;
+    Integer saveExp = 0;
+
     public void create(int x, int y){
         fon.x = x;
         fon.y = y;
@@ -48,7 +51,10 @@ public class BaseFrame {
             renderer.drawText(name, stringX, stringY, 0xffffffff);
             renderer.drawImage(angry, angry.x, angry.y);
             renderer.drawImage(exp, exp.x, exp.y);
+            renderer.drawText(saveExp.toString(), exp.x +20, exp.y, 0xffffffff);
             renderer.drawImage(hp, hp.x, hp.y);
+            renderer.drawText(buildHp.toString(), hp.x + 20, hp.y, 0xffffffff);
+            if (buildHp >= 0) renderer.drawText("BREAKED!", base.x +10, base.y+120, 0xffffffff);
         }
     }
 }
