@@ -37,6 +37,7 @@ public class Game extends AbsractGame {
     ArrayList<BrickParticle> brickParticles = new ArrayList<>();
     ArrayList<PaperSnake> snakes = new ArrayList<>();
     ArrayList<Wall> walls = new ArrayList<>();
+    ArrayList<Board> boards = new ArrayList<>();
 
     Characteristics chars = new Characteristics();
 
@@ -90,6 +91,7 @@ public class Game extends AbsractGame {
         for (Enemy e : enemies) e.update(this);
         for (PaperSnake p:snakes) p.update(this);
         for (Wall w:walls)w.update(this);
+        for (Board b:boards) b.update(this);
 
         if (spawnZombies)spawn(this);
         secondsSpawn++;
@@ -118,6 +120,7 @@ public class Game extends AbsractGame {
             }
         }
         for (int i = 0; i < brickParticles.size(); i++) {if (!brickParticles.get(i).lived){ brickParticles.remove(i);} }
+        for (int i = 0; i < boards.size(); i++) {if (!boards.get(i).lived){ boards.remove(i);} }
         for (Enemy e:enemies) { for (int i = 0; i < walls.size(); i++) { if (collision(e,walls.get(i))){ e.hp -= 10; if (e.x > walls.get(i).x) e.x += 100; else e.x-=100; } } }
     }
 
@@ -133,6 +136,7 @@ public class Game extends AbsractGame {
         for (BrickParticle b:brickParticles)b.renderer(renderer);
         for (PaperSnake p: snakes) p.renderer(renderer);
         for (Wall w: walls)w.renderer(renderer);
+        for (Board b:boards) b.renderer(renderer);
         p.update(this);
         sgf.renderer(renderer);
         spf.renderer(renderer);
@@ -247,6 +251,20 @@ public class Game extends AbsractGame {
         return true;
     }
     public boolean collision(Enemy A, PaperSnake B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(Hero A, Board B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;

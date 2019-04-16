@@ -84,5 +84,9 @@ public class Enemy implements Player {
             game.brickParticles.add(new BrickParticle());
             game.brickParticles.get(game.brickParticles.size()-1).create(this.x, this.y);
         }
+        if (getChange(40)){
+            game.boards.add(new Board());
+            game.boards.get(game.boards.size()-1).create(this.x, this.y);
+        }
     }
 }
