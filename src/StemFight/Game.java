@@ -29,6 +29,8 @@ public class Game extends AbsractGame {
 
     boolean talkWalk = false;
     boolean talkPick = false;
+    boolean pickBlocks = false;
+    boolean pickBoards = false;
     boolean win = false;
     boolean spawnZombies = true;
 
@@ -74,7 +76,15 @@ public class Game extends AbsractGame {
     public void update(GameContainer gc, float dt) {
         backpack.update(this);
         sk.update(this);
-        if (gc.input.isKeyDown(KeyEvent.VK_R) && !base.made) base.create(0,500,hero.x, hero.y);
+        if (gc.input.isKeyDown(KeyEvent.VK_R)) {
+            if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
+                base.create(0, 500, hero.x, hero.y);
+
+            else {
+                if (hero.bricks < 5) pickBlocks = true;
+                else if (hero.boards < 10) pickBoards = true;
+            }
+        }
         if (base != null) {
             base.update(this);
         }

@@ -25,6 +25,7 @@ public class Camera implements Player {
             for (AttackParticle a:game.attackParticles) a.x--;
             for (BrickParticle b:game.brickParticles) b.x--;
             game.base.base.x--;
+            for (Board b:game.boards)b.x--;
         }
         if (game.hero.x <= 200){
             if (x != 0){
@@ -35,8 +36,10 @@ public class Camera implements Player {
                 for (AttackParticle a:game.attackParticles) a.x++;
                 for (BrickParticle b:game.brickParticles) b.x++;
                 game.base.base.x++;
+                for (Board b:game.boards)x++;
             }
         }
+        // TODO: 16.04.2019 при пробеге карта проматываетсяы 
         if (game.hero.y >= 750){
             y--;
             game.hero.y--;
@@ -45,6 +48,7 @@ public class Camera implements Player {
             for (AttackParticle a:game.attackParticles) a.y--;
             for (BrickParticle b:game.brickParticles) b.y--;
             game.base.base.y--;
+            for (Board b:game.boards)y--;
         }
         if (game.hero.y <= 50){
             if (y != 0){
@@ -55,6 +59,7 @@ public class Camera implements Player {
                 for (AttackParticle a:game.attackParticles) a.y++;
                 for (BrickParticle b:game.brickParticles) b.y++;
                 game.base.base.y++;
+                for (Board b:game.boards)b.y++;
             }
 
         }
