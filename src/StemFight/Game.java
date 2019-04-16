@@ -124,9 +124,9 @@ public class Game extends AbsractGame {
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
         camera.renderer(renderer);
+        base.renderer(renderer);
         charFrame.renderer(renderer);
         portal.renderer(renderer);
-        base.renderer(renderer);
         for (AttackParticle a : attackParticles) a.renderer(renderer);
         hero.renderer(renderer);
         for (Enemy e : enemies) e.renderer(renderer);

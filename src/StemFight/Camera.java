@@ -24,6 +24,7 @@ public class Camera implements Player {
             for (Enemy e:game.enemies)e.x--;
             for (AttackParticle a:game.attackParticles) a.x--;
             for (BrickParticle b:game.brickParticles) b.x--;
+            game.base.base.x--;
         }
         if (game.hero.x <= 200){
             if (x != 0){
@@ -33,6 +34,7 @@ public class Camera implements Player {
                 for (Enemy e:game.enemies)e.x++;
                 for (AttackParticle a:game.attackParticles) a.x++;
                 for (BrickParticle b:game.brickParticles) b.x++;
+                game.base.base.x++;
             }
         }
         if (game.hero.y >= 750){
@@ -42,6 +44,7 @@ public class Camera implements Player {
             for (Enemy e:game.enemies)e.y--;
             for (AttackParticle a:game.attackParticles) a.y--;
             for (BrickParticle b:game.brickParticles) b.y--;
+            game.base.base.y--;
         }
         if (game.hero.y <= 50){
             if (y != 0){
@@ -51,6 +54,7 @@ public class Camera implements Player {
                 for (Enemy e:game.enemies)e.y++;
                 for (AttackParticle a:game.attackParticles) a.y++;
                 for (BrickParticle b:game.brickParticles) b.y++;
+                game.base.base.y++;
             }
 
         }
