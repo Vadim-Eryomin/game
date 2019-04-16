@@ -4,6 +4,7 @@ import Engine.Image;
 import Engine.Player;
 import Engine.Renderer;
 import static Engine.Max.range;
+import static StemFight.Change.*;
 
 import java.util.ArrayList;
 
@@ -79,7 +80,9 @@ public class Enemy implements Player {
     @Override
     public void death(Game game) {
         game.hero.xp+=10;
-        game.brickParticles.add(new BrickParticle());
-        game.brickParticles.get(game.brickParticles.size()-1).create(this.x, this.y);
+        if (getChange(80)){
+            game.brickParticles.add(new BrickParticle());
+            game.brickParticles.get(game.brickParticles.size()-1).create(this.x, this.y);
+        }
     }
 }
