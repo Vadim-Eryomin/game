@@ -22,6 +22,7 @@ public class Game extends AbsractGame {
     CharFrame charFrame = new CharFrame();
 
     Base base = new Base();
+    Backpack backpack = new Backpack();
 
     skillsGraphFrame sgf = new skillsGraphFrame();
     skillsProgFrame spf = new skillsProgFrame();
@@ -62,11 +63,15 @@ public class Game extends AbsractGame {
 
         portal.create(1000, 1000);
         hero.create(50, 50);
+
+        backpack.create(this);
+
         gc.start();
     }
 
     @Override
     public void update(GameContainer gc, float dt) {
+        backpack.update(this);
         sk.update(this);
         if (gc.input.isKeyDown(KeyEvent.VK_R) && !base.made) base.create(0,500,hero.x, hero.y);
         if (base != null) {
@@ -133,6 +138,7 @@ public class Game extends AbsractGame {
         spf.renderer(renderer);
         chars.renderer(renderer);
         sk.renderer(game,renderer);
+        backpack.renderer(renderer);
     }
 
     public void spawn(Game game) {
