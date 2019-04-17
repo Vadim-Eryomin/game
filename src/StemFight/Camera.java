@@ -39,7 +39,7 @@ public class Camera implements Player {
                 for (Board b:game.boards)x++;
             }
         }
-        // TODO: 16.04.2019 при пробеге карта проматываетсяы 
+        // TODO: 16.04.2019 при пробеге карта проматывается
         if (game.hero.y >= 750){
             y--;
             game.hero.y--;

@@ -21,8 +21,8 @@ public class BaseFrame {
     int stringX = 0;
     int stringY = 0;
 
-    Integer buildHp = 0;
-    Integer saveExp = 0;
+    public Integer buildHp = 0;
+    public Integer saveExp = 0;
 
     public void create(int x, int y){
         fon.x = x;

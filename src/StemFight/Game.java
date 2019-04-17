@@ -79,11 +79,22 @@ public class Game extends AbsractGame {
         if (gc.input.isKeyDown(KeyEvent.VK_R)) {
             if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
                 base.create(0, 500, hero.x, hero.y);
-
             else {
-                if (hero.bricks < 5) pickBlocks = true;
+                if(base.made && hero.boards >= 5){
+                    base.bf.buildHp+= 10;
+                    hero.boards -=5;
+                }
+                else if (hero.bricks < 5) pickBlocks = true;
                 else if (hero.boards < 10) pickBoards = true;
             }
+        }
+        if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null){
+            base.bf.saveExp += hero.xp;
+            hero.xp = 0;
+        }
+        if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null){
+            hero.xp += base.bf.saveExp;
+            base.bf.saveExp = 0;
         }
         if (base != null) {
             base.update(this);

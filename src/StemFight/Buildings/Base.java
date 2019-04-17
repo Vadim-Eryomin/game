@@ -10,7 +10,7 @@ import java.awt.event.KeyEvent;
 public class Base extends Building {
     public boolean made = false;
     public ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
-    BaseFrame bf = new BaseFrame();
+    public BaseFrame bf = new BaseFrame();
     public void create(int x, int y, int createX, int createY) {
         base.x = createX;
         base.y = createY;
