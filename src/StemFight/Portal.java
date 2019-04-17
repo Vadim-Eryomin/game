@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class Portal implements Player {
     Image nulled = new Image("../StemFight/Using/breakPortal.png");
+    Image notOpened = new Image("../StemFight/Using/notOpenedPortal.png");
     Image maked = new Image("../StemFight/Using/madePortal.png");
     Image using;
     int x = 0;
@@ -16,6 +17,7 @@ public class Portal implements Player {
     int w = 0;
     int h = 0;
     boolean making = false;
+    boolean opened = false;
 
     @Override
     public void create(int x, int y) {
@@ -33,8 +35,10 @@ public class Portal implements Player {
                 if (game.collision(game.hero, this)) {
                     if (game.hero.bricks >= 20) {
                         game.hero.bricks -= 20;
-                        using = maked;
+                        using = notOpened;
                         making = true;
+                        game.enemies.add(new ZombieFirstBoss());
+                        game.enemies.get(game.enemies.size()-1).create(this.x + 1000, this.y);
                     }
                     else {
                         game.talkPick = true;
@@ -42,6 +46,17 @@ public class Portal implements Player {
                 }
                 else{
                     game.talkWalk = true;
+                }
+            }
+        }
+        else if (!opened){
+            if (game.gc.input.isKeyDown(KeyEvent.VK_E)){
+                if (game.collision(game.hero, this)){
+                    if (game.hero.keyFirst){
+                        game.hero.keyFirst = false;
+                        using = maked;
+                        opened = true;
+                    }
                 }
             }
         }

@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Game extends AbsractGame {
+    Key key;
+
     Game game = this;
 
     Random random = new Random();
@@ -31,6 +33,7 @@ public class Game extends AbsractGame {
     boolean talkPick = false;
     boolean pickBlocks = false;
     boolean pickBoards = false;
+    boolean preWin = false;
     boolean win = false;
     boolean spawnZombies = true;
 
@@ -74,6 +77,7 @@ public class Game extends AbsractGame {
 
     @Override
     public void update(GameContainer gc, float dt) {
+        if (key != null) key.update(this);
         backpack.update(this);
         sk.update(this);
         if (gc.input.isKeyDown(KeyEvent.VK_R)) {
@@ -152,6 +156,7 @@ public class Game extends AbsractGame {
         charFrame.renderer(renderer);
         portal.renderer(renderer);
         for (AttackParticle a : attackParticles) a.renderer(renderer);
+        if (key != null) key.renderer(renderer);
         hero.renderer(renderer);
         for (Enemy e : enemies) e.renderer(renderer);
         for (BrickParticle b:brickParticles)b.renderer(renderer);
@@ -286,6 +291,20 @@ public class Game extends AbsractGame {
         return true;
     }
     public boolean collision(Hero A, Board B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(Hero A, Key B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;

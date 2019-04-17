@@ -25,6 +25,8 @@ public class Hero implements Player {
     int boards = 0;
     int nails = 0;
 
+    boolean keyFirst = false;
+
     int delayFirstSkill = 0;
     int delaySecondSkill = 20;
     int delayThirdSkill = 300;
