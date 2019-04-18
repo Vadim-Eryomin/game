@@ -7,8 +7,8 @@ import static Engine.Max.range;
 
 public class Camera implements Player {
     private Image image = new Image("../StemFight/Using/fon.gif");
-    private int x = 0;
-    private int y = 0;
+    public int x = 0;
+    public int y = 0;
 
     @Override
     public void create(int x, int y) {
@@ -18,7 +18,7 @@ public class Camera implements Player {
     @Override
     public void update(Game game) {
         if (game.hero.x >= 1000){
-            if (x != 600){
+            if (x != -(image.w - game.gc.width)){
                 x--;
                 game.hero.x--;
                 game.portal.x--;
@@ -30,7 +30,7 @@ public class Camera implements Player {
             }
 
         }
-        if (game.hero.x <= 200){
+        if (game.hero.x <= 400){
             if (x != 0){
                 x++;
                 game.hero.x++;
@@ -45,7 +45,7 @@ public class Camera implements Player {
         // TODO: 16.04.2019 при пробеге карта проматывается
         if (game.hero.y >= 750){
             System.out.println(y);
-            if (y >= -1200){
+            if (y >= -(image.h - game.gc.height)){
                 y--;
                 game.hero.y--;
                 game.portal.y--;

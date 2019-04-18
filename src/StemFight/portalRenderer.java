@@ -1,6 +1,9 @@
 package StemFight;
 
+import Engine.Image;
+
 public class portalRenderer {
+    Image buttonT = new Image("../StemFight/Skills/buttonT.png");
     public void update(Game game){
         if (game.talkWalk){
             new Thread(){
@@ -74,7 +77,10 @@ public class portalRenderer {
             }.start();
             game.pickBlocks = false;
         }
-
+        if (game.pleasePress) {
+            game.gc.renderer.drawImage(buttonT, game.base.base.x, game.base.base.y - 10);
+            game.gc.renderer.drawText("Press T!", game.base.base.x + 25, game.base.base.y - 10, 0xffffffff);
+        }
     }
     public void startTimer(){
 

@@ -33,6 +33,7 @@ public class Game extends AbsractGame {
     boolean talkPick = false;
     boolean pickBlocks = false;
     boolean pickBoards = false;
+    boolean pleasePress = false;
     boolean preWin = false;
     boolean win = false;
     boolean spawnZombies = true;
@@ -67,7 +68,7 @@ public class Game extends AbsractGame {
         charFrame.setVisible(true);
 
 
-        portal.create(1000, 1000);
+        portal.create(1000, 0);
         hero.create(50, 50);
 
         backpack.create(this);
@@ -92,11 +93,12 @@ public class Game extends AbsractGame {
                 else if (hero.boards < 10) pickBoards = true;
             }
         }
-        if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null){
+        pleasePress = collision(hero,base);
+        if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made){
             base.bf.saveExp += hero.xp;
             hero.xp = 0;
         }
-        if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null){
+        if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made){
             hero.xp += base.bf.saveExp;
             base.bf.saveExp = 0;
         }
