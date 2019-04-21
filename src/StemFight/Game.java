@@ -91,7 +91,6 @@ public class Game extends AbsractGame {
 
         for (int i = 0; i < attackParticles.size(); i++) { if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) { attackParticles.remove(i); } }
         for (int i = 0; i < walls.size(); i++) { if (walls.get(i).seconds >= walls.get(i).secondsLives) { walls.remove(i); } }
-        for (Enemy e : enemies) { for (int i = 0; i < attackParticles.size(); i++) { if (collision(e, attackParticles.get(i) )) { e.hp -= 35; attackParticles.remove(i); } } }
         for (int i = 0; i < snakes.size(); i++) { if (snakes.get(i).hp <= 0){ snakes.remove(i); } }
         for (Enemy e:enemies) { for (PaperSnake p:snakes) { if (collision(e,p)){ e.hp -=100; p.hp -=10; } } }
         for (int i = 0; i < enemies.size(); i++) { if (enemies.get(i).hp <= 0) { enemies.get(i).death(this); enemies.remove(i); } }
