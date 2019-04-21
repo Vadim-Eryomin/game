@@ -1,5 +1,6 @@
 package StemFight.Buildings;
 
+import Engine.ImageButton;
 import Engine.ImageXY;
 import Engine.Renderer;
 import StemFight.Game;
@@ -20,11 +21,20 @@ public class BaseProv {
         base.y = fon.y + 20;
         stringX = base.x + 90;
         stringY = base.y;
+        extract.x = stringX;
+        extract.y = stringY + 10;
     }
     public void setVisible(boolean visible){
         this.visible = visible;
     }
     public void update(Game game){
+        if (extract.isClick(extract,game.gc,extract.x, extract.y)){
+            if (game.hero.boards >= 2 && game.hero.bricks >= 2){
+                game.hero.extracts++;
+                game.hero.boards-=2;
+                game.hero.bricks-=2;
+            }
+        }
         setVisible(!visible);
     }
     public void renderer(Renderer renderer){
@@ -32,6 +42,7 @@ public class BaseProv {
             renderer.drawImage(fon, fon.x, fon.y);
             renderer.drawImage(base, base.x, base.y);
             renderer.drawText(name, stringX, stringY, 0xffffffff);
+            renderer.drawImage(extract, extract.x, extract.y);
         }
     }
 

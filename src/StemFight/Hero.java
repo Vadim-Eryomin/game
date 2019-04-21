@@ -21,9 +21,10 @@ public class Hero implements Player {
     int hp = 100;
     int xp = 0;
 
-    int bricks = 0;
-    int boards = 0;
-    int nails = 0;
+    public int bricks = 0;
+    public int boards = 0;
+    public int nails = 0;
+    public int extracts = 0;
 
     boolean keyFirst = false;
 
@@ -36,6 +37,8 @@ public class Hero implements Player {
     int lastThirdSkill = 0;
 
     private int seconds = 0;
+
+    ExperienceAndLevels exps = new ExperienceAndLevels();
 
     @Override
     public void create(int x, int y) {
@@ -82,6 +85,7 @@ public class Hero implements Player {
         y = range(y, 0, 790);
         createParticle(game);
         if (hp <= 0) death(game);
+        exps.update(game);
     }
 
     @Override

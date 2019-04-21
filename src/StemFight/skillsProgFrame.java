@@ -9,7 +9,7 @@ public class skillsProgFrame extends FramesForGame {
 
     int x = 0;
     int y = 0;
-    int skillPoints = 3;
+    int skillPoints = 1;
     boolean choice = true;
 
     Image fon = new Image("../StemFight/Skills/fonSkills.png");
