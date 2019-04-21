@@ -40,9 +40,6 @@ public class portalRenderer {
             game.talkPick = false;
         }
 
-        if (game.win){
-            game.gc.renderer.drawText("WIN!", 650,0,0xffffffff);
-        }
         if (game.pickBoards){
             new Thread(){
                 @Override

@@ -38,6 +38,9 @@ public class Game extends AbsractGame {
     boolean win = false;
     boolean spawnZombies = true;
 
+    boolean thisWorldUpdate = true;
+    boolean thisWorldRenderer = true;
+
     ArrayList<Enemy> enemies = new ArrayList<>();
     ArrayList<AttackParticle> attackParticles = new ArrayList<>();
     ArrayList<BrickParticle> brickParticles = new ArrayList<>();
@@ -78,59 +81,65 @@ public class Game extends AbsractGame {
 
     @Override
     public void update(GameContainer gc, float dt) {
-        if (key != null) key.update(this);
-        backpack.update(this);
-        sk.update(this);
-        if (gc.input.isKeyDown(KeyEvent.VK_R)) {
-            if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
-                base.create(0, 500, hero.x, hero.y);
-            else {
-                if(base.made && hero.boards >= 5){
-                    base.bf.buildHp+= 10;
-                    hero.boards -=5;
-                }
-                else if (hero.bricks < 5) pickBlocks = true;
-                else if (hero.boards < 10) pickBoards = true;
+        if (thisWorldUpdate){
+            if (win){
+                thisWorldRenderer = false;
+                thisWorldUpdate = false;
+                new BaseWorld();
             }
-        }
-        pleasePress = collision(hero,base);
-        if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made){
-            base.bf.saveExp += hero.xp;
-            hero.xp = 0;
-        }
-        if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made){
-            hero.xp += base.bf.saveExp;
-            base.bf.saveExp = 0;
-        }
-        if (base != null) {
-            base.update(this);
-        }
-        chars.update(this);
-        charFrame.update(this);
-        sgf.update(this);
-        spf.update(this);
-        hero.update(this);
-        portal.update(this);
-        camera.update(this);
+            if (key != null) key.update(this);
+            backpack.update(this);
+            sk.update(this);
+            if (gc.input.isKeyDown(KeyEvent.VK_R)) {
+                if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
+                    base.create(0, 500, hero.x, hero.y);
+                else {
+                    if(base.made && hero.boards >= 5){
+                        base.bf.buildHp+= 10;
+                        hero.boards -=5;
+                    }
+                    else if (hero.bricks < 5) pickBlocks = true;
+                    else if (hero.boards < 10) pickBoards = true;
+                }
+            }
+            pleasePress = collision(hero,base);
+            if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made){
+                base.bf.saveExp += hero.xp;
+                hero.xp = 0;
+            }
+            if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made){
+                hero.xp += base.bf.saveExp;
+                base.bf.saveExp = 0;
+            }
+            if (base != null) {
+                base.update(this);
+            }
+            chars.update(this);
+            charFrame.update(this);
+            sgf.update(this);
+            spf.update(this);
+            hero.update(this);
+            portal.update(this);
+            camera.update(this);
 
-        for (AttackParticle a : attackParticles) a.update(game);
-        for (BrickParticle b : brickParticles)b.update(game);
-        for (Enemy e : enemies) e.update(this);
-        for (PaperSnake p:snakes) p.update(this);
-        for (Wall w:walls)w.update(this);
-        for (Board b:boards) b.update(this);
+            for (AttackParticle a : attackParticles) a.update(game);
+            for (BrickParticle b : brickParticles)b.update(game);
+            for (Enemy e : enemies) e.update(this);
+            for (PaperSnake p:snakes) p.update(this);
+            for (Wall w:walls)w.update(this);
+            for (Board b:boards) b.update(this);
 
-        if (spawnZombies)spawn(this);
-        secondsSpawn++;
+            if (spawnZombies)spawn(this);
+            secondsSpawn++;
 
-        for (int i = 0; i < attackParticles.size(); i++) { if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) { attackParticles.remove(i); } }
-        for (int i = 0; i < walls.size(); i++) { if (walls.get(i).seconds >= walls.get(i).secondsLives) { walls.remove(i); } }
-        for (Enemy e : enemies) { for (int i = 0; i < attackParticles.size(); i++) { if (collision(e, attackParticles.get(i) )) { e.hp -= 35; attackParticles.remove(i); } } }
-        for (int i = 0; i < snakes.size(); i++) { if (snakes.get(i).hp <= 0){ snakes.remove(i); } }
-        for (Enemy e:enemies) { for (PaperSnake p:snakes) { if (collision(e,p)){ e.hp -=100; p.hp -=10; } } }
-        for (int i = 0; i < enemies.size(); i++) { if (enemies.get(i).hp <= 0) { enemies.get(i).death(this); enemies.remove(i); } }
-        for (Enemy e : enemies) { if (collision(e, hero)) { hero.hp -= 5; e.hp -= 20;
-            new Thread() {
+            for (int i = 0; i < attackParticles.size(); i++) { if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) { attackParticles.remove(i); } }
+            for (int i = 0; i < walls.size(); i++) { if (walls.get(i).seconds >= walls.get(i).secondsLives) { walls.remove(i); } }
+            for (Enemy e : enemies) { for (int i = 0; i < attackParticles.size(); i++) { if (collision(e, attackParticles.get(i) )) { e.hp -= 35; attackParticles.remove(i); } } }
+            for (int i = 0; i < snakes.size(); i++) { if (snakes.get(i).hp <= 0){ snakes.remove(i); } }
+            for (Enemy e:enemies) { for (PaperSnake p:snakes) { if (collision(e,p)){ e.hp -=100; p.hp -=10; } } }
+            for (int i = 0; i < enemies.size(); i++) { if (enemies.get(i).hp <= 0) { enemies.get(i).death(this); enemies.remove(i); } }
+            for (Enemy e : enemies) { if (collision(e, hero)) { hero.hp -= 5; e.hp -= 20;
+                new Thread() {
                     @Override
                     public void run() {
                         for (int i = 0; i < 20; i++) {
@@ -145,32 +154,38 @@ public class Game extends AbsractGame {
                     }
                 }.start();
             }
+            }
+            for (int i = 0; i < brickParticles.size(); i++) {if (!brickParticles.get(i).lived){ brickParticles.remove(i);} }
+            for (int i = 0; i < boards.size(); i++) {if (!boards.get(i).lived){ boards.remove(i);} }
+            for (Enemy e:enemies) { for (int i = 0; i < walls.size(); i++) { if (collision(e,walls.get(i))){ e.hp -= 10; if (e.x > walls.get(i).x) e.x += 100; else e.x-=100; } } }
         }
-        for (int i = 0; i < brickParticles.size(); i++) {if (!brickParticles.get(i).lived){ brickParticles.remove(i);} }
-        for (int i = 0; i < boards.size(); i++) {if (!boards.get(i).lived){ boards.remove(i);} }
-        for (Enemy e:enemies) { for (int i = 0; i < walls.size(); i++) { if (collision(e,walls.get(i))){ e.hp -= 10; if (e.x > walls.get(i).x) e.x += 100; else e.x-=100; } } }
+
+
     }
 
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
-        camera.renderer(renderer);
-        base.renderer(renderer);
-        charFrame.renderer(renderer);
-        portal.renderer(renderer);
-        for (AttackParticle a : attackParticles) a.renderer(renderer);
-        if (key != null) key.renderer(renderer);
-        hero.renderer(renderer);
-        for (Enemy e : enemies) e.renderer(renderer);
-        for (BrickParticle b:brickParticles)b.renderer(renderer);
-        for (PaperSnake p: snakes) p.renderer(renderer);
-        for (Wall w: walls)w.renderer(renderer);
-        for (Board b:boards) b.renderer(renderer);
-        p.update(this);
-        sgf.renderer(renderer);
-        spf.renderer(renderer);
-        chars.renderer(renderer);
-        sk.renderer(game,renderer);
-        backpack.renderer(renderer);
+        if (thisWorldRenderer){
+            camera.renderer(renderer);
+            base.renderer(renderer);
+            charFrame.renderer(renderer);
+            portal.renderer(renderer);
+            for (AttackParticle a : attackParticles) a.renderer(renderer);
+            if (key != null) key.renderer(renderer);
+            hero.renderer(renderer);
+            for (Enemy e : enemies) e.renderer(renderer);
+            for (BrickParticle b:brickParticles)b.renderer(renderer);
+            for (PaperSnake p: snakes) p.renderer(renderer);
+            for (Wall w: walls)w.renderer(renderer);
+            for (Board b:boards) b.renderer(renderer);
+            p.update(this);
+            sgf.renderer(renderer);
+            spf.renderer(renderer);
+            chars.renderer(renderer);
+            sk.renderer(game,renderer);
+            backpack.renderer(renderer);
+        }
+
     }
 
     public void spawn(Game game) {

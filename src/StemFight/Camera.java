@@ -6,7 +6,7 @@ import Engine.Renderer;
 import static Engine.Max.range;
 
 public class Camera implements Player {
-    private Image image = new Image("../StemFight/Using/fon.gif");
+    public Image image = new Image("../StemFight/Using/fon.gif");
     public int x = 0;
     public int y = 0;
 
