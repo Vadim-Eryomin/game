@@ -85,7 +85,7 @@ public class Game extends AbsractGame {
             if (win){
                 thisWorldRenderer = false;
                 thisWorldUpdate = false;
-                new BaseWorld();
+                game = new BaseWorld();
             }
             if (key != null) key.update(this);
             backpack.update(this);
@@ -322,6 +322,20 @@ public class Game extends AbsractGame {
         return true;
     }
     public boolean collision(Hero A, Key B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(Hero A, ImageXY B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;
