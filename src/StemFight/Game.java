@@ -42,6 +42,7 @@ public class Game extends AbsractGame {
     boolean thisWorldRenderer = true;
 
     ArrayList<Enemy> enemies = new ArrayList<>();
+    ArrayList<RobotEnemy> enemy = new ArrayList<>();
     ArrayList<AttackParticle> attackParticles = new ArrayList<>();
     ArrayList<BrickParticle> brickParticles = new ArrayList<>();
     ArrayList<PaperSnake> snakes = new ArrayList<>();
@@ -85,7 +86,7 @@ public class Game extends AbsractGame {
             if (win){
                 thisWorldRenderer = false;
                 thisWorldUpdate = false;
-                game = new BaseWorld();
+                game = new BaseWorld(this);
             }
             if (key != null) key.update(this);
             backpack.update(this);

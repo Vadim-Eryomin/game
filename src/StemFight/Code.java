@@ -51,6 +51,20 @@ public class Code extends AttackParticle implements Player {
         left = super.left;
     }
 
+    public void create(int x, int y, boolean up ,boolean right, boolean left, boolean down){
+        this.x = x;
+        this.y = y;
+        super.x = x;
+        super.y = y;
+        this.w = particle.w;
+        this.h = particle.h;
+        super.w = particle.w;
+        super.up = up;
+        super.left = left;
+        super.right = right;
+        super.down = down;
+    }
+
     @Override
     public void death(Game game) {
         super.death(game);

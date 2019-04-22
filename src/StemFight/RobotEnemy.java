@@ -34,12 +34,7 @@ public class RobotEnemy extends Robot {
     public void update(Game game) {
         field.x = x - ((field.w - w) / 2);
         field.y = y - ((field.h - h) / 2);
-
-        if (game.hero.x > x) left = true;
-        if (game.hero.x < x) right = true;
-        if (game.hero.y > y) down = true;
-        if (game.hero.y < y) up = true;
-
+        for (Code c:codes)c.update(game);
         if (game.collision(game.hero, field)) {
             if (game.hero.x > x) leftAt = true;
             if (game.hero.x < x) rightAt = true;
@@ -47,21 +42,28 @@ public class RobotEnemy extends Robot {
             if (game.hero.y < y) upAt = true;
             if (delayTime >= needDelayTime) {
                 codes.add(new Code());
-                codes.get(codes.size()-1).up = this.upAt;
-                codes.get(codes.size()-1).down = this.downAt;
-                codes.get(codes.size()-1).left = this.leftAt;
-                codes.get(codes.size()-1).right = rightAt;
+                codes.get(codes.size()-1).down = this.upAt;
+                codes.get(codes.size()-1).up = this.downAt;
+                codes.get(codes.size()-1).right = this.leftAt;
+                codes.get(codes.size()-1).left = rightAt;
+                codes.get(codes.size()-1).create(x,y,codes.get(codes.size()-1).up, codes.get(codes.size()-1).right, codes.get(codes.size()-1).left, codes.get(codes.size()-1).down);
                 codes.get(codes.size()-1).update(game);
+                delayTime = 0;
             }
         }
         else{
-
+            if (game.hero.x > x) x++;
+            if (game.hero.x < x) x--;
+            if (game.hero.y > y) y++;
+            if (game.hero.y < y) y--;
         }
+        delayTime++;
     }
 
     @Override
     public void renderer(Renderer renderer) {
-        renderer.drawImage(images.get(0), images.get(0).x, images.get(0).y);
+        renderer.drawImage(images.get(0), x, y);
+        for (Code c:codes)c.renderer(renderer);
     }
 
     public void attack() {

@@ -1,5 +1,6 @@
 package StemFight;
 
+import Engine.AbsractGame;
 import Engine.GameContainer;
 import Engine.Image;
 import Engine.Renderer;
@@ -8,51 +9,48 @@ import StemFight.Buildings.Base;
 import java.util.ArrayList;
 
 public class BaseWorld extends Game {
-    ArrayList<RobotEnemy> enemies = new ArrayList<>();
 
-    public BaseWorld() {
-        game = this;
-        secondsSpawn = 0;
+    public BaseWorld(Game game) {
+        this.game = game;
         camera.image = new Image("../StemFight/Using/baseWorldFon.gif");
         portal.maked = new Image("../StemFight/Using/electrumPortal");
-        enemies.clear();
-        snakes.clear();
-        walls.clear();
-        base.made = false;
         hero.bricks += 5;
         hero.boards += 10;
-        base.bf.buildHp = 0;
-
         portal.create(1000, 0);
         hero.create(200, 0);
         backpack.create(this);
-        enemies.add(new RobotEnemy());
-        enemies.get(0).create(200,100);
+        enemy.add(new RobotEnemy());
+        enemy.get(0).create(200,100);
     }
 
     @Override
     public void update(GameContainer gc, float dt) {
         camera.update(this);
-        hero.update(this);
         chars.update(this);
         charFrame.update(this);
-        spawn(this);
-        if (enemies != null) for (RobotEnemy r : enemies) r.update(this);
+        hero.update(this);
+        if (secondsSpawn >=500)spawn(this);
+        for (RobotEnemy r : enemy) r.update(game);
+        secondsSpawn++;
+
     }
 
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
         camera.renderer(renderer);
+        chars.renderer(renderer);
+        charFrame.renderer(renderer);
+        for(RobotEnemy r: enemy) r.renderer(renderer);
+        portal.renderer(renderer);
         hero.renderer(renderer);
-        if (enemies != null)for(RobotEnemy r: enemies) r.renderer(renderer);
     }
 
     @Override
     public void spawn(Game game) {
-        if (secondsSpawn >= 500) {
+        if (enemy.size() <= 5){
             secondsSpawn = 0;
-            enemies.add(new RobotEnemy());
-            enemies.get(enemies.size()-1).create(random.nextInt(1800)+10, random.nextInt(1800)+10);
+            enemy.add(new RobotEnemy());
+            enemy.get(enemy.size()-1).create(random.nextInt(1800)+10, random.nextInt(1800)+10);
         }
     }
 
