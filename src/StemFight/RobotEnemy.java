@@ -4,6 +4,7 @@ import Engine.ImageXY;
 import Engine.Renderer;
 
 import java.util.ArrayList;
+import static StemFight.Change.*;
 
 public class RobotEnemy extends Robot {
     ImageXY field = new ImageXY("../StemFight/Using/field500.png", 0, 0);
@@ -42,10 +43,10 @@ public class RobotEnemy extends Robot {
             if (game.hero.y < y) upAt = true;
             if (delayTime >= needDelayTime) {
                 codes.add(new Code());
-                codes.get(codes.size()-1).down = this.upAt;
-                codes.get(codes.size()-1).up = this.downAt;
+                codes.get(codes.size()-1).down = this.downAt;
+                codes.get(codes.size()-1).up = this.upAt;
                 codes.get(codes.size()-1).right = this.leftAt;
-                codes.get(codes.size()-1).left = rightAt;
+                codes.get(codes.size()-1).left = this.rightAt;
                 codes.get(codes.size()-1).create(x,y,codes.get(codes.size()-1).up, codes.get(codes.size()-1).right, codes.get(codes.size()-1).left, codes.get(codes.size()-1).down);
                 codes.get(codes.size()-1).update(game);
                 delayTime = 0;
@@ -72,6 +73,10 @@ public class RobotEnemy extends Robot {
 
     @Override
     public void death(Game game) {
-
+        game.hero.xp+=30;
+        if (getChange(80)){
+            game.brickParticles.add(new BrickParticle());
+            game.brickParticles.get(game.brickParticles.size()-1).create(this.x, this.y);
+        }
     }
 }

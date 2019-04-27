@@ -17,11 +17,11 @@ public class Game extends AbsractGame {
 
     int secondsSpawn = 0;
 
-    Camera camera = new Camera();
+    public Camera camera = new Camera();
     public Hero hero = new Hero();
-    Portal portal = new Portal();
+    public Portal portal = new Portal();
 
-    CharFrame charFrame = new CharFrame();
+    public CharFrame charFrame = new CharFrame();
 
     Base base = new Base();
     Backpack backpack = new Backpack();
@@ -75,7 +75,8 @@ public class Game extends AbsractGame {
         portal.create(1000, 0);
         hero.create(50, 50);
 
-        backpack.create(this);
+        backpack.create(1150,200);
+        backpack.addThings("board");
 
         gc.start();
     }
@@ -337,6 +338,47 @@ public class Game extends AbsractGame {
         return true;
     }
     public boolean collision(Hero A, ImageXY B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(Hero A, Code B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }public boolean collision(RobotEnemy A, AttackParticle B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(RobotEnemy A, PaperSnake B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;

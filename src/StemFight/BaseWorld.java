@@ -9,29 +9,53 @@ import StemFight.Buildings.Base;
 import java.util.ArrayList;
 
 public class BaseWorld extends Game {
-
+    Image image, portals;
     public BaseWorld(Game game) {
+        image = new Image("../StemFight/Using/baseWorldFon.gif");
+        portals = new Image("../StemFight/Using/electrumPortal.png");
         this.game = game;
-        camera.image = new Image("../StemFight/Using/baseWorldFon.gif");
-        portal.maked = new Image("../StemFight/Using/electrumPortal");
-        hero.bricks += 5;
-        hero.boards += 10;
-        portal.create(1000, 0);
-        hero.create(200, 0);
-        backpack.create(this);
         enemy.add(new RobotEnemy());
         enemy.get(0).create(200,100);
     }
 
     @Override
     public void update(GameContainer gc, float dt) {
+        portal.maked = portals;
+        backpack.update(this);
         camera.update(this);
         chars.update(this);
         charFrame.update(this);
+        sgf.update(this);
+        spf.update(this);
         hero.update(this);
+        portal.update(this);
         if (secondsSpawn >=500)spawn(this);
-        for (RobotEnemy r : enemy) r.update(game);
+        for (AttackParticle a : attackParticles) a.update(game);
+        for (BrickParticle b : brickParticles)b.update(game);
+        for (RobotEnemy r : enemy) {
+            r.update(game);
+            for (int i = 0; i < r.codes.size(); i++){
+                if (collision(hero, r.codes.get(i))){
+                    r.codes.remove(i);
+                    hero.hp-=10;
+                }
+            }
+        }
+        for (PaperSnake p:snakes) p.update(this);
+        for (Wall w:walls)w.update(this);
+        for (Board b:boards) b.update(this);
         secondsSpawn++;
+
+
+        for (int i = 0; i < attackParticles.size(); i++) { if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) { attackParticles.remove(i); } }
+        for (int i = 0; i < walls.size(); i++) { if (walls.get(i).seconds >= walls.get(i).secondsLives) { walls.remove(i); } }
+        for (RobotEnemy e : enemy) { for (int i = 0; i < attackParticles.size(); i++) { if (collision(e, attackParticles.get(i) )) { e.hp -= 35; attackParticles.remove(i); } } }
+        for (int i = 0; i < snakes.size(); i++) { if (snakes.get(i).hp <= 0){ snakes.remove(i); } }
+        for (RobotEnemy e:enemy) { for (PaperSnake p:snakes) { if (collision(e,p)){ e.hp -=100; p.hp -=10; } } }
+        for (int i = 0; i < enemy.size(); i++) { if (enemy.get(i).hp <= 0) { enemy.get(i).death(this); enemy.remove(i); } }
+        for (int i = 0; i < brickParticles.size(); i++) {if (!brickParticles.get(i).lived){ brickParticles.remove(i);} }
+        for (int i = 0; i < boards.size(); i++) {if (!boards.get(i).lived){ boards.remove(i);} }
+        for (Enemy e:enemies) { for (int i = 0; i < walls.size(); i++) { if (collision(e,walls.get(i))){ e.hp -= 10; if (e.x > walls.get(i).x) e.x += 100; else e.x-=100; } } }
 
     }
 
@@ -40,9 +64,20 @@ public class BaseWorld extends Game {
         camera.renderer(renderer);
         chars.renderer(renderer);
         charFrame.renderer(renderer);
-        for(RobotEnemy r: enemy) r.renderer(renderer);
         portal.renderer(renderer);
+        for (AttackParticle a:attackParticles) a.renderer(renderer);
+        for(RobotEnemy r: enemy) r.renderer(renderer);
         hero.renderer(renderer);
+        for (BrickParticle b: brickParticles) b.renderer(renderer);
+        for (PaperSnake p:snakes) p.renderer(renderer);
+        for (Wall w:walls) w.renderer(renderer);
+        for (Board b:boards)b.renderer(renderer);
+        p.update(game);
+        sgf.renderer(renderer);
+        spf.renderer(renderer);
+        chars.renderer(renderer);
+        sk.renderer(renderer);
+        backpack.renderer(renderer);
     }
 
     @Override
@@ -101,6 +136,11 @@ public class BaseWorld extends Game {
 
     @Override
     public boolean collision(Hero A, Key B) {
+        return super.collision(A, B);
+    }
+
+    @Override
+    public boolean collision(Hero A, Code B) {
         return super.collision(A, B);
     }
 }
