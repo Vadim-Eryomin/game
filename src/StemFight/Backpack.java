@@ -72,6 +72,8 @@ public class Backpack {
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
+        bricks.x = x;
+        bricks.y = y;
         numbersThings.put("brick", brickParcticle);
     }
     public void addThings(String tag){
@@ -79,6 +81,8 @@ public class Backpack {
             images.add(board);
             numbers.put(images.size()-1,"board");
             pictureThings.put("board", board);
+            board.x = x + (pictureThings.size()-1) * 50;
+            board.y = y;
             numbersThings.put("board", boards);
         }
     }

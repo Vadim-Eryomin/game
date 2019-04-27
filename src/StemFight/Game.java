@@ -23,6 +23,8 @@ public class Game extends AbsractGame {
 
     public CharFrame charFrame = new CharFrame();
 
+    Cursor cursor = new Cursor();
+
     Base base = new Base();
     Backpack backpack = new Backpack();
 
@@ -84,6 +86,7 @@ public class Game extends AbsractGame {
     @Override
     public void update(GameContainer gc, float dt) {
         if (thisWorldUpdate){
+            cursor.update(this);
             if (win){
                 thisWorldRenderer = false;
                 thisWorldUpdate = false;
@@ -186,6 +189,7 @@ public class Game extends AbsractGame {
             chars.renderer(renderer);
             sk.renderer(game,renderer);
             backpack.renderer(renderer);
+            cursor.renderer(renderer);
         }
 
     }
