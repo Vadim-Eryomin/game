@@ -2,6 +2,7 @@ package StemFight;
 
 import Engine.*;
 import StemFight.Buildings.Base;
+import StemFight.Buildings.CraftingFrame;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -23,10 +24,11 @@ public class Game extends AbsractGame {
 
     public CharFrame charFrame = new CharFrame();
 
-    Cursor cursor = new Cursor();
+    public Cursor cursor = new Cursor();
 
     Base base = new Base();
-    Backpack backpack = new Backpack();
+    public Backpack backpack = new Backpack();
+    CraftingFrame cr = new CraftingFrame();
 
     skillsGraphFrame sgf = new skillsGraphFrame();
     skillsProgFrame spf = new skillsProgFrame();
@@ -59,6 +61,7 @@ public class Game extends AbsractGame {
 
     public Game() {
         gc.title = "Stem Fight Version A0.8";
+        cr.create(0,700);
 
         sgf.create(0,100);
         sgf.setVisible(true);
@@ -87,6 +90,7 @@ public class Game extends AbsractGame {
     public void update(GameContainer gc, float dt) {
         if (thisWorldUpdate){
             cursor.update(this);
+            cr.update(this);
             if (win){
                 thisWorldRenderer = false;
                 thisWorldUpdate = false;
@@ -189,6 +193,7 @@ public class Game extends AbsractGame {
             chars.renderer(renderer);
             sk.renderer(game,renderer);
             backpack.renderer(renderer);
+            cr.renderer(renderer);
             cursor.renderer(renderer);
         }
 
@@ -395,6 +400,27 @@ public class Game extends AbsractGame {
         if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
+    }
+    public boolean collision(ImageXY A, ImageXY B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collisionPoint(ImageXY A, int x, int y) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        return (objAMinX < x && objAMaxX > x && objAMinY < y && objAMaxY > y);
     }
 
     public static void main(String[] args) {

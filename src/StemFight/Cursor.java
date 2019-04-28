@@ -5,13 +5,15 @@ import Engine.Player;
 import Engine.Renderer;
 
 public class Cursor {
-    ImageXY cursor = new ImageXY("../StemFight/Using/cursor.png", 0, 0);
-    ImageCarry imageCarry = new ImageCarry();
+    public ImageXY cursor = new ImageXY("../StemFight/Using/cursor.png", 0, 0);
+    public ImageCarry imageCarry = new ImageCarry();
+    boolean doing = false;
 
     public void create(int x, int y) {
     }
 
     public void update(Game game) {
+        doing = false;
         cursor.x = game.gc.input.mouseX - cursor.w / 2;
         cursor.y = game.gc.input.mouseY;
         if (game.gc.input.isButtonDown(1)) {
@@ -28,11 +30,12 @@ public class Cursor {
                                 game.hero.boards = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            doing = true;
                         }
                     }
                 }
             }
-            if (imageCarry.image != null && imageCarry.number != 0){
+            if (imageCarry.image != null && imageCarry.number != 0 && !doing){
                 if(game.gc.input.mouseX > 200 && game.gc.input.mouseX < 1100){
                     for (int j = 0; j <= imageCarry.number; j++) {
                         imageCarry.number--;
@@ -46,6 +49,15 @@ public class Cursor {
                         }
 
 
+                    }
+                    imageCarry.set();
+                }
+                else if (game.gc.input.mouseX > 1100){
+                    if (imageCarry.imageTag.equals("brick")){
+                        game.hero.bricks += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("board")){
+                        game.hero.boards += imageCarry.number;
                     }
                     imageCarry.set();
                 }
