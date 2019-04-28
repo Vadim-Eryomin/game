@@ -58,7 +58,7 @@ public class Game extends AbsractGame {
     public GameContainer gc = new GameContainer(this);
 
     public Game() {
-        gc.title = "Stem Fight Version A0.4";
+        gc.title = "Stem Fight Version A0.8";
 
         sgf.create(0,100);
         sgf.setVisible(true);

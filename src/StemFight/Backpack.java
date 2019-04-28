@@ -23,40 +23,6 @@ public class Backpack {
     Integer extracts = 0;
     ImageXY extract;
 
-//    int x = 0;
-//    int y = 0;
-//    public void create(Game game){
-//        x = game.chars.x + 10;
-//        y = game.chars.y + 200;
-//
-
-//        bricks.x = x;
-//        bricks.y = y;
-//
-
-//        board.x = x;
-//        board.y = y + 50;
-//
-
-//        extract.x = x;
-//        extract.y = y + 100;
-//
-//    }
-//    public void update(Game game){
-//        brickParcticle = game.hero.bricks;
-//        boards = game.hero.boards;
-//        extracts = game.hero.extracts;
-//    }
-//    public void renderer(Renderer renderer){
-//        renderer.drawImage(bricks, bricks.x, bricks.y);
-//        renderer.drawText(brickParcticle.toString(), bricks.x + 60, bricks.y, 0xffffffff);
-//
-//        renderer.drawImage(board, board.x, board.y);
-//        renderer.drawText(boards.toString(), board.x + 60, board.y + 20, 0xffffffff);
-//
-//        renderer.drawImage(extract, extract.x, extract.y);
-//        renderer.drawText(extracts.toString(), extract.x + 60, extract.y + 20, 0xffffffff);
-//    }
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
