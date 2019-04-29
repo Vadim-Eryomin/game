@@ -3,6 +3,7 @@ package StemFight.Buildings;
 import Engine.ImageXY;
 import Engine.Renderer;
 import StemFight.Game;
+
 import java.util.HashMap;
 
 public class CraftingFrame {
@@ -17,6 +18,8 @@ public class CraftingFrame {
     HashMap<Integer, ImageXY> pictureThings = new HashMap<>();
     HashMap<Integer, Integer> numbersThings = new HashMap<>();
     HashMap<Integer, String> numbers = new HashMap<>();
+    HashMap<Integer, ImageXY> pieces = new HashMap<>();
+    boolean breakable = false;
 
     int oneTablePiece = 40;
 
@@ -27,6 +30,15 @@ public class CraftingFrame {
         table.y = fon.y + 20;
         stringX = table.x + 130;
         stringY = table.y;
+        pieces.put(0, new ImageXY("../StemFight/Using/piece.png", table.x, table.y));
+        pieces.put(1, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y));
+        pieces.put(2, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y));
+        pieces.put(3, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + oneTablePiece));
+        pieces.put(4, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
+        pieces.put(5, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y + oneTablePiece));
+        pieces.put(6, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + 2 * oneTablePiece));
+        pieces.put(7, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + 2 * oneTablePiece));
+        pieces.put(8, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y + 2 * oneTablePiece));
     }
 
     public void setVisible(boolean visible) {
@@ -34,66 +46,67 @@ public class CraftingFrame {
     }
 
     public void update(Game game) {
+        breakable = false;
         if (game.gc.input.isButtonDown(1)) {
-            if (game.collision(table, game.cursor.cursor)) {
-                int x = game.cursor.cursor.x;
-                int y = game.cursor.cursor.y;
-
-                if (game.cursor.imageCarry.image != null) {
-                    if (table.x < x && table.x + oneTablePiece > x && table.y < y && table.y + oneTablePiece > y) {
-                        if (pictureThings.get(0) == null) {
-                            setZero(game);
-                        } else {
-                            if (numbers.get(0).equals(game.cursor.imageCarry.imageTag)) {
-                                numbersThings.put(0, numbersThings.get(0) + 1);
+            for (int y = 0; y < 3; y++) {
+                for (int x = 0; x < 3; x++) {
+                    int i = x + y * 3;
+                    if (game.collision(game.cursor.cursor, pieces.get(i))) {
+                        if (game.cursor.imageCarry.number > 0) {
+                            if (pictureThings.get(i) != null) {
+                                if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
+                                if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
+                                pictureThings.put(i, game.cursor.imageCarry.image);
+                                try {
+                                    numbersThings.put(i, numbersThings.get(i) + 1);
+                                } catch (NullPointerException e) {
+                                    numbersThings.put(i, 1);
+                                }
                                 game.cursor.imageCarry.number--;
+                                numbers.put(i, game.cursor.imageCarry.imageTag);
                             } else {
-                                if (numbers.get(0).equals("brick")) {
-                                    game.hero.bricks += numbersThings.get(0);
+                                pictureThings.put(i, game.cursor.imageCarry.image);
+                                try {
+                                    numbersThings.put(i, numbersThings.get(i) + 1);
+                                } catch (NullPointerException e) {
+                                    numbersThings.put(i, 1);
                                 }
-                                if (numbers.get(0).equals("board")) {
-                                    game.hero.boards += numbersThings.get(0);
-                                }
-                                setZero(game);
+                                game.cursor.imageCarry.number--;
+                                numbers.put(i, game.cursor.imageCarry.imageTag);
+                            }
+                        } else {
+                            if (pictureThings.get(i) != null) {
+                                if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
+                                if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
+                                pictureThings.put(i, null);
+                                numbersThings.put(i, 0);
+                                numbers.put(i, null);
                             }
                         }
+                        breakable = true;
                     }
-                } else {
-                    if (table.x < x && table.x + oneTablePiece > x && table.y < y && table.y + oneTablePiece > y) {
-                        if (pictureThings.get(0) != null){
-                            if (numbers.get(0).equals("brick")) {
-                                game.hero.bricks += numbersThings.get(0);
-                            }
-                            if (numbers.get(0).equals("board")) {
-                                game.hero.boards += numbersThings.get(0);
-                            }
-                            pictureThings.put(0,null);
-                            numbersThings.put(0,0);
-                            numbers.put(0,null);
-                        }
-                    }
+                    if (breakable) break;
                 }
-
-
-                // TODO: 28.04.2019
+                if (breakable) break;
             }
         }
-    }
-
-    public void setZero(Game game) {
-        numbers.put(0, game.cursor.imageCarry.imageTag);
-        pictureThings.put(0, game.cursor.imageCarry.image);
-        numbersThings.put(0, 1);
-        game.cursor.imageCarry.number--;
     }
 
     public void renderer(Renderer renderer) {
         if (visible) {
             renderer.drawImage(fon, fon.x, fon.y);
-            renderer.drawImage(table, table.x, table.y);
             renderer.drawText(name, stringX, stringY, 0xffffffff);
-            for (int i = 0; i < 9; i++) {
-                if (pictureThings.get(i) != null) renderer.drawImage(pictureThings.get(i), table.x + 5, table.y + 5);
+            for (int y = 0; y < 3; y++) {
+                for (int x = 0; x < 3; x++) {
+                    int i = x + y * 3;
+                    renderer.drawImage(pieces.get(i), pieces.get(i).x, pieces.get(i).y);
+                    try {
+                        renderer.drawImage(pictureThings.get(i), pieces.get(i).x, pieces.get(i).y);
+                        renderer.drawText(numbersThings.get(i).toString(), pieces.get(i).x, pieces.get(i).y, 0xffffffff);
+                    } catch (NullPointerException e) {
+                        System.out.println("lala");
+                    }
+                }
             }
         }
     }

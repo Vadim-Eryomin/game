@@ -14,7 +14,7 @@ public class Cursor {
 
     public void update(Game game) {
         doing = false;
-        cursor.x = game.gc.input.mouseX - cursor.w / 2;
+        cursor.x = game.gc.input.mouseX;
         cursor.y = game.gc.input.mouseY;
         if (game.gc.input.isButtonDown(1)) {
             for (int i = 0; i < game.backpack.numbers.size(); i++) {

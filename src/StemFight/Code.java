@@ -63,7 +63,6 @@ public class Code extends AttackParticle implements Player {
         super.left = left;
         super.right = right;
         super.down = up;
-        // FIXME: 22.04.2019 
     }
 
     @Override
