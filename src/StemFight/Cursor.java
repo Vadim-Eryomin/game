@@ -63,6 +63,7 @@ public class Cursor {
                 }
             }
         }
+        if (imageCarry.number == 0)imageCarry.set();
     }
 
     public void renderer(Renderer renderer) {

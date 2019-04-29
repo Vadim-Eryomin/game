@@ -61,7 +61,7 @@ public class Game extends AbsractGame {
 
     public Game() {
         gc.title = "Stem Fight Version A0.8";
-        cr.create(0,700);
+        cr.create(0,500);
 
         sgf.create(0,100);
         sgf.setVisible(true);
