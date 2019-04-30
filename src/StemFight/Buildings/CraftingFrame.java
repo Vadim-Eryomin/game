@@ -107,7 +107,6 @@ public class CraftingFrame {
             }
         }
         if (craftCheck(craft)){
-            System.out.println("!");
             canCraft.put(craft.get(9), true);
             if (game.gc.input.isButtonDown(1)){
                 if (game.collision(pieces.get(9), game.cursor.cursor)){
@@ -115,7 +114,7 @@ public class CraftingFrame {
                         game.hero.shovels++;
                         canCraft.put(craft.get(9), false);
                         for (int i = 0; i < 9; i++) {
-                            try{numbersThings.put(i, numbersThings.get(i)-1);}catch (NullPointerException e){}
+                            if (craft.get(i) != null)try{numbersThings.put(i, numbersThings.get(i)-1);}catch (NullPointerException e){}
                         }
                     }
                 }
