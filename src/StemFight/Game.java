@@ -3,6 +3,7 @@ package StemFight;
 import Engine.*;
 import StemFight.Buildings.Base;
 import StemFight.Buildings.CraftingFrame;
+import StemFight.Buildings.CraftingTable;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Game extends AbsractGame {
 
     Base base = new Base();
     public Backpack backpack = new Backpack();
-    CraftingFrame cr = new CraftingFrame();
+    CraftingTable craftingTable = new CraftingTable();
 
     skillsGraphFrame sgf = new skillsGraphFrame();
     skillsProgFrame spf = new skillsProgFrame();
@@ -61,26 +62,25 @@ public class Game extends AbsractGame {
 
     public Game() {
         gc.title = "Stem Fight Version A0.8";
-        cr.create(0,500);
 
-        sgf.create(0,100);
+        sgf.create(0, 100);
         sgf.setVisible(true);
 
-        spf.create(0,300);
+        spf.create(0, 300);
         spf.setVisible(true);
 
-        chars.create(1100,0);
+        chars.create(1100, 0);
 
-        sk.create(0,700);
+        sk.create(0, 700);
 
-        charFrame.create(0,0);
+        charFrame.create(0, 0);
         charFrame.setVisible(true);
 
 
         portal.create(1000, 0);
         hero.create(50, 50);
 
-        backpack.create(1150,200);
+        backpack.create(1150, 200);
 
 
         gc.start();
@@ -90,10 +90,11 @@ public class Game extends AbsractGame {
     public void update(GameContainer gc, float dt) {
         if (hero.shovels >= 1 && !has("shovel")) backpack.addThings("shovel");
         if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
-        if (thisWorldUpdate){
+        if (hero.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
+        if (thisWorldUpdate) {
             cursor.update(this);
-            cr.update(this);
-            if (win){
+            craftingTable.update(game);
+            if (win) {
                 thisWorldRenderer = false;
                 thisWorldUpdate = false;
                 game = new BaseWorld(this);
@@ -105,20 +106,19 @@ public class Game extends AbsractGame {
                 if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
                     base.create(0, 500, hero.x, hero.y);
                 else {
-                    if(base.made && hero.boards >= 5){
-                        base.bf.buildHp+= 10;
-                        hero.boards -=5;
-                    }
-                    else if (hero.bricks < 5) pickBlocks = true;
+                    if (base.made && hero.boards >= 5) {
+                        base.bf.buildHp += 10;
+                        hero.boards -= 5;
+                    } else if (hero.bricks < 5) pickBlocks = true;
                     else if (hero.boards < 10) pickBoards = true;
                 }
             }
-            pleasePress = collision(hero,base);
-            if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made){
+            pleasePress = collision(hero, base);
+            if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made) {
                 base.bf.saveExp += hero.xp;
                 hero.xp = 0;
             }
-            if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made){
+            if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made) {
                 hero.xp += base.bf.saveExp;
                 base.bf.saveExp = 0;
             }
@@ -134,41 +134,91 @@ public class Game extends AbsractGame {
             camera.update(this);
 
             for (AttackParticle a : attackParticles) a.update(game);
-            for (BrickParticle b : brickParticles)b.update(game);
+            for (BrickParticle b : brickParticles) b.update(game);
             for (Enemy e : enemies) e.update(this);
-            for (PaperSnake p:snakes) p.update(this);
-            for (Wall w:walls)w.update(this);
-            for (Board b:boards) b.update(this);
+            for (PaperSnake p : snakes) p.update(this);
+            for (Wall w : walls) w.update(this);
+            for (Board b : boards) b.update(this);
 
-            if (spawnZombies)spawn(this);
+            if (spawnZombies) spawn(this);
             secondsSpawn++;
 
-            for (int i = 0; i < attackParticles.size(); i++) { if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) { attackParticles.remove(i); } }
-            for (int i = 0; i < walls.size(); i++) { if (walls.get(i).seconds >= walls.get(i).secondsLives) { walls.remove(i); } }
-            for (Enemy e : enemies) { for (int i = 0; i < attackParticles.size(); i++) { if (collision(e, attackParticles.get(i) )) { e.hp -= 35; attackParticles.remove(i); } } }
-            for (int i = 0; i < snakes.size(); i++) { if (snakes.get(i).hp <= 0){ snakes.remove(i); } }
-            for (Enemy e:enemies) { for (PaperSnake p:snakes) { if (collision(e,p)){ e.hp -=100; p.hp -=10; } } }
-            for (int i = 0; i < enemies.size(); i++) { if (enemies.get(i).hp <= 0) { enemies.get(i).death(this); enemies.remove(i); } }
-            for (Enemy e : enemies) { if (collision(e, hero)) { hero.hp -= 5; e.hp -= 20;
-                new Thread() {
-                    @Override
-                    public void run() {
-                        for (int i = 0; i < 20; i++) {
-                            hero.x--;
-                            e.x++;
-                            try {
-                                Thread.sleep(5);
-                            } catch (InterruptedException e1) {
-                                e1.printStackTrace();
+            for (int i = 0; i < attackParticles.size(); i++) {
+                if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) {
+                    attackParticles.remove(i);
+                }
+            }
+            for (int i = 0; i < walls.size(); i++) {
+                if (walls.get(i).seconds >= walls.get(i).secondsLives) {
+                    walls.remove(i);
+                }
+            }
+            for (Enemy e : enemies) {
+                for (int i = 0; i < attackParticles.size(); i++) {
+                    if (collision(e, attackParticles.get(i))) {
+                        e.hp -= 35;
+                        attackParticles.remove(i);
+                    }
+                }
+            }
+            for (int i = 0; i < snakes.size(); i++) {
+                if (snakes.get(i).hp <= 0) {
+                    snakes.remove(i);
+                }
+            }
+            for (Enemy e : enemies) {
+                for (PaperSnake p : snakes) {
+                    if (collision(e, p)) {
+                        e.hp -= 100;
+                        p.hp -= 10;
+                    }
+                }
+            }
+            for (int i = 0; i < enemies.size(); i++) {
+                if (enemies.get(i).hp <= 0) {
+                    enemies.get(i).death(this);
+                    enemies.remove(i);
+                }
+            }
+            for (Enemy e : enemies) {
+                if (collision(e, hero)) {
+                    hero.hp -= 5;
+                    e.hp -= 20;
+                    new Thread() {
+                        @Override
+                        public void run() {
+                            for (int i = 0; i < 20; i++) {
+                                hero.x--;
+                                e.x++;
+                                try {
+                                    Thread.sleep(5);
+                                } catch (InterruptedException e1) {
+                                    e1.printStackTrace();
+                                }
                             }
                         }
+                    }.start();
+                }
+            }
+            for (int i = 0; i < brickParticles.size(); i++) {
+                if (!brickParticles.get(i).lived) {
+                    brickParticles.remove(i);
+                }
+            }
+            for (int i = 0; i < boards.size(); i++) {
+                if (!boards.get(i).lived) {
+                    boards.remove(i);
+                }
+            }
+            for (Enemy e : enemies) {
+                for (int i = 0; i < walls.size(); i++) {
+                    if (collision(e, walls.get(i))) {
+                        e.hp -= 10;
+                        if (e.x > walls.get(i).x) e.x += 100;
+                        else e.x -= 100;
                     }
-                }.start();
+                }
             }
-            }
-            for (int i = 0; i < brickParticles.size(); i++) {if (!brickParticles.get(i).lived){ brickParticles.remove(i);} }
-            for (int i = 0; i < boards.size(); i++) {if (!boards.get(i).lived){ boards.remove(i);} }
-            for (Enemy e:enemies) { for (int i = 0; i < walls.size(); i++) { if (collision(e,walls.get(i))){ e.hp -= 10; if (e.x > walls.get(i).x) e.x += 100; else e.x-=100; } } }
         }
 
 
@@ -176,26 +226,26 @@ public class Game extends AbsractGame {
 
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
-        if (thisWorldRenderer){
+        if (thisWorldRenderer) {
             camera.renderer(renderer);
             base.renderer(renderer);
             charFrame.renderer(renderer);
             portal.renderer(renderer);
+            craftingTable.renderer(renderer);
             for (AttackParticle a : attackParticles) a.renderer(renderer);
             if (key != null) key.renderer(renderer);
             hero.renderer(renderer);
             for (Enemy e : enemies) e.renderer(renderer);
-            for (BrickParticle b:brickParticles)b.renderer(renderer);
-            for (PaperSnake p: snakes) p.renderer(renderer);
-            for (Wall w: walls)w.renderer(renderer);
-            for (Board b:boards) b.renderer(renderer);
+            for (BrickParticle b : brickParticles) b.renderer(renderer);
+            for (PaperSnake p : snakes) p.renderer(renderer);
+            for (Wall w : walls) w.renderer(renderer);
+            for (Board b : boards) b.renderer(renderer);
             p.update(this);
             sgf.renderer(renderer);
             spf.renderer(renderer);
             chars.renderer(renderer);
-            sk.renderer(game,renderer);
+            sk.renderer(game, renderer);
             backpack.renderer(renderer);
-            cr.renderer(renderer);
             cursor.renderer(renderer);
         }
 
@@ -208,14 +258,16 @@ public class Game extends AbsractGame {
             enemies.get(enemies.size() - 1).create(random.nextInt(1800), random.nextInt(1800));
         }
     }
-    public boolean has(String tag){
+
+    public boolean has(String tag) {
         for (int i = 0; i < backpack.images.size(); i++) {
-            if (backpack.numbers.get(i).equals(tag)){
+            if (backpack.numbers.get(i).equals(tag)) {
                 return true;
             }
         }
         return false;
     }
+
     public boolean collision(Enemy A, Hero B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -230,6 +282,21 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+    public boolean collision(ImageXY A, Hero B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+
     public boolean collision(Hero A, Base B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -244,6 +311,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Enemy A, Wall B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -258,6 +326,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Enemy A, AttackParticle B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -272,7 +341,8 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
-    public boolean collision(Enemy A, Bulik B){
+
+    public boolean collision(Enemy A, Bulik B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;
@@ -286,6 +356,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, BrickParticle B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -300,6 +371,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, Portal B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -314,6 +386,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Enemy A, PaperSnake B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -328,6 +401,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, Board B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -342,6 +416,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, Key B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -356,6 +431,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, ImageXY B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -370,6 +446,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(Hero A, Code B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -383,7 +460,9 @@ public class Game extends AbsractGame {
         if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
-    }public boolean collision(RobotEnemy A, AttackParticle B) {
+    }
+
+    public boolean collision(RobotEnemy A, AttackParticle B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;
@@ -397,6 +476,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(RobotEnemy A, PaperSnake B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -411,6 +491,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(ImageXY A, ImageXY B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
@@ -425,6 +506,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collisionPoint(ImageXY A, int x, int y) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;

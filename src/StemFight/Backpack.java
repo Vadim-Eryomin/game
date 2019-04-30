@@ -26,6 +26,9 @@ public class Backpack {
     Integer extracts = 0;
     ImageXY extract;
 
+    Integer craftingTables = 0;
+    ImageXY craftingTable;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -39,6 +42,7 @@ public class Backpack {
         shovel = new ImageXY("../StemFight/Instruments/shovel.png",0,0);
         board = new ImageXY("../StemFight/Using/board.png",0,0);
         extract = new ImageXY("../StemFight/Using/extract.png",0,0);
+        craftingTable = new ImageXY("../StemFight/Using/craftingTableMini.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -63,16 +67,27 @@ public class Backpack {
             shovel.y = y;
             numbersThings.put("shovel", shovels);
         }
+        if (tag.equals("crafts")){
+            images.add(craftingTable);
+            numbers.put(images.size()-1,"crafts");
+            pictureThings.put("crafts", craftingTable);
+            craftingTable.x = x + (pictureThings.size()-1) * 50;
+            craftingTable.y = y;
+            numbersThings.put("crafts", craftingTables);
+        }
     }
+
 
     public void update(Game game) {
         brickParcticle = game.hero.bricks;
         boards = game.hero.boards;
         shovels = game.hero.shovels;
+        craftingTables = game.hero.craftingTables;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
             if (numbers.get(i).equals("shovel")) numbersThings.put(numbers.get(i),shovels);
+            if (numbers.get(i).equals("crafts")) numbersThings.put(numbers.get(i),craftingTables);
 
         }
     }

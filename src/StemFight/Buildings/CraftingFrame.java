@@ -12,7 +12,7 @@ public class CraftingFrame {
     ImageXY table = new ImageXY("../StemFight/Using/table.png", 0, 0);
 
     String name = "Craft";
-    boolean visible = true;
+    boolean visible = false;
     int stringX = 0;
     int stringY = 0;
 

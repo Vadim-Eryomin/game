@@ -55,6 +55,10 @@ public class Cursor {
                             game.backpack.shovels += imageCarry.number;
                             imageCarry.set();
                         }
+                        if (imageCarry.imageTag.equals("crafts")){
+                            game.craftingTable.create(cursor.x, cursor.y);
+                            game.hero.craftingTables--;
+                        }
 
 
                     }
