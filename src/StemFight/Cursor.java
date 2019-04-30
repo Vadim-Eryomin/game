@@ -30,6 +30,10 @@ public class Cursor {
                                 game.hero.boards = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            if (game.backpack.numbers.get(i).equals("shovel")) {
+                                game.backpack.shovels = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
                             doing = true;
                         }
                     }
@@ -47,6 +51,10 @@ public class Cursor {
                             game.boards.add(new Board());
                             game.boards.get(game.boards.size()-1).create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }
+                        if (imageCarry.imageTag.equals("shovel")){
+                            game.backpack.shovels += imageCarry.number;
+                            imageCarry.set();
+                        }
 
 
                     }
@@ -58,6 +66,9 @@ public class Cursor {
                     }
                     if (imageCarry.imageTag.equals("board")){
                         game.hero.boards += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("shovel")){
+                        game.backpack.shovels += imageCarry.number;
                     }
                     imageCarry.set();
                 }

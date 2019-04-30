@@ -17,6 +17,9 @@ public class Backpack {
     Integer boards = 0;
     ImageXY board;
 
+    public Integer shovels = 0;
+    public ImageXY shovel;
+
     int nails = 0;
     ImageXY nail;
 
@@ -33,6 +36,7 @@ public class Backpack {
         this.x = x;
         this.y = y;
         bricks = new ImageXY("../StemFight/Using/platformPack_tile004.png",0,0);
+        shovel = new ImageXY("../StemFight/Instruments/shovel.png",0,0);
         board = new ImageXY("../StemFight/Using/board.png",0,0);
         extract = new ImageXY("../StemFight/Using/extract.png",0,0);
         images.add(bricks);
@@ -51,14 +55,25 @@ public class Backpack {
             board.y = y;
             numbersThings.put("board", boards);
         }
+        if (tag.equals("shovel")){
+            images.add(shovel);
+            numbers.put(images.size()-1,"shovel");
+            pictureThings.put("shovel", shovel);
+            shovel.x = x + (pictureThings.size()-1) * 50;
+            shovel.y = y;
+            numbersThings.put("shovel", shovels);
+        }
     }
 
     public void update(Game game) {
         brickParcticle = game.hero.bricks;
         boards = game.hero.boards;
+        shovels = game.hero.shovels;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
+            if (numbers.get(i).equals("shovel")) numbersThings.put(numbers.get(i),shovels);
+
         }
     }
 

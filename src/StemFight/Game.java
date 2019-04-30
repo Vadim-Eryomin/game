@@ -81,13 +81,15 @@ public class Game extends AbsractGame {
         hero.create(50, 50);
 
         backpack.create(1150,200);
-        backpack.addThings("board");
+
 
         gc.start();
     }
 
     @Override
     public void update(GameContainer gc, float dt) {
+        if (hero.shovels >= 1 && !has("shovel")) backpack.addThings("shovel");
+        if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
         if (thisWorldUpdate){
             cursor.update(this);
             cr.update(this);
@@ -205,6 +207,14 @@ public class Game extends AbsractGame {
             enemies.add(new Enemy());
             enemies.get(enemies.size() - 1).create(random.nextInt(1800), random.nextInt(1800));
         }
+    }
+    public boolean has(String tag){
+        for (int i = 0; i < backpack.images.size(); i++) {
+            if (backpack.numbers.get(i).equals(tag)){
+                return true;
+            }
+        }
+        return false;
     }
     public boolean collision(Enemy A, Hero B) {
         int objAMinX = A.x;
