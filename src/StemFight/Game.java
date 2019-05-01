@@ -179,7 +179,7 @@ public class Game extends AbsractGame {
             }
             for (Enemy e : enemies) {
                 if (collision(e, hero)) {
-                    hero.hp -= 5 / chars.defence;
+                    hero.hp -= (5 / chars.defence);
                     e.hp -= 20 * chars.attack;
                     new Thread() {
                         @Override
