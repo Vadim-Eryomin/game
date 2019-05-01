@@ -241,7 +241,6 @@ public class Game extends AbsractGame {
             for (Board b : boards) b.renderer(renderer);
             p.update(this);
             chars.renderer(renderer);
-            sk.renderer(game, renderer);
             backpack.renderer(renderer);
             cursor.renderer(renderer);
         }
