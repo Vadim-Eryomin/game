@@ -14,6 +14,7 @@ public class ExperienceAndLevels {
                 game.sgf.skillPoints++;
                 game.spf.skillPoints++;
             }
+            game.hero.charsUp++;
         }
         game.charFrame.xp = this.level;
     }

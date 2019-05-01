@@ -40,6 +40,8 @@ public class Hero implements Player {
 
     private int seconds = 0;
 
+    int charsUp = 0;
+
     ExperienceAndLevels exps = new ExperienceAndLevels();
 
     @Override
@@ -61,7 +63,7 @@ public class Hero implements Player {
 
     @Override
     public void update(Game game) {
-        hp = range(hp,0,100);
+        hp = range(hp,0,game.chars.maxHp);
         if (game.gc.input.isKeyUp(KeyEvent.VK_A) || game.gc.input.isKeyUp(KeyEvent.VK_A) || game.gc.input.isKeyUp(KeyEvent.VK_A) || game.gc.input.isKeyUp(KeyEvent.VK_A)) {
             seconds = 0;
         }

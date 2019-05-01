@@ -153,7 +153,7 @@ public class Game extends AbsractGame {
             for (Enemy e : enemies) {
                 for (int i = 0; i < attackParticles.size(); i++) {
                     if (collision(e, attackParticles.get(i))) {
-                        e.hp -= 35;
+                        e.hp -= 35 * chars.attack;
                         attackParticles.remove(i);
                     }
                 }
@@ -166,7 +166,7 @@ public class Game extends AbsractGame {
             for (Enemy e : enemies) {
                 for (PaperSnake p : snakes) {
                     if (collision(e, p)) {
-                        e.hp -= 100;
+                        e.hp -= 100 * chars.attack;
                         p.hp -= 10;
                     }
                 }
@@ -179,8 +179,8 @@ public class Game extends AbsractGame {
             }
             for (Enemy e : enemies) {
                 if (collision(e, hero)) {
-                    hero.hp -= 5;
-                    e.hp -= 20;
+                    hero.hp -= 5 / chars.defence;
+                    e.hp -= 20 * chars.attack;
                     new Thread() {
                         @Override
                         public void run() {
@@ -210,7 +210,7 @@ public class Game extends AbsractGame {
             for (Enemy e : enemies) {
                 for (int i = 0; i < walls.size(); i++) {
                     if (collision(e, walls.get(i))) {
-                        e.hp -= 10;
+                        e.hp -= 10 * chars.attack;
                         if (e.x > walls.get(i).x) e.x += 100;
                         else e.x -= 100;
                     }
