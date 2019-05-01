@@ -13,6 +13,7 @@ public class Game extends AbsractGame {
     Key key;
 
     Game game = this;
+    Game alls = this;
 
     Random random = new Random();
     portalRenderer p = new portalRenderer();
@@ -57,6 +58,7 @@ public class Game extends AbsractGame {
     Characteristics chars = new Characteristics();
 
     SkillsTerminal sk = new SkillsTerminal();
+    int heal = 0;
 
     SkillsTree skt = new SkillsTree();
 
@@ -217,6 +219,11 @@ public class Game extends AbsractGame {
                 }
             }
             skt.update(this);
+            heal++;
+            if (heal >= 800) {
+                game.hero.hp += 1;
+                heal = 0;
+            }
         }
 
 
