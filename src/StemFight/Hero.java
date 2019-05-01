@@ -120,39 +120,39 @@ public class Hero implements Player {
         if (game.gc.input.isKeyDown(KeyEvent.VK_3)) {
             sk.terminal = 2;
         }
-        if (game.sgf.buliks){
-            game.spf.choice = false;
+        if (game.skt.buliks){
+            game.skt.choiceProgr = false;
         }
-        if (game.spf.codes){
-            game.sgf.choice = false;
+        if (game.skt.codes){
+            game.skt.choiceGraph = false;
         }
-        if (game.sgf.choice){
+        if (game.skt.choiceGraph){
             if (game.gc.input.isButtonDown(1)) {
-                if (game.sgf.choice && sk.terminal == 0 && game.sgf.buliks ) {
+                if (game.skt.choiceGraph && sk.terminal == 0 && game.skt.buliks ) {
                     game.attackParticles.add(new Bulik());
                     game.attackParticles.get(game.attackParticles.size() - 1).create(game);
                 }
-                if (game.sgf.choice && sk.terminal == 1 && game.sgf.arrows ) {
+                if (game.skt.choiceGraph && sk.terminal == 1 && game.skt.arrows ) {
                     game.attackParticles.add(new Arrow());
                     game.attackParticles.get(game.attackParticles.size() - 1).create(game);
                 }
-                if (game.sgf.choice && sk.terminal == 2 && game.sgf.snakes ) {
+                if (game.skt.choiceGraph && sk.terminal == 2 && game.skt.snakes ) {
                     game.snakes.add(new PaperSnake());
                     game.snakes.get(game.snakes.size() - 1).create(x,y);
                 }
             }
         }
-        else if (game.spf.choice){
+        else if (game.skt.choiceProgr){
             if (game.gc.input.isButtonDown(1)) {
-                if (game.spf.choice && sk.terminal == 0 && game.spf.codes ) {
+                if (game.skt.choiceProgr && sk.terminal == 0 && game.skt.codes ) {
                     game.attackParticles.add(new Code());
                     game.attackParticles.get(game.attackParticles.size() - 1).create(game);
                 }
-                if (game.spf.choice && sk.terminal == 1 && game.spf.heals ) {
+                if (game.skt.choiceProgr && sk.terminal == 1 && game.skt.heals ) {
                     game.attackParticles.add(new Heal());
                     game.attackParticles.get(game.attackParticles.size() - 1).create(game.hero.x, game.hero.y-20);
                 }
-                if (game.spf.choice && sk.terminal == 2 && game.spf.walls ) {
+                if (game.skt.choiceProgr && sk.terminal == 2 && game.skt.walls ) {
                     game.walls.add(new Wall());
                     game.walls.get(game.walls.size() - 1).create(game);
                 }

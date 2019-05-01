@@ -58,16 +58,15 @@ public class Game extends AbsractGame {
 
     SkillsTerminal sk = new SkillsTerminal();
 
+    SkillsTree skt = new SkillsTree();
+
     public GameContainer gc = new GameContainer(this);
 
     public Game() {
         gc.title = "Stem Fight Version A0.8";
 
-        sgf.create(0, 100);
-        sgf.setVisible(true);
-
-        spf.create(0, 300);
-        spf.setVisible(true);
+        skt.create(0,100);
+        skt.setVisible(true);
 
         chars.create(1100, 0);
 
@@ -127,8 +126,6 @@ public class Game extends AbsractGame {
             }
             chars.update(this);
             charFrame.update(this);
-            sgf.update(this);
-            spf.update(this);
             hero.update(this);
             portal.update(this);
             camera.update(this);
@@ -219,6 +216,7 @@ public class Game extends AbsractGame {
                     }
                 }
             }
+            skt.update(this);
         }
 
 
@@ -228,6 +226,7 @@ public class Game extends AbsractGame {
     public void renderer(GameContainer gc, Renderer renderer) {
         if (thisWorldRenderer) {
             camera.renderer(renderer);
+            skt.renderer(renderer);
             base.renderer(renderer);
             charFrame.renderer(renderer);
             portal.renderer(renderer);
@@ -241,8 +240,6 @@ public class Game extends AbsractGame {
             for (Wall w : walls) w.renderer(renderer);
             for (Board b : boards) b.renderer(renderer);
             p.update(this);
-            sgf.renderer(renderer);
-            spf.renderer(renderer);
             chars.renderer(renderer);
             sk.renderer(game, renderer);
             backpack.renderer(renderer);
