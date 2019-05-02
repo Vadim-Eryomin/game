@@ -9,7 +9,16 @@ public class UpdateCore {
         if (game.win) {
             game.firstUpdate = false;
             game.firstRender = false;
-
+            game.secondUpdate = true;
+            game.secondRender = true;
+            game.reverse = false;
+        }
+        if (game.reverse) {
+            game.firstUpdate = true;
+            game.firstRender = true;
+            game.secondUpdate = false;
+            game.secondRender = false;
+            game.win = false;
         }
         if (game.key != null) game.key.update(game);
         game.backpack.update(game);
@@ -138,6 +147,7 @@ public class UpdateCore {
     }
 
     public void updateSecond(Game game) {
+        game.cursor.update(game);
         game.portal.maked = game.portals;
         game.backpack.update(game);
         game.camera.update(game);
@@ -146,7 +156,7 @@ public class UpdateCore {
         game.skt.update(game);
         game.hero.update(game);
         game.portal.update(game);
-        if (game.secondsSpawn >= 500) game.spawnRobot(game);
+        game.spawnRobot(game);
         for (AttackParticle a : game.attackParticles) a.update(game);
         for (BrickParticle b : game.brickParticles) b.update(game);
         for (RobotEnemy r : game.enemy) {

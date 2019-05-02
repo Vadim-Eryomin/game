@@ -40,9 +40,13 @@ public class Game extends AbsractGame {
     boolean pickBlocks = false;
     boolean pickBoards = false;
     boolean pleasePress = false;
+
     boolean preWin = false;
     boolean win = false;
+    boolean reverse = true;
+
     boolean spawnZombies = true;
+    boolean spawnRobots = false;
 
     boolean firstUpdate = true;
     boolean firstRender = true;
