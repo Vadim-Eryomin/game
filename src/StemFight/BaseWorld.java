@@ -11,11 +11,7 @@ import java.util.ArrayList;
 public class BaseWorld extends Game {
     Image image, portals;
     public BaseWorld(Game game) {
-        image = new Image("../StemFight/Using/baseWorldFon.gif");
-        portals = new Image("../StemFight/Using/electrumPortal.png");
-        this.game = game;
-        enemy.add(new RobotEnemy());
-        enemy.get(0).create(200,100);
+
     }
 
     @Override

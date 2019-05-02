@@ -44,8 +44,13 @@ public class Game extends AbsractGame {
     boolean win = false;
     boolean spawnZombies = true;
 
-    boolean thisWorldUpdate = true;
-    boolean thisWorldRenderer = true;
+    boolean firstUpdate = true;
+    boolean firstRender = true;
+    boolean secondUpdate = false;
+    boolean secondRender = false;
+
+    boolean going = false;
+    boolean preGoing = false;
 
     ArrayList<Enemy> enemies = new ArrayList<>();
     ArrayList<RobotEnemy> enemy = new ArrayList<>();
@@ -59,6 +64,10 @@ public class Game extends AbsractGame {
 
     SkillsTerminal sk = new SkillsTerminal();
     UpdateCore updateCore = new UpdateCore();
+    Image image;
+    Image portals;
+    ImageXY loading = new ImageXY("../StemFight/Using/loading.png",0,0);
+
     int heal = 0;
 
     SkillsTree skt = new SkillsTree();
@@ -85,12 +94,27 @@ public class Game extends AbsractGame {
         if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
         if (hero.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
 
-        updateCore.updateFirst(this);
+        if (firstUpdate){
+            updateCore.updateFirst(this);
+        }
+
+        if (!firstUpdate && !secondUpdate){
+            image = new Image("../StemFight/Using/baseWorldFon.gif");
+            portals = new Image("../StemFight/Using/electrumPortal.png");
+            enemy.add(new RobotEnemy());
+            enemy.get(0).create(200,100);
+            secondUpdate = true;
+            secondRender = true;
+        }
+        if (secondUpdate){
+            updateCore.updateSecond(this);
+        }
+
     }
 
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
-        if (thisWorldRenderer) {
+        if (firstRender) {
             camera.renderer(renderer);
             skt.renderer(renderer);
             base.renderer(renderer);
@@ -110,6 +134,27 @@ public class Game extends AbsractGame {
             backpack.renderer(renderer);
             cursor.renderer(renderer);
         }
+        if (preGoing){
+            renderer.drawImage(loading, loading.x, loading.y);
+        }
+        if (secondRender){
+            camera.renderer(renderer);
+            chars.renderer(renderer);
+            charFrame.renderer(renderer);
+            portal.renderer(renderer);
+            for (AttackParticle a:attackParticles) a.renderer(renderer);
+            for(RobotEnemy r: enemy) r.renderer(renderer);
+            hero.renderer(renderer);
+            for (BrickParticle b: brickParticles) b.renderer(renderer);
+            for (PaperSnake p:snakes) p.renderer(renderer);
+            for (Wall w:walls) w.renderer(renderer);
+            for (Board b:boards)b.renderer(renderer);
+            p.update(game);
+            skt.renderer(renderer);
+            chars.renderer(renderer);
+            sk.renderer(renderer);
+            backpack.renderer(renderer);
+        }
 
     }
 
@@ -118,6 +163,13 @@ public class Game extends AbsractGame {
             game.secondsSpawn = 0;
             enemies.add(new Enemy());
             enemies.get(enemies.size() - 1).create(random.nextInt(1800), random.nextInt(1800));
+        }
+    }
+    public void spawnRobot(Game game) {
+        if (game.secondsSpawn >= 800 && enemy.size() <= 5){
+            secondsSpawn = 0;
+            enemy.add(new RobotEnemy());
+            enemy.get(enemy.size()-1).create(random.nextInt(1800)+10, random.nextInt(1800)+10);
         }
     }
 

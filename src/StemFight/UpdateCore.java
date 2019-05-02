@@ -3,12 +3,13 @@ package StemFight;
 import java.awt.event.KeyEvent;
 
 public class UpdateCore {
-    public void updateFirst(Game game){
+    public void updateFirst(Game game) {
         game.cursor.update(game);
         game.craftingTable.update(game);
         if (game.win) {
-            game.thisWorldRenderer = false;
-            game.thisWorldUpdate = false;
+            game.firstUpdate = false;
+            game.firstRender = false;
+
         }
         if (game.key != null) game.key.update(game);
         game.backpack.update(game);
@@ -135,7 +136,89 @@ public class UpdateCore {
             game.heal = 0;
         }
     }
-    public void updateSecond(Game game){
 
+    public void updateSecond(Game game) {
+        game.portal.maked = game.portals;
+        game.backpack.update(game);
+        game.camera.update(game);
+        game.chars.update(game);
+        game.charFrame.update(game);
+        game.skt.update(game);
+        game.hero.update(game);
+        game.portal.update(game);
+        if (game.secondsSpawn >= 500) game.spawnRobot(game);
+        for (AttackParticle a : game.attackParticles) a.update(game);
+        for (BrickParticle b : game.brickParticles) b.update(game);
+        for (RobotEnemy r : game.enemy) {
+            r.update(game);
+            for (int i = 0; i < r.codes.size(); i++) {
+                if (game.collision(game.hero, r.codes.get(i))) {
+                    r.codes.remove(i);
+                    game.hero.hp -= 10;
+                }
+            }
+        }
+        for (PaperSnake p : game.snakes) p.update(game);
+        for (Wall w : game.walls) w.update(game);
+        for (Board b : game.boards) b.update(game);
+        game.secondsSpawn++;
+
+
+        for (int i = 0; i < game.attackParticles.size(); i++) {
+            if (game.attackParticles.get(i).seconds >= game.attackParticles.get(i).secondsLives) {
+                game.attackParticles.remove(i);
+            }
+        }
+        for (int i = 0; i < game.walls.size(); i++) {
+            if (game.walls.get(i).seconds >= game.walls.get(i).secondsLives) {
+                game.walls.remove(i);
+            }
+        }
+        for (RobotEnemy e : game.enemy) {
+            for (int i = 0; i < game.attackParticles.size(); i++) {
+                if (game.collision(e, game.attackParticles.get(i))) {
+                    e.hp -= 35;
+                    game.attackParticles.remove(i);
+                }
+            }
+        }
+        for (int i = 0; i < game.snakes.size(); i++) {
+            if (game.snakes.get(i).hp <= 0) {
+                game.snakes.remove(i);
+            }
+        }
+        for (RobotEnemy e : game.enemy) {
+            for (PaperSnake p : game.snakes) {
+                if (game.collision(e, p)) {
+                    e.hp -= 100;
+                    p.hp -= 10;
+                }
+            }
+        }
+        for (int i = 0; i < game.enemy.size(); i++) {
+            if (game.enemy.get(i).hp <= 0) {
+                game.enemy.get(i).death(game);
+                game.enemy.remove(i);
+            }
+        }
+        for (int i = 0; i < game.brickParticles.size(); i++) {
+            if (!game.brickParticles.get(i).lived) {
+                game.brickParticles.remove(i);
+            }
+        }
+        for (int i = 0; i < game.boards.size(); i++) {
+            if (!game.boards.get(i).lived) {
+                game.boards.remove(i);
+            }
+        }
+        for (Enemy e : game.enemies) {
+            for (int i = 0; i < game.walls.size(); i++) {
+                if (game.collision(e, game.walls.get(i))) {
+                    e.hp -= 10;
+                    if (e.x > game.walls.get(i).x) e.x += 100;
+                    else e.x -= 100;
+                }
+            }
+        }
     }
 }
