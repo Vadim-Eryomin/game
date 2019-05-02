@@ -58,6 +58,7 @@ public class Game extends AbsractGame {
     Characteristics chars = new Characteristics();
 
     SkillsTerminal sk = new SkillsTerminal();
+    UpdateCore updateCore = new UpdateCore();
     int heal = 0;
 
     SkillsTree skt = new SkillsTree();
@@ -66,24 +67,15 @@ public class Game extends AbsractGame {
 
     public Game() {
         gc.title = "Stem Fight Version A0.8";
-
-        skt.create(0,100);
+        skt.create(0, 100);
         skt.setVisible(true);
-
         chars.create(1100, 0);
-
         sk.create(0, 700);
-
         charFrame.create(0, 0);
         charFrame.setVisible(true);
-
-
         portal.create(1000, 0);
         hero.create(50, 50);
-
         backpack.create(1150, 200);
-
-
         gc.start();
     }
 
@@ -92,141 +84,8 @@ public class Game extends AbsractGame {
         if (hero.shovels >= 1 && !has("shovel")) backpack.addThings("shovel");
         if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
         if (hero.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
-        if (thisWorldUpdate) {
-            cursor.update(this);
-            craftingTable.update(game);
-            if (win) {
-                thisWorldRenderer = false;
-                thisWorldUpdate = false;
-                game = new BaseWorld(this);
-            }
-            if (key != null) key.update(this);
-            backpack.update(this);
-            sk.update(this);
-            if (gc.input.isKeyDown(KeyEvent.VK_R)) {
-                if (!base.made && hero.bricks >= 5 && hero.boards >= 10)
-                    base.create(0, 500, hero.x, hero.y);
-                else {
-                    if (base.made && hero.boards >= 5) {
-                        base.bf.buildHp += 10;
-                        hero.boards -= 5;
-                    } else if (hero.bricks < 5) pickBlocks = true;
-                    else if (hero.boards < 10) pickBoards = true;
-                }
-            }
-            pleasePress = collision(hero, base);
-            if (gc.input.isKeyDown(KeyEvent.VK_F) && base != null && base.made) {
-                base.bf.saveExp += hero.xp;
-                hero.xp = 0;
-            }
-            if (gc.input.isKeyDown(KeyEvent.VK_H) && base != null && base.made) {
-                hero.xp += base.bf.saveExp;
-                base.bf.saveExp = 0;
-            }
-            if (base != null) {
-                base.update(this);
-            }
-            chars.update(this);
-            charFrame.update(this);
-            hero.update(this);
-            portal.update(this);
-            camera.update(this);
 
-            for (AttackParticle a : attackParticles) a.update(game);
-            for (BrickParticle b : brickParticles) b.update(game);
-            for (Enemy e : enemies) e.update(this);
-            for (PaperSnake p : snakes) p.update(this);
-            for (Wall w : walls) w.update(this);
-            for (Board b : boards) b.update(this);
-
-            if (spawnZombies) spawn(this);
-            secondsSpawn++;
-
-            for (int i = 0; i < attackParticles.size(); i++) {
-                if (attackParticles.get(i).seconds >= attackParticles.get(i).secondsLives) {
-                    attackParticles.remove(i);
-                }
-            }
-            for (int i = 0; i < walls.size(); i++) {
-                if (walls.get(i).seconds >= walls.get(i).secondsLives) {
-                    walls.remove(i);
-                }
-            }
-            for (Enemy e : enemies) {
-                for (int i = 0; i < attackParticles.size(); i++) {
-                    if (collision(e, attackParticles.get(i))) {
-                        e.hp -= 35 * chars.attack;
-                        attackParticles.remove(i);
-                    }
-                }
-            }
-            for (int i = 0; i < snakes.size(); i++) {
-                if (snakes.get(i).hp <= 0) {
-                    snakes.remove(i);
-                }
-            }
-            for (Enemy e : enemies) {
-                for (PaperSnake p : snakes) {
-                    if (collision(e, p)) {
-                        e.hp -= 100 * chars.attack;
-                        p.hp -= 10;
-                    }
-                }
-            }
-            for (int i = 0; i < enemies.size(); i++) {
-                if (enemies.get(i).hp <= 0) {
-                    enemies.get(i).death(this);
-                    enemies.remove(i);
-                }
-            }
-            for (Enemy e : enemies) {
-                if (collision(e, hero)) {
-                    hero.hp -= (5 / chars.defence);
-                    e.hp -= 20 * chars.attack;
-                    new Thread() {
-                        @Override
-                        public void run() {
-                            for (int i = 0; i < 20; i++) {
-                                hero.x--;
-                                e.x++;
-                                try {
-                                    Thread.sleep(5);
-                                } catch (InterruptedException e1) {
-                                    e1.printStackTrace();
-                                }
-                            }
-                        }
-                    }.start();
-                }
-            }
-            for (int i = 0; i < brickParticles.size(); i++) {
-                if (!brickParticles.get(i).lived) {
-                    brickParticles.remove(i);
-                }
-            }
-            for (int i = 0; i < boards.size(); i++) {
-                if (!boards.get(i).lived) {
-                    boards.remove(i);
-                }
-            }
-            for (Enemy e : enemies) {
-                for (int i = 0; i < walls.size(); i++) {
-                    if (collision(e, walls.get(i))) {
-                        e.hp -= 10 * chars.attack;
-                        if (e.x > walls.get(i).x) e.x += 100;
-                        else e.x -= 100;
-                    }
-                }
-            }
-            skt.update(this);
-            heal++;
-            if (heal >= 800) {
-                game.hero.hp += 1;
-                heal = 0;
-            }
-        }
-
-
+        updateCore.updateFirst(this);
     }
 
     @Override
@@ -285,6 +144,7 @@ public class Game extends AbsractGame {
         if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
         return true;
     }
+
     public boolean collision(ImageXY A, Hero B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
