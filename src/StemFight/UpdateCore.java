@@ -135,4 +135,7 @@ public class UpdateCore {
             game.heal = 0;
         }
     }
+    public void updateSecond(Game game){
+
+    }
 }
