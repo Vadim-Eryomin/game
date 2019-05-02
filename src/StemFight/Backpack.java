@@ -29,6 +29,9 @@ public class Backpack {
     Integer craftingTables = 0;
     ImageXY craftingTable;
 
+    Integer baseBottoms = 0;
+    ImageXY baseBottom;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -43,6 +46,7 @@ public class Backpack {
         board = new ImageXY("../StemFight/Using/board.png",0,0);
         extract = new ImageXY("../StemFight/Using/extract.png",0,0);
         craftingTable = new ImageXY("../StemFight/Using/craftingTableMini.png",0,0);
+        baseBottom  = new ImageXY("../StemFight/Using/baseBottom.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -55,7 +59,7 @@ public class Backpack {
             images.add(board);
             numbers.put(images.size()-1,"board");
             pictureThings.put("board", board);
-            board.x = x + (pictureThings.size()-1) * 50;
+            board.x = x + (pictureThings.size()-1) * 55;
             board.y = y;
             numbersThings.put("board", boards);
         }
@@ -63,7 +67,7 @@ public class Backpack {
             images.add(shovel);
             numbers.put(images.size()-1,"shovel");
             pictureThings.put("shovel", shovel);
-            shovel.x = x + (pictureThings.size()-1) * 50;
+            shovel.x = x + (pictureThings.size()-1) * 55;
             shovel.y = y;
             numbersThings.put("shovel", shovels);
         }
@@ -71,9 +75,17 @@ public class Backpack {
             images.add(craftingTable);
             numbers.put(images.size()-1,"crafts");
             pictureThings.put("crafts", craftingTable);
-            craftingTable.x = x + (pictureThings.size()-1) * 50;
+            craftingTable.x = x + (pictureThings.size()-1) * 55;
             craftingTable.y = y;
             numbersThings.put("crafts", craftingTables);
+        }
+        if (tag.equals("baseBottom")){
+            images.add(baseBottom);
+            numbers.put(images.size()-1,"baseBottom");
+            pictureThings.put("baseBottom", baseBottom);
+            baseBottom.x = x + (pictureThings.size()-1) * 55;
+            baseBottom.y = y;
+            numbersThings.put("baseBottom", baseBottoms);
         }
     }
 
@@ -83,6 +95,7 @@ public class Backpack {
         boards = game.hero.boards;
         shovels = game.hero.shovels;
         craftingTables = game.hero.craftingTables;
+        baseBottoms = game.hero.baseBottoms;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -94,7 +107,7 @@ public class Backpack {
 
     public void renderer(Renderer renderer) {
         for (int i = 0; i < images.size(); i++) {
-            renderer.drawImage(pictureThings.get(numbers.get(i)),x + i * 50, y);
+            renderer.drawImage(pictureThings.get(numbers.get(i)),x + i * 55, y);
             renderer.drawText(numbersThings.get(numbers.get(i)).toString(),x + i * 50 + pictureThings.get(numbers.get(i)).w, y+30, 0xffffffff);
         }
     }

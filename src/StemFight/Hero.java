@@ -27,6 +27,7 @@ public class Hero implements Player {
     public int extracts = 0;
     public int shovels = 0;
     public int craftingTables = 1;
+    public int baseBottoms = 0;
 
     boolean keyFirst = false;
 

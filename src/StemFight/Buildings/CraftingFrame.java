@@ -1,8 +1,8 @@
 package StemFight.Buildings;
 
-import Engine.Image;
 import Engine.ImageXY;
 import Engine.Renderer;
+import StemFight.Crafts;
 import StemFight.Game;
 
 import java.util.HashMap;
@@ -10,19 +10,21 @@ import java.util.HashMap;
 public class CraftingFrame {
     ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png", 0, 0);
     ImageXY table = new ImageXY("../StemFight/Using/table.png", 0, 0);
+    Crafts crafts = new Crafts();
 
     String name = "Craft";
     boolean visible = false;
     int stringX = 0;
     int stringY = 0;
 
-    HashMap<Integer, ImageXY> pictureThings = new HashMap<>();
-    HashMap<Integer, Integer> numbersThings = new HashMap<>();
-    HashMap<Integer, String> numbers = new HashMap<>();
-    HashMap<Integer, ImageXY> pieces = new HashMap<>();
-    HashMap<Integer, String> craft = new HashMap<>();
-    HashMap<String, Boolean> canCraft = new HashMap<>();
-    HashMap<String, ImageXY> craftResult = new HashMap<>();
+    public HashMap<Integer, ImageXY> pictureThings = new HashMap<>();
+    public HashMap<Integer, Integer> numbersThings = new HashMap<>();
+    public HashMap<Integer, String> numbers = new HashMap<>();
+    public HashMap<Integer, ImageXY> pieces = new HashMap<>();
+    public HashMap<Integer, String> shovel = new HashMap<>();
+    public HashMap<Integer, String> baseBottom = new HashMap();
+    public HashMap<String, Boolean> canCraft = new HashMap<>();
+    public HashMap<String, ImageXY> craftResult = new HashMap<>();
     boolean breakable = false;
 
     int oneTablePiece = 40;
@@ -44,17 +46,8 @@ public class CraftingFrame {
         pieces.put(7, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + 2 * oneTablePiece));
         pieces.put(8, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y + 2 * oneTablePiece));
         pieces.put(9, new ImageXY("../StemFight/Using/piece.png", table.x + 3 * oneTablePiece + 10, table.y + oneTablePiece));
-        craft.put(0, "brick");
-        craft.put(1, null);
-        craft.put(2, null);
-        craft.put(3, null);
-        craft.put(4, "brick");
-        craft.put(5, "board");
-        craft.put(6, null);
-        craft.put(7, "board");
-        craft.put(8, "board");
-        craft.put(9, "shovel");
-        craftResult.put("shovel", new ImageXY("../StemFight/Instruments/shovel.png", 0, 0));
+        crafts.create(this);
+
     }
 
     public void setVisible(boolean visible) {
@@ -131,15 +124,15 @@ public class CraftingFrame {
                 if (breakable) break;
             }
         }
-        if (craftCheck(craft)) {
-            canCraft.put(craft.get(9), true);
+        if (craftCheck(shovel)) {
+            canCraft.put(shovel.get(9), true);
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
                         game.hero.shovels++;
-                        canCraft.put(craft.get(9), false);
+                        canCraft.put(shovel.get(9), false);
                         for (int i = 0; i < 9; i++) {
-                            if (craft.get(i) != null) try {
+                            if (shovel.get(i) != null) try {
                                 numbersThings.put(i, numbersThings.get(i) - 1);
                             } catch (NullPointerException e) {
                             }
@@ -147,8 +140,27 @@ public class CraftingFrame {
                     }
                 }
             }
-        } else {
-            canCraft.put(craft.get(9), false);
+        }
+        else if (craftCheck(baseBottom)) {
+            canCraft.put(baseBottom.get(9), true);
+            if (game.gc.input.isButtonDown(1)) {
+                if (game.collision(pieces.get(9), game.cursor.cursor)) {
+                    if (game.cursor.imageCarry.image == null) {
+                        game.hero.baseBottoms++;
+                        canCraft.put(baseBottom.get(9), false);
+                        for (int i = 0; i < 9; i++) {
+                            if (baseBottom.get(i) != null) try {
+                                numbersThings.put(i, numbersThings.get(i) - 1);
+                            } catch (NullPointerException e) {
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            canCraft.put(shovel.get(9), false);
+            canCraft.put(baseBottom.get(9), false);
         }
         for (int i = 0; i < 9; i++) {
             try {
@@ -191,6 +203,9 @@ public class CraftingFrame {
             renderer.drawImage(pieces.get(9), pieces.get(9).x, pieces.get(9).y);
             if (canCraft.get("shovel")) {
                 renderer.drawImage(craftResult.get("shovel"), pieces.get(9).x + (40 - craftResult.get("shovel").w) / 2, pieces.get(9).y + (40 - craftResult.get("shovel").w) / 2);
+            }
+            if (canCraft.get("baseBottom")) {
+                renderer.drawImage(craftResult.get("baseBottom"), pieces.get(9).x + (40 - craftResult.get("baseBottom").w) / 2, pieces.get(9).y + (40 - craftResult.get("baseBottom").w) / 2);
             }
         }
     }
