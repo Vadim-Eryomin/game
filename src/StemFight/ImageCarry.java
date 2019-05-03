@@ -12,7 +12,7 @@ public class ImageCarry {
             this.number = number;
             this.imageTag = imageTag;
         }
-        if (number == 0) set();
+        if (number <= 0) set();
     }
     public void set(){
         if (image != null) {

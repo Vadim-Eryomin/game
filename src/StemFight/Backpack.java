@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Backpack {
+    int things = 1;
+
     Integer brickParcticle = 0;
     ImageXY bricks;
 
@@ -59,33 +61,40 @@ public class Backpack {
             images.add(board);
             numbers.put(images.size()-1,"board");
             pictureThings.put("board", board);
-            board.x = x + (pictureThings.size()-1) * 55;
-            board.y = y;
+            board.x = x + (things%4) * 55;
+            board.y = y + (things/4) * 55;
             numbersThings.put("board", boards);
+            things++;
         }
         if (tag.equals("shovel")){
             images.add(shovel);
             numbers.put(images.size()-1,"shovel");
             pictureThings.put("shovel", shovel);
-            shovel.x = x + (pictureThings.size()-1) * 55;
-            shovel.y = y;
+            shovel.x = x + (things%4) * 55;
+            shovel.y = y + (things/4) * 55;
             numbersThings.put("shovel", shovels);
+            things++;
+
         }
         if (tag.equals("crafts")){
             images.add(craftingTable);
             numbers.put(images.size()-1,"crafts");
             pictureThings.put("crafts", craftingTable);
-            craftingTable.x = x + (pictureThings.size()-1) * 55;
-            craftingTable.y = y;
+            craftingTable.x = x + (things%4) * 55;
+            craftingTable.y = y + (things/4) * 55;
             numbersThings.put("crafts", craftingTables);
+            things++;
+
         }
         if (tag.equals("baseBottom")){
             images.add(baseBottom);
             numbers.put(images.size()-1,"baseBottom");
             pictureThings.put("baseBottom", baseBottom);
-            baseBottom.x = x + (pictureThings.size()-1) * 55;
-            baseBottom.y = y;
+            baseBottom.x = x + (things%4) * 55;
+            baseBottom.y = y + (things/4) * 55;
             numbersThings.put("baseBottom", baseBottoms);
+            things++;
+
         }
     }
 
@@ -101,14 +110,15 @@ public class Backpack {
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
             if (numbers.get(i).equals("shovel")) numbersThings.put(numbers.get(i),shovels);
             if (numbers.get(i).equals("crafts")) numbersThings.put(numbers.get(i),craftingTables);
+            if (numbers.get(i).equals("baseBottom")) numbersThings.put(numbers.get(i),baseBottoms);
 
         }
     }
 
     public void renderer(Renderer renderer) {
         for (int i = 0; i < images.size(); i++) {
-            renderer.drawImage(pictureThings.get(numbers.get(i)),x + i * 55, y);
-            renderer.drawText(numbersThings.get(numbers.get(i)).toString(),x + i * 50 + pictureThings.get(numbers.get(i)).w, y+30, 0xffffffff);
+            renderer.drawImage(pictureThings.get(numbers.get(i)),pictureThings.get(numbers.get(i)).x, pictureThings.get(numbers.get(i)).y);
+            renderer.drawText(numbersThings.get(numbers.get(i)).toString(),pictureThings.get(numbers.get(i)).x + 40, pictureThings.get(numbers.get(i)).y + 40, 0xffffffff);
         }
     }
 

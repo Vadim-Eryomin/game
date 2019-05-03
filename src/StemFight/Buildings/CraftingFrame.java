@@ -2,6 +2,7 @@ package StemFight.Buildings;
 
 import Engine.ImageXY;
 import Engine.Renderer;
+import StemFight.CheckCrafts;
 import StemFight.Crafts;
 import StemFight.Game;
 
@@ -11,6 +12,7 @@ public class CraftingFrame {
     ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png", 0, 0);
     ImageXY table = new ImageXY("../StemFight/Using/table.png", 0, 0);
     Crafts crafts = new Crafts();
+    CheckCrafts checkCrafts = new CheckCrafts();
 
     String name = "Craft";
     boolean visible = false;
@@ -81,6 +83,15 @@ public class CraftingFrame {
                                     game.cursor.imageCarry.number--;
                                     numbers.put(i, game.cursor.imageCarry.imageTag);
                                 }
+                                else if (numbers.get(i).equals("baseBottom") && game.cursor.imageCarry.imageTag.equals("baseBottom")){
+                                    try {
+                                        numbersThings.put(i, numbersThings.get(i) + 1);
+                                    } catch (NullPointerException e) {
+                                        numbersThings.put(i, 1);
+                                    }
+                                    game.cursor.imageCarry.number--;
+                                    numbers.put(i, game.cursor.imageCarry.imageTag);
+                                }
                                 else {
                                     if (numbers.get(i).equals("brick")) {
                                         game.hero.bricks += numbersThings.get(i);
@@ -91,6 +102,13 @@ public class CraftingFrame {
                                     }
                                     if (numbers.get(i).equals("board")){
                                         game.hero.boards += numbersThings.get(i);
+                                        game.cursor.imageCarry.number--;
+                                        numbers.put(i, game.cursor.imageCarry.imageTag);
+                                        pictureThings.put(i, game.cursor.imageCarry.image);
+                                        numbersThings.put(i,1);
+                                    }
+                                    if (numbers.get(i).equals("baseBottom")){
+                                        game.hero.baseBottoms += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
@@ -112,6 +130,7 @@ public class CraftingFrame {
                             if (pictureThings.get(i) != null) {
                                 if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
                                 if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseBottom")) game.hero.baseBottoms += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);
@@ -124,44 +143,7 @@ public class CraftingFrame {
                 if (breakable) break;
             }
         }
-        if (craftCheck(shovel)) {
-            canCraft.put(shovel.get(9), true);
-            if (game.gc.input.isButtonDown(1)) {
-                if (game.collision(pieces.get(9), game.cursor.cursor)) {
-                    if (game.cursor.imageCarry.image == null) {
-                        game.hero.shovels++;
-                        canCraft.put(shovel.get(9), false);
-                        for (int i = 0; i < 9; i++) {
-                            if (shovel.get(i) != null) try {
-                                numbersThings.put(i, numbersThings.get(i) - 1);
-                            } catch (NullPointerException e) {
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        else if (craftCheck(baseBottom)) {
-            canCraft.put(baseBottom.get(9), true);
-            if (game.gc.input.isButtonDown(1)) {
-                if (game.collision(pieces.get(9), game.cursor.cursor)) {
-                    if (game.cursor.imageCarry.image == null) {
-                        game.hero.baseBottoms++;
-                        canCraft.put(baseBottom.get(9), false);
-                        for (int i = 0; i < 9; i++) {
-                            if (baseBottom.get(i) != null) try {
-                                numbersThings.put(i, numbersThings.get(i) - 1);
-                            } catch (NullPointerException e) {
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        else {
-            canCraft.put(shovel.get(9), false);
-            canCraft.put(baseBottom.get(9), false);
-        }
+        checkCrafts.check(this, game);
         for (int i = 0; i < 9; i++) {
             try {
                 if (numbersThings.get(i) <= 0) {

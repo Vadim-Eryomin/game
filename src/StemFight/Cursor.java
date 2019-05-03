@@ -34,6 +34,15 @@ public class Cursor {
                                 game.backpack.shovels = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            if (game.backpack.numbers.get(i).equals("crafts")) {
+                                game.backpack.craftingTables = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
+                            if (game.backpack.numbers.get(i).equals("baseBottom")) {
+                                game.hero.baseBottoms = 0;
+                                game.backpack.baseBottoms = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
                             doing = true;
                         }
                     }
@@ -59,8 +68,12 @@ public class Cursor {
                             game.craftingTable.create(cursor.x, cursor.y);
                             game.hero.craftingTables--;
                         }
+                        if (imageCarry.imageTag.equals("baseBottom")){
+                            game.backpack.baseBottoms += imageCarry.number;
+                            imageCarry.set();
+                        }
 
-
+                        // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
                     }
                     imageCarry.set();
                 }
@@ -74,11 +87,17 @@ public class Cursor {
                     if (imageCarry.imageTag.equals("shovel")){
                         game.backpack.shovels += imageCarry.number;
                     }
+                    if (imageCarry.imageTag.equals("crafts")){
+                        game.backpack.craftingTables += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("baseBottom")){
+                        game.backpack.baseBottoms += imageCarry.number;
+                    }
                     imageCarry.set();
                 }
             }
         }
-        if (imageCarry.number == 0)imageCarry.set();
+        if (imageCarry.number <= 0)imageCarry.set();
     }
 
     public void renderer(Renderer renderer) {
