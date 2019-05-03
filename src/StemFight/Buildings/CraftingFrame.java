@@ -27,6 +27,7 @@ public class CraftingFrame {
     public HashMap<Integer, String> baseBottom = new HashMap<>();
     public HashMap<Integer, String> baseRoof = new HashMap<>();
     public HashMap<Integer, String> baseWall = new HashMap<>();
+    public HashMap<Integer, String> base = new HashMap<>();
     public HashMap<String, Boolean> canCraft = new HashMap<>();
     public HashMap<String, ImageXY> craftResult = new HashMap<>();
     boolean breakable = false;
@@ -112,6 +113,15 @@ public class CraftingFrame {
                                     game.cursor.imageCarry.number--;
                                     numbers.put(i, game.cursor.imageCarry.imageTag);
                                 }
+                                else if (numbers.get(i).equals("base") && game.cursor.imageCarry.imageTag.equals("base")){
+                                    try {
+                                        numbersThings.put(i, numbersThings.get(i) + 1);
+                                    } catch (NullPointerException e) {
+                                        numbersThings.put(i, 1);
+                                    }
+                                    game.cursor.imageCarry.number--;
+                                    numbers.put(i, game.cursor.imageCarry.imageTag);
+                                }
                                 else {
                                     if (numbers.get(i).equals("brick")) {
                                         game.hero.bricks += numbersThings.get(i);
@@ -148,6 +158,13 @@ public class CraftingFrame {
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i,1);
                                     }
+                                    if (numbers.get(i).equals("base")){
+                                        game.hero.bases += numbersThings.get(i);
+                                        game.cursor.imageCarry.number--;
+                                        numbers.put(i, game.cursor.imageCarry.imageTag);
+                                        pictureThings.put(i, game.cursor.imageCarry.image);
+                                        numbersThings.put(i,1);
+                                    }
                                 }
 
                             } else {
@@ -167,6 +184,7 @@ public class CraftingFrame {
                                 if (numbers.get(i).equals("baseBottom")) game.hero.baseBottoms += numbersThings.get(i);
                                 if (numbers.get(i).equals("baseWall")) game.hero.baseWalls += numbersThings.get(i);
                                 if (numbers.get(i).equals("baseRoof")) game.hero.baseRoofs += numbersThings.get(i);
+                                if (numbers.get(i).equals("base")) game.hero.bases += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);
@@ -230,6 +248,9 @@ public class CraftingFrame {
             }
             if (canCraft.get("baseRoof")) {
                 renderer.drawImage(craftResult.get("baseRoof"), pieces.get(9).x + (40 - craftResult.get("baseRoof").w) / 2, pieces.get(9).y + (40 - craftResult.get("baseRoof").w) / 2);
+            }
+            if (canCraft.get("base")) {
+                renderer.drawImage(craftResult.get("base"), pieces.get(9).x + (40 - craftResult.get("base").w) / 2, pieces.get(9).y + (40 - craftResult.get("base").w) / 2);
             }
         }
     }

@@ -40,6 +40,9 @@ public class Backpack {
     Integer baseRoofs = 0;
     ImageXY baseRoof;
 
+    Integer bases = 0;
+    ImageXY base;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -57,6 +60,7 @@ public class Backpack {
         baseBottom  = new ImageXY("../StemFight/Using/baseBottom.png",0,0);
         baseWall  = new ImageXY("../StemFight/Using/baseWall.png",0,0);
         baseRoof = new ImageXY("../StemFight/Using/baseRoof.png",0,0);
+        base = new ImageXY("../StemFight/Using/base.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -121,6 +125,15 @@ public class Backpack {
             numbersThings.put("baseRoof", baseRoofs);
             things++;
         }
+        if (tag.equals("base")){
+            images.add(base);
+            numbers.put(images.size()-1,"base");
+            pictureThings.put("base", base);
+            base.x = x + (things%4) * 55;
+            base.y = y + (things/4) * 55;
+            numbersThings.put("base", bases);
+            things++;
+        }
     }
 
 
@@ -132,6 +145,7 @@ public class Backpack {
         baseBottoms = game.hero.baseBottoms;
         baseWalls = game.hero.baseWalls;
         baseRoofs = game.hero.baseRoofs;
+        bases = game.hero.bases;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -140,6 +154,7 @@ public class Backpack {
             if (numbers.get(i).equals("baseBottom")) numbersThings.put(numbers.get(i),baseBottoms);
             if (numbers.get(i).equals("baseWall")) numbersThings.put(numbers.get(i), baseWalls);
             if (numbers.get(i).equals("baseRoof")) numbersThings.put(numbers.get(i), baseRoofs);
+            if (numbers.get(i).equals("base")) numbersThings.put(numbers.get(i), bases);
 
         }
     }
