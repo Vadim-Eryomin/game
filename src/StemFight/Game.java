@@ -98,6 +98,7 @@ public class Game extends AbsractGame {
         if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
         if (hero.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
         if (hero.baseBottoms >= 1 && !has("baseBottom")) backpack.addThings("baseBottom");
+        if (hero.baseWalls >= 1 && !has("baseWall")) backpack.addThings("baseWall");
 
         if (firstUpdate){
             updateCore.updateFirst(this);

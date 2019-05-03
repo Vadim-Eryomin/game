@@ -29,5 +29,17 @@ public class Crafts {
         cr.baseBottom.put(9,"baseBottom");
         cr.craftResult.put("baseBottom", new ImageXY("../StemFight/Using/baseBottom.png",0,0));
 
+        cr.baseWall.put(0,"brick");
+        cr.baseWall.put(1,null);
+        cr.baseWall.put(2,"brick");
+        cr.baseWall.put(3,"brick");
+        cr.baseWall.put(4,null);
+        cr.baseWall.put(5,"brick");
+        cr.baseWall.put(6,"brick");
+        cr.baseWall.put(7,"brick");
+        cr.baseWall.put(8,"brick");
+        cr.baseWall.put(9,"baseWall");
+        cr.craftResult.put("baseWall", new ImageXY("../StemFight/Using/baseWall.png",0,0));
+
     }
 }
