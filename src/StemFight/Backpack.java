@@ -37,6 +37,9 @@ public class Backpack {
     Integer baseWalls = 0;
     ImageXY baseWall;
 
+    Integer baseRoofs = 0;
+    ImageXY baseRoof;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -53,6 +56,7 @@ public class Backpack {
         craftingTable = new ImageXY("../StemFight/Using/craftingTableMini.png",0,0);
         baseBottom  = new ImageXY("../StemFight/Using/baseBottom.png",0,0);
         baseWall  = new ImageXY("../StemFight/Using/baseWall.png",0,0);
+        baseRoof = new ImageXY("../StemFight/Using/baseRoof.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -108,6 +112,15 @@ public class Backpack {
             numbersThings.put("baseWall", baseWalls);
             things++;
         }
+        if (tag.equals("baseRoof")){
+            images.add(baseRoof);
+            numbers.put(images.size()-1,"baseRoof");
+            pictureThings.put("baseRoof", baseRoof);
+            baseRoof.x = x + (things%4) * 55;
+            baseRoof.y = y + (things/4) * 55;
+            numbersThings.put("baseRoof", baseRoofs);
+            things++;
+        }
     }
 
 
@@ -118,6 +131,7 @@ public class Backpack {
         craftingTables = game.hero.craftingTables;
         baseBottoms = game.hero.baseBottoms;
         baseWalls = game.hero.baseWalls;
+        baseRoofs = game.hero.baseRoofs;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -125,6 +139,7 @@ public class Backpack {
             if (numbers.get(i).equals("crafts")) numbersThings.put(numbers.get(i),craftingTables);
             if (numbers.get(i).equals("baseBottom")) numbersThings.put(numbers.get(i),baseBottoms);
             if (numbers.get(i).equals("baseWall")) numbersThings.put(numbers.get(i), baseWalls);
+            if (numbers.get(i).equals("baseRoof")) numbersThings.put(numbers.get(i), baseRoofs);
 
         }
     }

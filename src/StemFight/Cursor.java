@@ -48,6 +48,11 @@ public class Cursor {
                                 game.backpack.baseWalls = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            if (game.backpack.numbers.get(i).equals("baseRoof")) {
+                                game.hero.baseRoofs = 0;
+                                game.backpack.baseRoofs = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
                             doing = true;
                         }
                     }
@@ -81,6 +86,10 @@ public class Cursor {
                             game.backpack.baseWalls += imageCarry.number;
                             imageCarry.set();
                         }
+                        if (imageCarry.imageTag.equals("baseRoof")){
+                            game.backpack.baseRoofs += imageCarry.number;
+                            imageCarry.set();
+                        }
 
                         // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
                     }
@@ -104,6 +113,9 @@ public class Cursor {
                     }
                     if (imageCarry.imageTag.equals("baseWall")){
                         game.backpack.baseWalls += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("baseRoof")){
+                        game.backpack.baseRoofs += imageCarry.number;
                     }
                     imageCarry.set();
                 }
