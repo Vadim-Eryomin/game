@@ -107,17 +107,17 @@ public class Game extends AbsractGame {
             updateCore.updateFirst(this);
         }
 
-        if (!firstUpdate && !secondUpdate){
-            image = new Image("../StemFight/Using/baseWorldFon.gif");
-            portals = new Image("../StemFight/Using/electrumPortal.png");
-            enemy.add(new RobotEnemy());
-            enemy.get(0).create(200,100);
-            secondUpdate = true;
-            secondRender = true;
-        }
-        if (secondUpdate){
-            updateCore.updateSecond(this);
-        }
+//        if (!firstUpdate && !secondUpdate){
+//            image = new Image("../StemFight/Using/baseWorldFon.gif");
+//            portals = new Image("../StemFight/Using/electrumPortal.png");
+//            enemy.add(new RobotEnemy());
+//            enemy.get(0).create(200,100);
+//            secondUpdate = true;
+//            secondRender = true;
+//        }
+//        if (secondUpdate){
+//            updateCore.updateSecond(this);
+//        }
 
     }
 
