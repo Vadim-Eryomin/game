@@ -96,7 +96,8 @@ public class Cursor {
                             imageCarry.set();
                         }
                         if (imageCarry.imageTag.equals("base")){
-                            game.backpack.bases += imageCarry.number;
+                            game.base.create(0, 500, cursor.x, cursor.y);
+                            game.hero.bases--;
                             imageCarry.set();
                         }
 
