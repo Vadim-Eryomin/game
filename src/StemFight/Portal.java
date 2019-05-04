@@ -62,10 +62,10 @@ public class Portal implements Player {
         }
         else {
             if (game.gc.input.isKeyDown(KeyEvent.VK_E)){
-//                game.win = true;
-//                game.spawnZombies = false;
-//                using = nulled;
-//                making = false;
+                game.win = true;
+                game.spawnZombies = false;
+                using = nulled;
+                making = false;
             }
         }
 
