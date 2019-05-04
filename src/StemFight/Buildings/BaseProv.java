@@ -7,7 +7,7 @@ import StemFight.Game;
 
 public class BaseProv {
     ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png",0,0);
-    ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
+    ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png",0,0);
     ImageXY extract = new ImageXY("../StemFight/Using/extract.png",0,0);
     String name = "Base";
     boolean visible = false;
@@ -28,14 +28,15 @@ public class BaseProv {
         this.visible = visible;
     }
     public void update(Game game){
-        if (extract.isClick(extract,game.gc,extract.x, extract.y)){
-            if (game.hero.boards >= 2 && game.hero.bricks >= 2){
-                game.hero.extracts++;
-                game.hero.boards-=2;
-                game.hero.bricks-=2;
+        if (game.collision(game.cursor.cursor, extract)){
+            if (game.gc.input.isButtonDown(1)){
+                if (game.hero.boards >= 2 && game.hero.bricks >= 2){
+                    game.hero.extracts++;
+                    game.hero.boards-=2;
+                    game.hero.bricks-=2;
+                }
             }
         }
-        setVisible(!visible);
     }
     public void renderer(Renderer renderer){
         if (visible){

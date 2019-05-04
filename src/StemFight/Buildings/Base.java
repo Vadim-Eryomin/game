@@ -9,26 +9,39 @@ import java.awt.event.KeyEvent;
 
 public class Base extends Building {
     public boolean made = false;
-    public ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
+    public ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png", 0, 0);
     public BaseFrame bf = new BaseFrame();
     public BaseProv bp = new BaseProv();
+
     public void create(int x, int y, int createX, int createY) {
         base.x = createX;
         base.y = createY;
-        bf.create(x,y);
-        bp.create(600,300);
+        bf.create(x, y);
+        bp.create(x, y);
         made = true;
     }
 
     @Override
     public void update(Game game) {
-        if (game.gc.input.isKeyDown(KeyEvent.VK_G)){
-            if (game.collision(game.hero, this)) bf.update(game);
+        if (bp.visible) bp.update(game);
+        if (bf.visible) bf.update(game);
+
+        if (game.gc.input.isKeyDown(KeyEvent.VK_G)) {
+            if (game.collision(game.hero, this)) {
+                bf.setVisible(true);
+                bp.setVisible(false);
+            }
         }
-        if (game.gc.input.isKeyDown(KeyEvent.VK_T)){
-            if (game.collision(game.hero, this)) bp.update(game);
+        if (!game.collision(game.hero, this)) {
+            bf.setVisible(false);
+            bp.setVisible(false);
         }
-        if (!game.collision(game.hero, this)) bp.setVisible(false);
+        if (game.gc.input.isKeyDown(KeyEvent.VK_T)) {
+            if (game.collision(game.hero, this)) {
+                bf.setVisible(false);
+                bp.setVisible(true);
+            }
+        }
     }
 
     @Override

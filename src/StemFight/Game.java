@@ -101,6 +101,7 @@ public class Game extends AbsractGame {
         if (hero.baseWalls >= 1 && !has("baseWall")) backpack.addThings("baseWall");
         if (hero.baseRoofs >= 1 && !has("baseRoof")) backpack.addThings("baseRoof");
         if (hero.bases >= 1 && !has("base")) backpack.addThings("base");
+        if (hero.extracts >= 1 && !has("extract")) backpack.addThings("extract");
 
         if (firstUpdate){
             updateCore.updateFirst(this);

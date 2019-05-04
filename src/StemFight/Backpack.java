@@ -134,6 +134,15 @@ public class Backpack {
             numbersThings.put("base", bases);
             things++;
         }
+        if (tag.equals("extract")){
+            images.add(extract);
+            numbers.put(images.size()-1,"extract");
+            pictureThings.put("extract", extract);
+            extract.x = x + (things%4) * 55;
+            extract.y = y + (things/4) * 55;
+            numbersThings.put("extract", extracts);
+            things++;
+        }
     }
 
 
@@ -146,6 +155,7 @@ public class Backpack {
         baseWalls = game.hero.baseWalls;
         baseRoofs = game.hero.baseRoofs;
         bases = game.hero.bases;
+        extracts = game.hero.extracts;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -155,6 +165,7 @@ public class Backpack {
             if (numbers.get(i).equals("baseWall")) numbersThings.put(numbers.get(i), baseWalls);
             if (numbers.get(i).equals("baseRoof")) numbersThings.put(numbers.get(i), baseRoofs);
             if (numbers.get(i).equals("base")) numbersThings.put(numbers.get(i), bases);
+            if (numbers.get(i).equals("extract")) numbersThings.put(numbers.get(i), extracts);
 
         }
     }

@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class BaseFrame {
     ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png",0,0);
-    ImageXY base = new ImageXY("../StemFight/Using/base.png",0,0);
+    ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png",0,0);
     ImageXY angry = new ImageXY("../StemFight/Using/angry.png",0,0);
     ImageXY exp = new ImageXY("../StemFight/Skills/experience.png",0,0);
     ImageXY hp = new ImageXY("../StemFight/Skills/heart.png",0,0);
@@ -21,7 +21,7 @@ public class BaseFrame {
     int stringX = 0;
     int stringY = 0;
 
-    public Integer buildHp = 0;
+    public Integer buildHp = 100;
     public Integer saveExp = 0;
 
     public void create(int x, int y){

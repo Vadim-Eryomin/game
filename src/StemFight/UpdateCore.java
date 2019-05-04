@@ -23,17 +23,6 @@ public class UpdateCore {
         if (game.key != null) game.key.update(game);
         game.backpack.update(game);
         game.sk.update(game);
-        if (game.gc.input.isKeyDown(KeyEvent.VK_R)) {
-            if (!game.base.made && game.hero.bricks >= 5 && game.hero.boards >= 10)
-                game.base.create(0, 500, game.hero.x, game.hero.y);
-            else {
-                if (game.base.made && game.hero.boards >= 5) {
-                    game.base.bf.buildHp += 10;
-                    game.hero.boards -= 5;
-                } else if (game.hero.bricks < 5) game.pickBlocks = true;
-                else if (game.hero.boards < 10) game.pickBoards = true;
-            }
-        }
         game.pleasePress = game.collision(game.hero, game.base);
         if (game.gc.input.isKeyDown(KeyEvent.VK_F) && game.base != null && game.base.made) {
             game.base.bf.saveExp += game.hero.xp;

@@ -122,6 +122,15 @@ public class CraftingFrame {
                                     game.cursor.imageCarry.number--;
                                     numbers.put(i, game.cursor.imageCarry.imageTag);
                                 }
+                                else if (numbers.get(i).equals("extract") && game.cursor.imageCarry.imageTag.equals("extract")){
+                                    try {
+                                        numbersThings.put(i, numbersThings.get(i) + 1);
+                                    } catch (NullPointerException e) {
+                                        numbersThings.put(i, 1);
+                                    }
+                                    game.cursor.imageCarry.number--;
+                                    numbers.put(i, game.cursor.imageCarry.imageTag);
+                                }
                                 else {
                                     if (numbers.get(i).equals("brick")) {
                                         game.hero.bricks += numbersThings.get(i);
@@ -165,6 +174,13 @@ public class CraftingFrame {
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i,1);
                                     }
+                                    if (numbers.get(i).equals("base")){
+                                        game.hero.extracts += numbersThings.get(i);
+                                        game.cursor.imageCarry.number--;
+                                        numbers.put(i, game.cursor.imageCarry.imageTag);
+                                        pictureThings.put(i, game.cursor.imageCarry.image);
+                                        numbersThings.put(i,1);
+                                    }
                                 }
 
                             } else {
@@ -185,6 +201,7 @@ public class CraftingFrame {
                                 if (numbers.get(i).equals("baseWall")) game.hero.baseWalls += numbersThings.get(i);
                                 if (numbers.get(i).equals("baseRoof")) game.hero.baseRoofs += numbersThings.get(i);
                                 if (numbers.get(i).equals("base")) game.hero.bases += numbersThings.get(i);
+                                if (numbers.get(i).equals("extract")) game.hero.extracts += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);
