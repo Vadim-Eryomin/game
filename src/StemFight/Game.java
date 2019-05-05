@@ -125,7 +125,6 @@ public class Game extends AbsractGame {
     public void renderer(GameContainer gc, Renderer renderer) {
         if (firstRender) {
             camera.renderer(renderer);
-            skt.renderer(renderer);
             base.renderer(renderer);
             charFrame.renderer(renderer);
             portal.renderer(renderer);
@@ -139,6 +138,7 @@ public class Game extends AbsractGame {
             for (Wall w : walls) w.renderer(renderer);
             for (Board b : boards) b.renderer(renderer);
             p.update(this);
+            skt.renderer(renderer);
             chars.renderer(renderer);
             backpack.renderer(renderer);
             cursor.renderer(renderer);

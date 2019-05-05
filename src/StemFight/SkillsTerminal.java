@@ -1,6 +1,5 @@
 package StemFight;
 
-import BossFight.Attack;
 import Engine.FramesForGame;
 import Engine.ImageXY;
 import Engine.Renderer;
