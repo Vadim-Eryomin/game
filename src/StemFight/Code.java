@@ -59,6 +59,7 @@ public class Code extends AttackParticle implements Player {
         this.w = particle.w;
         this.h = particle.h;
         super.w = particle.w;
+        super.h = particle.h;
         super.up = down;
         super.left = left;
         super.right = right;

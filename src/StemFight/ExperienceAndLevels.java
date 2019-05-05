@@ -13,6 +13,7 @@ public class ExperienceAndLevels {
             if (level % 5 == 0){
                 game.sgf.skillPoints++;
                 game.spf.skillPoints++;
+                game.skt.skillPoints++;
             }
             game.hero.charsUp++;
         }
