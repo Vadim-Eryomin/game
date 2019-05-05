@@ -42,14 +42,14 @@ public class Crafts {
         cr.craftResult.put("baseWall", new ImageXY("../StemFight/Using/baseWall.png",0,0));
 
         cr.baseRoof.put(0,null);
-        cr.baseRoof.put(1,"board");
+        cr.baseRoof.put(1,null);
         cr.baseRoof.put(2,null);
-        cr.baseRoof.put(3,"board");
-        cr.baseRoof.put(4,null);
-        cr.baseRoof.put(5,"board");
-        cr.baseRoof.put(6,null);
+        cr.baseRoof.put(3,null);
+        cr.baseRoof.put(4,"board");
+        cr.baseRoof.put(5,null);
+        cr.baseRoof.put(6,"board");
         cr.baseRoof.put(7,null);
-        cr.baseRoof.put(8,null);
+        cr.baseRoof.put(8,"board");
         cr.baseRoof.put(9,"baseRoof");
         cr.craftResult.put("baseRoof", new ImageXY("../StemFight/Using/baseRoof.png",0,0));
 
@@ -64,5 +64,17 @@ public class Crafts {
         cr.base.put(8,null);
         cr.base.put(9,"base");
         cr.craftResult.put("base", new ImageXY("../StemFight/Using/base.png",0,0));
+
+        cr.chest.put(0,"board");
+        cr.chest.put(1,"board");
+        cr.chest.put(2,"board");
+        cr.chest.put(3,"board");
+        cr.chest.put(4,null);
+        cr.chest.put(5,"board");
+        cr.chest.put(6,"board");
+        cr.chest.put(7,"board");
+        cr.chest.put(8,"board");
+        cr.chest.put(9,"chest");
+        cr.craftResult.put("chest", new ImageXY("../StemFight/Using/chest.png",0,0));
     }
 }

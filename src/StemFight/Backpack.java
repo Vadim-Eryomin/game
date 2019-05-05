@@ -43,6 +43,9 @@ public class Backpack {
     Integer bases = 0;
     ImageXY base;
 
+    Integer chests = 0;
+    ImageXY chest;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -61,6 +64,7 @@ public class Backpack {
         baseWall  = new ImageXY("../StemFight/Using/baseWall.png",0,0);
         baseRoof = new ImageXY("../StemFight/Using/baseRoof.png",0,0);
         base = new ImageXY("../StemFight/Using/base.png",0,0);
+        chest = new ImageXY("../StemFight/Using/minichest.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -143,6 +147,15 @@ public class Backpack {
             numbersThings.put("extract", extracts);
             things++;
         }
+        if (tag.equals("chest")){
+            images.add(chest);
+            numbers.put(images.size()-1,"chest");
+            pictureThings.put("chest", chest);
+            chest.x = x + (things%4) * 55;
+            chest.y = y + (things/4) * 55;
+            numbersThings.put("chest", chests);
+            things++;
+        }
     }
 
 
@@ -156,6 +169,7 @@ public class Backpack {
         baseRoofs = game.hero.baseRoofs;
         bases = game.hero.bases;
         extracts = game.hero.extracts;
+        chests = game.hero.chests;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -166,6 +180,7 @@ public class Backpack {
             if (numbers.get(i).equals("baseRoof")) numbersThings.put(numbers.get(i), baseRoofs);
             if (numbers.get(i).equals("base")) numbersThings.put(numbers.get(i), bases);
             if (numbers.get(i).equals("extract")) numbersThings.put(numbers.get(i), extracts);
+            if (numbers.get(i).equals("chest")) numbersThings.put(numbers.get(i), chests);
 
         }
     }

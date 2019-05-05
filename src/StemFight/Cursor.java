@@ -3,6 +3,7 @@ package StemFight;
 import Engine.ImageXY;
 import Engine.Player;
 import Engine.Renderer;
+import StemFight.Buildings.Chest;
 
 public class Cursor {
     public ImageXY cursor = new ImageXY("../StemFight/Using/cursor.png", 0, 0);
@@ -62,6 +63,10 @@ public class Cursor {
                                 game.hero.extracts = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            if (game.backpack.numbers.get(i).equals("chest")) {
+                                game.hero.chests = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
                             doing = true;
                         }
                     }
@@ -101,11 +106,14 @@ public class Cursor {
                         }
                         if (imageCarry.imageTag.equals("base")){
                             game.base.create(0, 500, cursor.x, cursor.y);
-                            game.hero.bases--;
                             imageCarry.set();
                         }
                         if (imageCarry.imageTag.equals("extract")){
                             game.backpack.extracts += imageCarry.number;
+                            imageCarry.set();
+                        }
+                        if (imageCarry.imageTag.equals("chest")){
+                            game.chest.create(0, 500, cursor.x, cursor.y);
                             imageCarry.set();
                         }
 
@@ -140,6 +148,9 @@ public class Cursor {
                     }
                     if (imageCarry.imageTag.equals("base")){
                         game.backpack.extracts += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("chest")){
+                        game.backpack.chests += imageCarry.number;
                     }
                     imageCarry.set();
                 }

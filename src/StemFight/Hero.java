@@ -31,6 +31,7 @@ public class Hero implements Player {
     public int baseWalls = 0;
     public int baseRoofs = 0;
     public int bases = 0;
+    public int chests = 0;
 
     boolean keyFirst = false;
 

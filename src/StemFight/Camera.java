@@ -27,6 +27,7 @@ public class Camera implements Player {
                 for (BrickParticle b:game.brickParticles) b.x--;
                 game.base.base.x--;
                 game.craftingTable.table.x--;
+                game.chest.chest.x--;
                 for (Board b:game.boards)b.x--;
             }
 
@@ -40,6 +41,7 @@ public class Camera implements Player {
                 for (AttackParticle a:game.attackParticles) a.x++;
                 for (BrickParticle b:game.brickParticles) b.x++;
                 game.base.base.x++;
+                game.chest.chest.x++;
                 game.craftingTable.table.x++;
                 for (Board b:game.boards)x++;
             }
@@ -55,6 +57,7 @@ public class Camera implements Player {
                 for (AttackParticle a:game.attackParticles) a.y--;
                 for (BrickParticle b:game.brickParticles) b.y--;
                 game.base.base.y--;
+                game.chest.chest.y--;
                 game.craftingTable.table.y--;
                 for (Board b:game.boards)y--;
             }
@@ -68,6 +71,7 @@ public class Camera implements Player {
                 for (AttackParticle a:game.attackParticles) a.y++;
                 for (BrickParticle b:game.brickParticles) b.y++;
                 game.base.base.y++;
+                game.chest.chest.y++;
                 game.craftingTable.table.y++;
                 for (Board b:game.boards)b.y++;
             }

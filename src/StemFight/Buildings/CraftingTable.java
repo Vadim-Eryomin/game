@@ -30,7 +30,7 @@ public class CraftingTable extends Building {
                 }
             }
             if (!game.collision(table, game.hero)) cf.setVisible(false);
-            cf.update(game);
+            if (cf.visible)cf.update(game);
         }
 
     }

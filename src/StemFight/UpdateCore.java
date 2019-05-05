@@ -40,6 +40,7 @@ public class UpdateCore {
         game.hero.update(game);
         game.portal.update(game);
         game.camera.update(game);
+        if (game.chest.made) game.chest.update(game);
 
         for (AttackParticle a : game.attackParticles) a.update(game);
         for (BrickParticle b : game.brickParticles) b.update(game);

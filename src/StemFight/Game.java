@@ -2,6 +2,7 @@ package StemFight;
 
 import Engine.*;
 import StemFight.Buildings.Base;
+import StemFight.Buildings.Chest;
 import StemFight.Buildings.CraftingFrame;
 import StemFight.Buildings.CraftingTable;
 
@@ -31,6 +32,7 @@ public class Game extends AbsractGame {
     Base base = new Base();
     public Backpack backpack = new Backpack();
     CraftingTable craftingTable = new CraftingTable();
+    Chest chest = new Chest();
 
     skillsGraphFrame sgf = new skillsGraphFrame();
     skillsProgFrame spf = new skillsProgFrame();
@@ -102,6 +104,7 @@ public class Game extends AbsractGame {
         if (hero.baseRoofs >= 1 && !has("baseRoof")) backpack.addThings("baseRoof");
         if (hero.bases >= 1 && !has("base")) backpack.addThings("base");
         if (hero.extracts >= 1 && !has("extract")) backpack.addThings("extract");
+        if (hero.chests >= 1 && !has("chest")) backpack.addThings("chest");
 
         if (firstUpdate){
             updateCore.updateFirst(this);
@@ -126,6 +129,7 @@ public class Game extends AbsractGame {
         if (firstRender) {
             camera.renderer(renderer);
             base.renderer(renderer);
+            chest.renderer(renderer);
             charFrame.renderer(renderer);
             portal.renderer(renderer);
             craftingTable.renderer(renderer);
