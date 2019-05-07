@@ -24,6 +24,7 @@ public class FurnaceFrame {
     public HashMap<Integer, ImageXY> pieces = new HashMap<>();
 
     public HashMap<String, ImageXY> craftResult = new HashMap<>();
+    FurnaceProv fp = new FurnaceProv();
 
     boolean breakable = false;
 
@@ -73,6 +74,7 @@ public class FurnaceFrame {
                 }
             }
         }
+        fp.update(this);
     }
 
     public void renderer(Renderer renderer) {
