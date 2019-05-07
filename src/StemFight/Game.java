@@ -1,10 +1,7 @@
 package StemFight;
 
 import Engine.*;
-import StemFight.Buildings.Base;
-import StemFight.Buildings.Chest;
-import StemFight.Buildings.CraftingFrame;
-import StemFight.Buildings.CraftingTable;
+import StemFight.Buildings.*;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -33,6 +30,7 @@ public class Game extends AbsractGame {
     public Backpack backpack = new Backpack();
     CraftingTable craftingTable = new CraftingTable();
     Chest chest = new Chest();
+    Furnace furnace = new Furnace();
 
     skillsGraphFrame sgf = new skillsGraphFrame();
     skillsProgFrame spf = new skillsProgFrame();
@@ -83,6 +81,7 @@ public class Game extends AbsractGame {
     public Game() {
         gc.title = "Stem Fight Version A0.8";
         skt.create(0, 100);
+        furnace.create(500,0);
         skt.setVisible(true);
         chars.create(1100, 0);
         sk.create(0, 700);
@@ -133,6 +132,7 @@ public class Game extends AbsractGame {
             charFrame.renderer(renderer);
             portal.renderer(renderer);
             craftingTable.renderer(renderer);
+            furnace.renderer(renderer);
             for (AttackParticle a : attackParticles) a.renderer(renderer);
             if (key != null) key.renderer(renderer);
             hero.renderer(renderer);

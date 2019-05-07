@@ -6,6 +6,7 @@ public class UpdateCore {
     public void updateFirst(Game game) {
         game.cursor.update(game);
         game.craftingTable.update(game);
+        game.furnace.update(game);
         if (game.win) {
             game.firstUpdate = false;
             game.firstRender = false;
