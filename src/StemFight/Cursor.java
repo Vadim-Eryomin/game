@@ -66,6 +66,9 @@ public class Cursor {
                             if (game.backpack.numbers.get(i).equals("chest")) {
                                 game.hero.chests = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }if (game.backpack.numbers.get(i).equals("iron")) {
+                                game.hero.irons = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             doing = true;
                         }
@@ -115,6 +118,9 @@ public class Cursor {
                         if (imageCarry.imageTag.equals("chest")){
                             game.chest.create(0, 500, cursor.x, cursor.y);
                             imageCarry.set();
+                        }if (imageCarry.imageTag.equals("iron")){
+                            game.irons.add(new Iron());
+                            game.irons.get(game.irons.size()-1).create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }
 
                         // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
@@ -151,6 +157,9 @@ public class Cursor {
                     }
                     if (imageCarry.imageTag.equals("chest")){
                         game.backpack.chests += imageCarry.number;
+                    }
+                    if (imageCarry.imageTag.equals("iron")){
+                        game.hero.irons += imageCarry.number;
                     }
                     imageCarry.set();
                 }

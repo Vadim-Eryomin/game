@@ -44,6 +44,7 @@ public class UpdateCore {
         if (game.chest.made) game.chest.update(game);
 
         for (AttackParticle a : game.attackParticles) a.update(game);
+        for (Iron i: game.irons) i.update(game);
         for (BrickParticle b : game.brickParticles) b.update(game);
         for (Enemy e : game.enemies) e.update(game);
         for (PaperSnake p : game.snakes) p.update(game);
@@ -114,6 +115,9 @@ public class UpdateCore {
             if (!game.brickParticles.get(i).lived) {
                 game.brickParticles.remove(i);
             }
+        }
+        for (int i = 0; i < game.irons.size(); i++) {
+            if(!game.irons.get(i).lived) game.irons.remove(i);
         }
         for (int i = 0; i < game.boards.size(); i++) {
             if (!game.boards.get(i).lived) {

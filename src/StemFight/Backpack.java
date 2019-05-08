@@ -46,6 +46,9 @@ public class Backpack {
     Integer chests = 0;
     ImageXY chest;
 
+    Integer irons = 0;
+    ImageXY iron;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -65,6 +68,7 @@ public class Backpack {
         baseRoof = new ImageXY("../StemFight/Using/baseRoof.png",0,0);
         base = new ImageXY("../StemFight/Using/base.png",0,0);
         chest = new ImageXY("../StemFight/Using/minichest.png",0,0);
+        iron = new ImageXY("../StemFight/Using/iron.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -155,6 +159,14 @@ public class Backpack {
             chest.y = y + (things/4) * 55;
             numbersThings.put("chest", chests);
             things++;
+        }if (tag.equals("iron")){
+            images.add(iron);
+            numbers.put(images.size()-1,"iron");
+            pictureThings.put("iron", iron);
+            iron.x = x + (things%4) * 55;
+            iron.y = y + (things/4) * 55;
+            numbersThings.put("iron", irons);
+            things++;
         }
     }
 
@@ -170,6 +182,7 @@ public class Backpack {
         bases = game.hero.bases;
         extracts = game.hero.extracts;
         chests = game.hero.chests;
+        irons = game.hero.irons;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);
@@ -181,6 +194,7 @@ public class Backpack {
             if (numbers.get(i).equals("base")) numbersThings.put(numbers.get(i), bases);
             if (numbers.get(i).equals("extract")) numbersThings.put(numbers.get(i), extracts);
             if (numbers.get(i).equals("chest")) numbersThings.put(numbers.get(i), chests);
+            if (numbers.get(i).equals("iron")) numbersThings.put(numbers.get(i), irons);
 
         }
     }

@@ -63,6 +63,7 @@ public class Game extends AbsractGame {
     ArrayList<PaperSnake> snakes = new ArrayList<>();
     ArrayList<Wall> walls = new ArrayList<>();
     ArrayList<Board> boards = new ArrayList<>();
+    ArrayList<Iron> irons = new ArrayList<>();
 
     Characteristics chars = new Characteristics();
 
@@ -104,6 +105,7 @@ public class Game extends AbsractGame {
         if (hero.bases >= 1 && !has("base")) backpack.addThings("base");
         if (hero.extracts >= 1 && !has("extract")) backpack.addThings("extract");
         if (hero.chests >= 1 && !has("chest")) backpack.addThings("chest");
+        if (hero.irons >= 1 && !has("iron")) backpack.addThings("iron");
 
         if (firstUpdate){
             updateCore.updateFirst(this);
@@ -138,6 +140,7 @@ public class Game extends AbsractGame {
             hero.renderer(renderer);
             for (Enemy e : enemies) e.renderer(renderer);
             for (BrickParticle b : brickParticles) b.renderer(renderer);
+            for (int i = 0; i < irons.size(); i++) irons.get(i).renderer(renderer);
             for (PaperSnake p : snakes) p.renderer(renderer);
             for (Wall w : walls) w.renderer(renderer);
             for (Board b : boards) b.renderer(renderer);
@@ -196,6 +199,20 @@ public class Game extends AbsractGame {
     }
 
     public boolean collision(Enemy A, Hero B) {
+        int objAMinX = A.x;
+        int objAMaxX = A.x + A.w;
+        int objAMinY = A.y;
+        int objAMaxY = A.y + A.h;
+        int objBMinX = B.x;
+        int objBMaxX = B.x + B.w;
+        int objBMinY = B.y;
+        int objBMaxY = B.y + B.h;
+
+        if (objAMaxX < objBMinX || objAMinX > objBMaxX) return false;
+        if (objAMaxY < objBMinY || objAMinY > objBMaxY) return false;
+        return true;
+    }
+    public boolean collision(Hero A, Iron B) {
         int objAMinX = A.x;
         int objAMaxX = A.x + A.w;
         int objAMinY = A.y;

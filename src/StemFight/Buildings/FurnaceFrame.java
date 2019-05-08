@@ -18,6 +18,9 @@ public class FurnaceFrame {
     int stringX = 0;
     int stringY = 0;
 
+    Integer irons = 0;
+    ImageXY iron;
+
     public HashMap<Integer, ImageXY> pictureThings = new HashMap<>();
     public HashMap<Integer, Integer> numbersThings = new HashMap<>();
     public HashMap<Integer, String> numbers = new HashMap<>();
@@ -40,6 +43,8 @@ public class FurnaceFrame {
         pieces.put(0, new ImageXY("../StemFight/Using/piece.png", table.x, table.y));
         pieces.put(1, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + 2 * oneTablePiece));
         pieces.put(2, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
+        iron = new ImageXY("../StemFight/Using/iron.png",0,0);
+
     }
 
     public void setVisible(boolean vis) {
@@ -47,6 +52,8 @@ public class FurnaceFrame {
     }
 
     public void update(Game game) {
+        pictureThings.put(2, iron);
+        numbers.put(2, "iron");
         breakable = false;
         if (game.gc.input.isButtonDown(1)) {
             for (int i = 0; i < 3; i++) {
@@ -66,10 +73,14 @@ public class FurnaceFrame {
                         }
                     }
                     else {
-                        if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
-                        numbersThings.put(i,0);
-                        pictureThings.put(i,null);
-                        numbers.put(i,null);
+                        try {
+                            if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
+                            if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
+                            if (numbers.get(i).equals("iron")) game.hero.irons += numbersThings.get(i);
+                            numbersThings.put(i,0);
+                            pictureThings.put(i,null);
+                            numbers.put(i,null);
+                        }catch (NullPointerException e){}
                     }
                 }
             }
