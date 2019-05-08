@@ -29,6 +29,8 @@ public class Camera implements Player {
                 game.craftingTable.table.x--;
                 game.chest.chest.x--;
                 for (Board b:game.boards)b.x--;
+                for (Iron i:game.irons) i.x--;
+                game.furnace.table.x--;
             }
 
         }
@@ -44,6 +46,8 @@ public class Camera implements Player {
                 game.chest.chest.x++;
                 game.craftingTable.table.x++;
                 for (Board b:game.boards)x++;
+                for (Iron i:game.irons) i.x++;
+                game.furnace.table.x++;
             }
         }
         // TODO: 16.04.2019 при пробеге карта проматывается
@@ -60,6 +64,8 @@ public class Camera implements Player {
                 game.chest.chest.y--;
                 game.craftingTable.table.y--;
                 for (Board b:game.boards)y--;
+                for (Iron i:game.irons) i.y--;
+                game.furnace.table.y--;
             }
         }
         if (game.hero.y <= 50){
@@ -74,6 +80,8 @@ public class Camera implements Player {
                 game.chest.chest.y++;
                 game.craftingTable.table.y++;
                 for (Board b:game.boards)b.y++;
+                for (Iron i:game.irons) i.y++;
+                game.furnace.table.y++;
             }
 
         }

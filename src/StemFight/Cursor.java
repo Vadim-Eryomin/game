@@ -135,28 +135,28 @@ public class Cursor {
                         game.hero.boards += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("shovel")){
-                        game.backpack.shovels += imageCarry.number;
+                        game.hero.shovels += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("crafts")){
-                        game.backpack.craftingTables += imageCarry.number;
+                        game.hero.craftingTables += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseBottom")){
-                        game.backpack.baseBottoms += imageCarry.number;
+                        game.hero.baseBottoms += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseWall")){
-                        game.backpack.baseWalls += imageCarry.number;
+                        game.hero.baseWalls += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseRoof")){
-                        game.backpack.baseRoofs += imageCarry.number;
+                        game.hero.baseRoofs += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("base")){
-                        game.backpack.bases += imageCarry.number;
+                        game.hero.bases += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("base")){
-                        game.backpack.extracts += imageCarry.number;
+                        game.hero.extracts += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("chest")){
-                        game.backpack.chests += imageCarry.number;
+                        game.hero.chests += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("iron")){
                         game.hero.irons += imageCarry.number;

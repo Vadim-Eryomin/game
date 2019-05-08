@@ -8,18 +8,10 @@ public class UpdateCore {
         game.craftingTable.update(game);
         game.furnace.update(game);
         if (game.win) {
-            game.firstUpdate = false;
-            game.firstRender = false;
-            game.secondUpdate = true;
-            game.secondRender = true;
-            game.reverse = false;
+            game.world = game.SECOND_WORLD;
         }
         if (game.reverse) {
-            game.firstUpdate = true;
-            game.firstRender = true;
-            game.secondUpdate = false;
-            game.secondRender = false;
-            game.win = false;
+            game.world = game.OUR_WORLD;
         }
         if (game.key != null) game.key.update(game);
         game.backpack.update(game);
@@ -225,5 +217,61 @@ public class UpdateCore {
                 }
             }
         }
+    }
+    public void modifUpdate(Game game){
+        game.cursor.update(game);
+        game.craftingTable.update(game);
+        game.furnace.update(game);
+        game.backpack.update(game);
+        game.sk.update(game);
+        if (game.gc.input.isKeyDown(KeyEvent.VK_F) && game.base != null && game.base.made) {
+            game.base.bf.saveExp += game.hero.xp;
+            game.hero.xp = 0;
+        }
+        if (game.gc.input.isKeyDown(KeyEvent.VK_H) && game.base != null && game.base.made) {
+            game.hero.xp += game.base.bf.saveExp;
+            game.base.bf.saveExp = 0;
+        }
+        if (game.base != null) {
+            game.base.update(game);
+        }
+        game.chars.update(game);
+        game.charFrame.update(game);
+        game.hero.update(game);
+        game.portal.update(game);
+        game.camera.update(game);
+
+        if (game.chest.made) game.chest.update(game);
+
+        for (AttackParticle a : game.attackParticles) a.update(game);
+        for (Iron i: game.irons) i.update(game);
+        for (BrickParticle b : game.brickParticles) b.update(game);
+        for (Wall w : game.walls) w.update(game);
+        for (Board b : game.boards) b.update(game);
+
+        for (int i = 0; i < game.attackParticles.size(); i++) {
+            if (game.attackParticles.get(i).seconds >= game.attackParticles.get(i).secondsLives) {
+                game.attackParticles.remove(i);
+            }
+        }
+        for (int i = 0; i < game.walls.size(); i++) {
+            if (game.walls.get(i).seconds >= game.walls.get(i).secondsLives) {
+                game.walls.remove(i);
+            }
+        }
+        for (int i = 0; i < game.brickParticles.size(); i++) {
+            if (!game.brickParticles.get(i).lived) {
+                game.brickParticles.remove(i);
+            }
+        }
+        for (int i = 0; i < game.irons.size(); i++) {
+            if(!game.irons.get(i).lived) game.irons.remove(i);
+        }
+        for (int i = 0; i < game.boards.size(); i++) {
+            if (!game.boards.get(i).lived) {
+                game.boards.remove(i);
+            }
+        }
+        game.skt.update(game);
     }
 }

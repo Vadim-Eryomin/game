@@ -48,9 +48,7 @@ public class Game extends AbsractGame {
     boolean spawnZombies = true;
     boolean spawnRobots = false;
 
-    boolean firstUpdate = true;
     boolean firstRender = true;
-    boolean secondUpdate = false;
     boolean secondRender = false;
 
     boolean going = false;
@@ -66,6 +64,12 @@ public class Game extends AbsractGame {
     ArrayList<Iron> irons = new ArrayList<>();
 
     Characteristics chars = new Characteristics();
+
+    int world = 0;
+    final int OUR_WORLD = 0;
+    final int MODIF_WORLD = 1;
+    final int SECOND_WORLD = 2;
+    final int LOADING = 3;
 
     SkillsTerminal sk = new SkillsTerminal();
     UpdateCore updateCore = new UpdateCore();
@@ -107,34 +111,38 @@ public class Game extends AbsractGame {
         if (hero.chests >= 1 && !has("chest")) backpack.addThings("chest");
         if (hero.irons >= 1 && !has("iron")) backpack.addThings("iron");
 
-        if (firstUpdate){
+        if(gc.input.isKeyDown(KeyEvent.VK_L)){
+            world = 1 - world;
+        }
+        if (world == OUR_WORLD){
             updateCore.updateFirst(this);
         }
 
-        if (!firstUpdate && !secondUpdate){
+        if (world == LOADING){
             image = new Image("../StemFight/Using/baseWorldFon.gif");
             portals = new Image("../StemFight/Using/electrumPortal.png");
             enemy.add(new RobotEnemy());
             enemy.get(0).create(200,100);
-            secondUpdate = true;
-            secondRender = true;
+            world = SECOND_WORLD;
         }
-        if (secondUpdate){
+        if (world == SECOND_WORLD){
             updateCore.updateSecond(this);
+        }
+        if (world == MODIF_WORLD){
+            updateCore.modifUpdate(this);
         }
 
     }
 
     @Override
     public void renderer(GameContainer gc, Renderer renderer) {
-        if (firstRender) {
+        if (world == OUR_WORLD) {
             camera.renderer(renderer);
             base.renderer(renderer);
             chest.renderer(renderer);
-            charFrame.renderer(renderer);
+            furnace.renderer(renderer);
             portal.renderer(renderer);
             craftingTable.renderer(renderer);
-            furnace.renderer(renderer);
             for (AttackParticle a : attackParticles) a.renderer(renderer);
             if (key != null) key.renderer(renderer);
             hero.renderer(renderer);
@@ -145,15 +153,16 @@ public class Game extends AbsractGame {
             for (Wall w : walls) w.renderer(renderer);
             for (Board b : boards) b.renderer(renderer);
             p.update(this);
+            charFrame.renderer(renderer);
             skt.renderer(renderer);
             chars.renderer(renderer);
             backpack.renderer(renderer);
             cursor.renderer(renderer);
         }
-        if (preGoing){
+        if (world == LOADING){
             renderer.drawImage(loading, loading.x, loading.y);
         }
-        if (secondRender){
+        if (world == SECOND_WORLD){
             camera.renderer(renderer);
             chars.renderer(renderer);
             charFrame.renderer(renderer);
@@ -170,6 +179,25 @@ public class Game extends AbsractGame {
             chars.renderer(renderer);
             sk.renderer(renderer);
             backpack.renderer(renderer);
+        }
+        if (world == MODIF_WORLD){
+            camera.renderer(renderer);
+            base.renderer(renderer);
+            chest.renderer(renderer);
+            charFrame.renderer(renderer);
+            portal.renderer(renderer);
+            craftingTable.renderer(renderer);
+            furnace.renderer(renderer);
+            for (AttackParticle a : attackParticles) a.renderer(renderer);
+            hero.renderer(renderer);
+            for (BrickParticle b : brickParticles) b.renderer(renderer);
+            for (int i = 0; i < irons.size(); i++) irons.get(i).renderer(renderer);
+            for (Wall w : walls) w.renderer(renderer);
+            for (Board b : boards) b.renderer(renderer);
+            skt.renderer(renderer);
+            chars.renderer(renderer);
+            backpack.renderer(renderer);
+            cursor.renderer(renderer);
         }
 
     }
