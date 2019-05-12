@@ -5,7 +5,7 @@ import static StemFight.Change.*;
 
 import java.util.ArrayList;
 
-public class Enemy implements Player {
+public class Enemy extends Player {
     ArrayList<Image> d = new ArrayList<>();
     int x = 0;
     int y = 0;

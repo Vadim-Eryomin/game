@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Bulik extends AttackParticle implements Player {
+public class Bulik extends AttackParticle{
     Image particle = new Image("Skills/attBulik.png");
 
     int x = 0;

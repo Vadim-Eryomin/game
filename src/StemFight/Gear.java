@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Gear extends AttackParticle implements Player {
+public class Gear extends AttackParticle{
     Image particle = new Image("Skills/attGear.png");
 
     int x = 0;

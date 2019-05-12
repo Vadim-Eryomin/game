@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Board implements Player {
+public class Board extends Player {
     Image brick = new Image("Using/board.png");
     int x = 0;
     int y = 0;

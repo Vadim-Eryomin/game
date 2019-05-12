@@ -2,7 +2,7 @@ package StemFight;
 
 import java.util.ArrayList;
 
-public class Robot implements Player {
+public class Robot extends Player {
     ImageXY robot = new ImageXY("Using/robotWalk.png",0,0);
     ArrayList<ImageXY> images = new ArrayList<>();
 

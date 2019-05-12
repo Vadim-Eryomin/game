@@ -1,6 +1,6 @@
 package StemFight;
 
-public class PaperSnake implements Player {
+public class PaperSnake extends Player {
     Image[] snakes = new Image[4];
     int x = 0;
     int y = 0;

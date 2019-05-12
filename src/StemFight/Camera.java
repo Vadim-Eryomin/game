@@ -2,7 +2,7 @@ package StemFight;
 
 import static StemFight.Max.range;
 
-public class Camera implements Player {
+public class Camera extends Player {
     public Image image = new Image("Using/fon.gif");
     public int x = 0;
     public int y = 0;

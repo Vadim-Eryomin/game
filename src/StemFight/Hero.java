@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import static StemFight.Max.range;
 
-public class Hero implements Player {
+public class Hero extends Player {
     SkillsTerminal sk = new SkillsTerminal();
     String name = "Player";
     boolean right = true;

@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Key implements Player {
+public class Key extends Player {
     Image brick = new Image("Using/key.png");
     int x = 0;
     int y = 0;

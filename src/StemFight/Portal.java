@@ -2,7 +2,7 @@ package StemFight;
 
 import java.awt.event.KeyEvent;
 
-public class Portal implements Player {
+public class Portal extends Player {
     Image nulled = new Image("Using/breakPortal.png");
     Image notOpened = new Image("Using/notOpenedPortal.png");
     Image maked = new Image("Using/madePortal.png");

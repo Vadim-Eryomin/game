@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Wall extends AttackParticle implements Player {
+public class Wall extends AttackParticle{
     Image particle = new Image("Skills/attWall.png");
 
     int x = 0;

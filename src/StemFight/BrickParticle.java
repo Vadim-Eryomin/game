@@ -1,6 +1,6 @@
 package StemFight;
 
-public class BrickParticle implements Player {
+public class BrickParticle extends Player {
     Image brick = new Image("Using/platformPack_tile004.png");
     int x = 0;
     int y = 0;

@@ -1,6 +1,6 @@
 package StemFight;
 
-public class Iron implements Player {
+public class Iron extends Player {
     int x = 0;
     int y = 0;
     int w = 0;

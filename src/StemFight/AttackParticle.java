@@ -1,6 +1,6 @@
 package StemFight;
 
-public class AttackParticle implements Player {
+public class AttackParticle extends Player {
     Image particle = new Image("Using/magic_05(2).png");
     int x = 0;
     int y = 0;
