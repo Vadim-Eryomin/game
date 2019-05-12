@@ -155,7 +155,8 @@ public class Backpack {
             chest.y = y + (things/4) * 55;
             numbersThings.put("chest", chests);
             things++;
-        }if (tag.equals("iron")){
+        }
+        if (tag.equals("iron")){
             images.add(iron);
             numbers.put(images.size()-1,"iron");
             pictureThings.put("iron", iron);

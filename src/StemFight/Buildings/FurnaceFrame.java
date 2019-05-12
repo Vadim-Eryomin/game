@@ -87,6 +87,7 @@ public class FurnaceFrame {
         fp.update(this);
     }
 
+
     public void renderer(Renderer renderer) {
         if (visible) {
             renderer.drawImage(fon, fon.x, fon.y);

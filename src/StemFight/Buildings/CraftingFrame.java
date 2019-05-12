@@ -69,7 +69,7 @@ public class CraftingFrame {
                     if (game.collision(game.cursor.cursor, pieces.get(i))) {
                         if (game.cursor.imageCarry.number > 0) {
                             if (pictureThings.get(i) != null) {
-                                if (numbers.get(i).equals("brick") && game.cursor.imageCarry.imageTag.equals("brick")) {
+                                if (numbers.get(i).equals(game.cursor.imageCarry.imageTag)){
                                     try {
                                         numbersThings.put(i, numbersThings.get(i) + 1);
                                     } catch (NullPointerException e) {
@@ -78,128 +78,6 @@ public class CraftingFrame {
                                     game.cursor.imageCarry.number--;
                                     numbers.put(i, game.cursor.imageCarry.imageTag);
                                 }
-                                else if (numbers.get(i).equals("board") && game.cursor.imageCarry.imageTag.equals("board")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("baseBottom") && game.cursor.imageCarry.imageTag.equals("baseBottom")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("baseWall") && game.cursor.imageCarry.imageTag.equals("baseWall")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("baseRoof") && game.cursor.imageCarry.imageTag.equals("baseRoof")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("base") && game.cursor.imageCarry.imageTag.equals("base")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("extract") && game.cursor.imageCarry.imageTag.equals("extract")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else if (numbers.get(i).equals("chest") && game.cursor.imageCarry.imageTag.equals("chest")){
-                                    try {
-                                        numbersThings.put(i, numbersThings.get(i) + 1);
-                                    } catch (NullPointerException e) {
-                                        numbersThings.put(i, 1);
-                                    }
-                                    game.cursor.imageCarry.number--;
-                                    numbers.put(i, game.cursor.imageCarry.imageTag);
-                                }
-                                else {
-                                    if (numbers.get(i).equals("brick")) {
-                                        game.hero.bricks += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("board")){
-                                        game.hero.boards += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("baseBottom")){
-                                        game.hero.baseBottoms += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("baseWall")){
-                                        game.hero.baseWalls += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("baseRoof")){
-                                        game.hero.baseRoofs += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("base")){
-                                        game.hero.bases += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("extract")){
-                                        game.hero.extracts += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                    if (numbers.get(i).equals("chest")){
-                                        game.hero.chests += numbersThings.get(i);
-                                        game.cursor.imageCarry.number--;
-                                        numbers.put(i, game.cursor.imageCarry.imageTag);
-                                        pictureThings.put(i, game.cursor.imageCarry.image);
-                                        numbersThings.put(i,1);
-                                    }
-                                }
-
                             } else {
                                 pictureThings.put(i, game.cursor.imageCarry.image);
                                 try {
