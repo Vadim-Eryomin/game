@@ -1,6 +1,9 @@
 package StemFight;
 
 import StemFight.Buildings.*;
+import StemFight.Runix.Piedestal;
+import StemFight.Runix.RuneEngine;
+import StemFight.Runix.RuneOfRegeneration;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -63,6 +66,10 @@ public class Game extends AbsractGame {
     ArrayList<Iron> irons = new ArrayList<>();
 
     Characteristics chars = new Characteristics();
+    RuneOfRegeneration rune = new RuneOfRegeneration();
+
+    public Piedestal pied = new Piedestal();
+    public RuneEngine engine = new RuneEngine();
 
     int world = 0;
     final int OUR_WORLD = 0;
@@ -94,6 +101,9 @@ public class Game extends AbsractGame {
         portal.create(1000, 0);
         hero.create(50, 50);
         backpack.create(1150, 200);
+        engine.create(600, 500);
+        pied.create( 500, 500);
+        rune.create(500,450);
         gc.start();
     }
 
@@ -144,14 +154,17 @@ public class Game extends AbsractGame {
             craftingTable.renderer(renderer);
             for (AttackParticle a : attackParticles) a.renderer(renderer);
             if (key != null) key.renderer(renderer);
-            hero.renderer(renderer);
             for (Enemy e : enemies) e.renderer(renderer);
             for (BrickParticle b : brickParticles) b.renderer(renderer);
             for (int i = 0; i < irons.size(); i++) irons.get(i).renderer(renderer);
             for (PaperSnake p : snakes) p.renderer(renderer);
             for (Wall w : walls) w.renderer(renderer);
             for (Board b : boards) b.renderer(renderer);
+            engine.renderer(renderer);
+            pied.renderer(renderer);
+            rune.renderer(renderer);
             p.update(this);
+            hero.renderer(renderer);
             charFrame.renderer(renderer);
             skt.renderer(renderer);
             chars.renderer(renderer);

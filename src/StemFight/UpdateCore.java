@@ -40,6 +40,7 @@ public class UpdateCore {
             }
         }.start();
         game.hero.update(game);
+        game.engine.update(game);
 
         new Thread(){
             @Override
@@ -99,6 +100,7 @@ public class UpdateCore {
                 game.enemies.remove(i);
             }
         }
+        game.rune.update(game);
         for (Enemy e : game.enemies) {
             if (game.collision(e, game.hero)) {
                 game.hero.hp -= (5 / game.chars.defence);
@@ -124,6 +126,7 @@ public class UpdateCore {
                 game.brickParticles.remove(i);
             }
         }
+        game.pied.update(game);
         for (int i = 0; i < game.irons.size(); i++) {
             if(!game.irons.get(i).lived) game.irons.remove(i);
         }

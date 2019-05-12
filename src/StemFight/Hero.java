@@ -15,7 +15,7 @@ public class Hero extends Player {
     int y = 0;
     int w = 0;
     int h = 0;
-    int hp = 100;
+    public int hp = 100;
     int xp = 0;
 
     boolean keyFirst = false;
