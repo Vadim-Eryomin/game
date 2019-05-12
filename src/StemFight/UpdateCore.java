@@ -28,24 +28,40 @@ public class UpdateCore {
         if (game.base != null) {
             game.base.update(game);
         }
-        game.chars.update(game);
-        game.charFrame.update(game);
+
+        new Thread(){
+            @Override
+            public void run() {
+                game.chars.update(game);
+                game.charFrame.update(game);
+                game.portal.update(game);
+                game.camera.update(game);
+                if (game.chest.made) game.chest.update(game);
+            }
+        }.start();
         game.hero.update(game);
-        game.portal.update(game);
-        game.camera.update(game);
-        if (game.chest.made) game.chest.update(game);
 
-        for (AttackParticle a : game.attackParticles) a.update(game);
-        for (Iron i: game.irons) i.update(game);
-        for (BrickParticle b : game.brickParticles) b.update(game);
-        for (Enemy e : game.enemies) e.update(game);
-        for (PaperSnake p : game.snakes) p.update(game);
-        for (Wall w : game.walls) w.update(game);
-        for (Board b : game.boards) b.update(game);
+        new Thread(){
+            @Override
+            public void run() {
+                for (AttackParticle a : game.attackParticles) a.update(game);
+                for (Iron i: game.irons) i.update(game);
+                for (BrickParticle b : game.brickParticles) b.update(game);
+                for (PaperSnake p : game.snakes) p.update(game);
+                for (Wall w : game.walls) w.update(game);
+                for (Board b : game.boards) b.update(game);
+            }
+        }.start();
 
-        if (game.spawnZombies) game.spawn(game);
-        game.secondsSpawn++;
 
+        new Thread(){
+            @Override
+            public void run() {
+                for (Enemy e : game.enemies) e.update(game);
+                if (game.spawnZombies) game.spawn(game);
+                game.secondsSpawn++;
+            }
+        }.start();
         for (int i = 0; i < game.attackParticles.size(); i++) {
             if (game.attackParticles.get(i).seconds >= game.attackParticles.get(i).secondsLives) {
                 game.attackParticles.remove(i);
@@ -90,7 +106,7 @@ public class UpdateCore {
                 new Thread() {
                     @Override
                     public void run() {
-                        for (int i = 0; i < 20; i++) {
+                        for (int i = 0; i < 200; i++) {
                             game.hero.x--;
                             e.x++;
                             try {
@@ -126,11 +142,17 @@ public class UpdateCore {
             }
         }
         game.skt.update(game);
-        game.heal++;
-        if (game.heal >= 800) {
-            game.hero.hp += 1;
-            game.heal = 0;
-        }
+        new Thread(){
+            @Override
+            public void run() {
+                game.heal++;
+                if (game.heal >= 800) {
+                    game.hero.hp += 1;
+                    game.heal = 0;
+                }
+            }
+        }.start();
+
     }
 
     public void updateSecond(Game game) {

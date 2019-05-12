@@ -63,15 +63,18 @@ public class Enemy implements Player {
 
     @Override
     public void renderer(Renderer renderer) {
-        if (right) {
-            if (0 <= seconds % 180 && seconds % 180 <= 60) renderer.drawImage(d.get(0), x, y);
-            if (60 < seconds % 180 && seconds % 180 <= 120) renderer.drawImage(d.get(1), x, y);
-            if (120 < seconds % 180 && seconds % 180 <= 180) renderer.drawImage(d.get(2), x, y);
-        } else {
-            if (0 <= seconds % 180 && seconds % 180 <= 60) renderer.drawImage(d.get(3), x, y);
-            if (60 < seconds % 180 && seconds % 180 <= 120) renderer.drawImage(d.get(4), x, y);
-            if (120 < seconds % 180 && seconds % 180 <= 180) renderer.drawImage(d.get(5), x, y);
-        }
+        try {
+            if (right) {
+                if (0 <= seconds % 180 && seconds % 180 <= 60) renderer.drawImage(d.get(0), x, y);
+                if (60 < seconds % 180 && seconds % 180 <= 120) renderer.drawImage(d.get(1), x, y);
+                if (120 < seconds % 180 && seconds % 180 <= 180) renderer.drawImage(d.get(2), x, y);
+            } else {
+                if (0 <= seconds % 180 && seconds % 180 <= 60) renderer.drawImage(d.get(3), x, y);
+                if (60 < seconds % 180 && seconds % 180 <= 120) renderer.drawImage(d.get(4), x, y);
+                if (120 < seconds % 180 && seconds % 180 <= 180) renderer.drawImage(d.get(5), x, y);
+            }
+        }catch (IndexOutOfBoundsException e){}
+
     }
 
     @Override

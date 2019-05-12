@@ -205,14 +205,14 @@ public class Game extends AbsractGame {
         if (game.secondsSpawn >= 800 && game.enemies.size() < 5) {
             game.secondsSpawn = 0;
             enemies.add(new Enemy());
-            enemies.get(enemies.size() - 1).create(random.nextInt(1800), random.nextInt(1800));
+            enemies.get(enemies.size() - 1).create(random.nextInt(1400), random.nextInt(800));
         }
     }
     public void spawnRobot(Game game) {
         if (game.secondsSpawn >= 800 && enemy.size() <= 5){
             secondsSpawn = 0;
             enemy.add(new RobotEnemy());
-            enemy.get(enemy.size()-1).create(random.nextInt(1800)+10, random.nextInt(1800)+10);
+            enemy.get(enemy.size()-1).create(random.nextInt(1400)+10, random.nextInt(800)+10);
         }
     }
 
