@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Bulik extends AttackParticle implements Player {
-    Image particle = new Image("../StemFight/Skills/attBulik.png");
+    Image particle = new Image("Skills/attBulik.png");
 
     int x = 0;
     int y = 0;

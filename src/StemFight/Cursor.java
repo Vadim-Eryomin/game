@@ -1,12 +1,7 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Player;
-import Engine.Renderer;
-import StemFight.Buildings.Chest;
-
 public class Cursor {
-    public ImageXY cursor = new ImageXY("../StemFight/Using/cursor.png", 0, 0);
+    public ImageXY cursor = new ImageXY("Using/cursor.png", 0, 0);
     public ImageCarry imageCarry = new ImageCarry();
     boolean doing = false;
 

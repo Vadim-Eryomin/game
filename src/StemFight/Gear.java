@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Gear extends AttackParticle implements Player {
-    Image particle = new Image("../StemFight/Skills/attGear.png");
+    Image particle = new Image("Skills/attGear.png");
 
     int x = 0;
     int y = 0;

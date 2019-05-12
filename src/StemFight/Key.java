@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Key implements Player {
-    Image brick = new Image("../StemFight/Using/key.png");
+    Image brick = new Image("Using/key.png");
     int x = 0;
     int y = 0;
     int w = 0;

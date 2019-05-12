@@ -1,7 +1,7 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Building;
 import StemFight.Game;
 
@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class Base extends Building {
     public boolean made = false;
-    public ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png", 0, 0);
+    public ImageXY base = new ImageXY("Using/baseBuild.png", 0, 0);
     public BaseFrame bf = new BaseFrame();
     public BaseProv bp = new BaseProv();
 

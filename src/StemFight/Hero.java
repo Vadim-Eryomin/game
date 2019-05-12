@@ -1,19 +1,16 @@
 package StemFight;
 
-import Engine.Player;
-import Engine.Renderer;
-
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
-import static Engine.Max.range;
+import static StemFight.Max.range;
 
 public class Hero implements Player {
     SkillsTerminal sk = new SkillsTerminal();
     String name = "Player";
     boolean right = true;
 
-    ArrayList<Engine.Image> d = new ArrayList<>();
+    ArrayList<Image> d = new ArrayList<>();
     int x = 0;
     int y = 0;
     int w = 0;
@@ -55,13 +52,13 @@ public class Hero implements Player {
         this.x = x;
         this.y = y;
 
-        d.add(new Engine.Image("../StemFight/Using/adventurer_stand.png"));
-        d.add(new Engine.Image("../StemFight/Using/adventurer_walk1.png"));
-        d.add(new Engine.Image("../StemFight/Using/adventurer_walk2.png"));
+        d.add(new Image("Using/adventurer_stand.png"));
+        d.add(new Image("Using/adventurer_walk1.png"));
+        d.add(new Image("Using/adventurer_walk2.png"));
 
-        d.add(new Engine.Image("../StemFight/Using/adventurer_standL.png"));
-        d.add(new Engine.Image("../StemFight/Using/adventurer_walk1L.png"));
-        d.add(new Engine.Image("../StemFight/Using/adventurer_walk2L.png"));
+        d.add(new Image("Using/adventurer_standL.png"));
+        d.add(new Image("Using/adventurer_walk1L.png"));
+        d.add(new Image("Using/adventurer_walk2L.png"));
 
         this.w = d.get(0).w;
         this.h = d.get(0).h;

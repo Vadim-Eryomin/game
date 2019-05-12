@@ -1,16 +1,14 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Game;
-import StemFight.Key;
 
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
 
 public class Chest {
     public boolean made = false;
-    public ImageXY chest = new ImageXY("../StemFight/Using/chest.png", 0, 0);
+    public ImageXY chest = new ImageXY("Using/chest.png", 0, 0);
     ChestFrame cf = new ChestFrame();
     public void create(int x, int y, int createX, int createY) {
         chest.x = createX;

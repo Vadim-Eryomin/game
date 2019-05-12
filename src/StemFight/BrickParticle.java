@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class BrickParticle implements Player {
-    Image brick = new Image("../StemFight/Using/platformPack_tile004.png");
+    Image brick = new Image("Using/platformPack_tile004.png");
     int x = 0;
     int y = 0;
     int w = 0;

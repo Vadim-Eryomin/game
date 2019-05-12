@@ -1,10 +1,5 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Player;
-import Engine.Renderer;
-
 public class PaperSnake implements Player {
     Image[] snakes = new Image[4];
     int x = 0;
@@ -22,10 +17,10 @@ public class PaperSnake implements Player {
     public void create(int x, int y) {
         this.x = x;
         this.y = y;
-        snakes[0] = new Image("../StemFight/Using/snake_walk1.png");
-        snakes[1] = new Image("../StemFight/Using/snake_walk2.png");
-        snakes[2] = new Image("../StemFight/Using/snake_walk1L.png");
-        snakes[3] = new Image("../StemFight/Using/snake_walk2L.png");
+        snakes[0] = new Image("Using/snake_walk1.png");
+        snakes[1] = new Image("Using/snake_walk2.png");
+        snakes[2] = new Image("Using/snake_walk1L.png");
+        snakes[3] = new Image("Using/snake_walk2L.png");
         this.w = snakes[0].w;
         this.h = snakes[0].h;
     }

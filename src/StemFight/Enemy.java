@@ -1,9 +1,6 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-import static Engine.Max.range;
+import static StemFight.Max.range;
 import static StemFight.Change.*;
 
 import java.util.ArrayList;
@@ -23,12 +20,12 @@ public class Enemy implements Player {
     public void create(int x, int y) {
         this.x = x;
         this.y = y;
-        d.add(new Image("../StemFight/Using/zombie_stand.png"));
-        d.add(new Image("../StemFight/Using/zombie_walk1.png"));
-        d.add(new Image("../StemFight/Using/zombie_walk2.png"));
-        d.add(new Image("../StemFight/Using/zombie_standL.png"));
-        d.add(new Image("../StemFight/Using/zombie_walk1L.png"));
-        d.add(new Image("../StemFight/Using/zombie_walk2L.png"));
+        d.add(new Image("Using/zombie_stand.png"));
+        d.add(new Image("Using/zombie_walk1.png"));
+        d.add(new Image("Using/zombie_walk2.png"));
+        d.add(new Image("Using/zombie_standL.png"));
+        d.add(new Image("Using/zombie_walk1L.png"));
+        d.add(new Image("Using/zombie_walk2L.png"));
         this.w = d.get(0).w;
         this.h = d.get(0).h;
     }

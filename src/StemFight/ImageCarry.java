@@ -1,7 +1,5 @@
 package StemFight;
 
-import Engine.ImageXY;
-
 public class ImageCarry {
     public ImageXY image = null;
     public Integer number = 0;

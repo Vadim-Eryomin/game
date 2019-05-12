@@ -1,16 +1,11 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Iron implements Player {
     int x = 0;
     int y = 0;
     int w = 0;
     int h = 0;
-    ImageXY iron = new ImageXY("../StemFight/Using/iron.png",0,0);
+    ImageXY iron = new ImageXY("Using/iron.png",0,0);
     boolean lived = true;
     @Override
     public void create(int x, int y) {

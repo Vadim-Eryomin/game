@@ -1,14 +1,13 @@
 package StemFight.Buildings;
 
-import Engine.ImageButton;
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Game;
 
 public class BaseProv {
-    ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png",0,0);
-    ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png",0,0);
-    ImageXY extract = new ImageXY("../StemFight/Using/extract.png",0,0);
+    ImageXY fon = new ImageXY("Using/fonBase.png",0,0);
+    ImageXY base = new ImageXY("Using/baseBuild.png",0,0);
+    ImageXY extract = new ImageXY("Using/extract.png",0,0);
     String name = "Base";
     boolean visible = false;
     int stringX = 0;

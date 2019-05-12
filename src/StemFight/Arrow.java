@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Arrow extends AttackParticle implements Player {
-    Image particle = new Image("../StemFight/Skills/attArrow.png");
+    Image particle = new Image("Skills/attArrow.png");
 
     int x = 0;
     int y = 0;

@@ -1,9 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-
 public class portalRenderer {
-    Image buttonT = new Image("../StemFight/Skills/buttonT.png");
+    Image buttonT = new Image("Skills/buttonT.png");
     public void update(Game game){
         if (game.talkWalk){
             new Thread(){

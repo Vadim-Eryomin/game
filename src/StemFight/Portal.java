@@ -1,16 +1,11 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 import java.awt.event.KeyEvent;
-import java.util.Random;
 
 public class Portal implements Player {
-    Image nulled = new Image("../StemFight/Using/breakPortal.png");
-    Image notOpened = new Image("../StemFight/Using/notOpenedPortal.png");
-    Image maked = new Image("../StemFight/Using/madePortal.png");
+    Image nulled = new Image("Using/breakPortal.png");
+    Image notOpened = new Image("Using/notOpenedPortal.png");
+    Image maked = new Image("Using/madePortal.png");
     Image using;
     int x = 0;
     int y = 0;

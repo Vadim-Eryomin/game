@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class AttackParticle implements Player {
-    Image particle = new Image("../StemFight/Using/magic_05(2).png");
+    Image particle = new Image("Using/magic_05(2).png");
     int x = 0;
     int y = 0;
     int w = 0;

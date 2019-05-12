@@ -1,9 +1,5 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Renderer;
-
 public class SkillsTree {
     int x = 0;
     int y = 0;
@@ -14,7 +10,7 @@ public class SkillsTree {
     boolean renderGraph = true;
     boolean visible = true;
 
-    Image fon = new Image("../StemFight/Skills/fonSkills.png");
+    Image fon = new Image("Skills/fonSkills.png");
 
     ImageXY[] bulik = new ImageXY[2];
     boolean buliks = false;
@@ -34,8 +30,8 @@ public class SkillsTree {
     ImageXY[] wall = new ImageXY[2];
     boolean walls = false;
 
-    ImageXY tabGraph = new ImageXY("../StemFight/Using/tabGraph.png",0,0);
-    ImageXY tabProg = new ImageXY("../StemFight/Using/tabProg.png",0,0);
+    ImageXY tabGraph = new ImageXY("Using/tabGraph.png",0,0);
+    ImageXY tabProg = new ImageXY("Using/tabProg.png",0,0);
 
     boolean can = false;
 
@@ -43,23 +39,23 @@ public class SkillsTree {
         this.x = x;
         this.y = y;
 
-        bulik[0] = new ImageXY("../StemFight/Skills/nonA_bulik.png", (x+80), y+40);
-        bulik[1] = new ImageXY("../StemFight/Skills/bulik.png", (x+80), y+40);
+        bulik[0] = new ImageXY("Skills/nonA_bulik.png", (x+80), y+40);
+        bulik[1] = new ImageXY("Skills/bulik.png", (x+80), y+40);
 
-        arrow[0] = new ImageXY("../StemFight/Skills/nonA_brush.png",x+80, y+80);
-        arrow[1] =  new ImageXY("../StemFight/Skills/brush.png", x+80, y+80);
+        arrow[0] = new ImageXY("Skills/nonA_brush.png",x+80, y+80);
+        arrow[1] =  new ImageXY("Skills/brush.png", x+80, y+80);
 
-        snake[0] = new ImageXY("../StemFight/Skills/nonA_snake.png",x+80, y+120);
-        snake[1] =  new ImageXY("../StemFight/Skills/snake.png", x+80, y+120);
+        snake[0] = new ImageXY("Skills/nonA_snake.png",x+80, y+120);
+        snake[1] =  new ImageXY("Skills/snake.png", x+80, y+120);
 
-        code[0] = new ImageXY("../StemFight/Skills/nonA_code.png", (x+80), y+40);
-        code[1] = new ImageXY("../StemFight/Skills/code.png", (x+80), y+40);
+        code[0] = new ImageXY("Skills/nonA_code.png", (x+80), y+40);
+        code[1] = new ImageXY("Skills/code.png", (x+80), y+40);
 
-        heal[0] = new ImageXY("../StemFight/Skills/nonA_heal.png",x+80, y+80);
-        heal[1] =  new ImageXY("../StemFight/Skills/heal.png", x+80, y+80);
+        heal[0] = new ImageXY("Skills/nonA_heal.png",x+80, y+80);
+        heal[1] =  new ImageXY("Skills/heal.png", x+80, y+80);
 
-        wall[0] = new ImageXY("../StemFight/Skills/nonA_wall.png",x+80, y+120);
-        wall[1] =  new ImageXY("../StemFight/Skills/wall.png", x+80, y+120);
+        wall[0] = new ImageXY("Skills/nonA_wall.png",x+80, y+120);
+        wall[1] =  new ImageXY("Skills/wall.png", x+80, y+120);
 
         tabGraph.x = this.x + fon.w;
         tabGraph.y = this.y;

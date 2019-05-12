@@ -1,14 +1,9 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Player;
-import Engine.Renderer;
-
-import java.util.AbstractList;
 import java.util.ArrayList;
 
 public class Robot implements Player {
-    ImageXY robot = new ImageXY("../StemFight/Using/robotWalk.png",0,0);
+    ImageXY robot = new ImageXY("Using/robotWalk.png",0,0);
     ArrayList<ImageXY> images = new ArrayList<>();
 
     boolean helper = false;

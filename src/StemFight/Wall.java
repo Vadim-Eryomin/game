@@ -1,11 +1,7 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-
 public class Wall extends AttackParticle implements Player {
-    Image particle = new Image("../StemFight/Skills/attWall.png");
+    Image particle = new Image("Skills/attWall.png");
 
     int x = 0;
     int y = 0;

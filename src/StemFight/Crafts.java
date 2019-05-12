@@ -1,6 +1,5 @@
 package StemFight;
 
-import Engine.ImageXY;
 import StemFight.Buildings.CraftingFrame;
 
 public class Crafts {
@@ -15,7 +14,7 @@ public class Crafts {
         cr.shovel.put(7, "board");
         cr.shovel.put(8, "board");
         cr.shovel.put(9, "shovel");
-        cr.craftResult.put("shovel", new ImageXY("../StemFight/Instruments/shovel.png", 0, 0));
+        cr.craftResult.put("shovel", new ImageXY("Instruments/shovel.png", 0, 0));
 
         cr.baseBottom.put(0,null);
         cr.baseBottom.put(1,null);
@@ -27,7 +26,7 @@ public class Crafts {
         cr.baseBottom.put(7,"brick");
         cr.baseBottom.put(8,"brick");
         cr.baseBottom.put(9,"baseBottom");
-        cr.craftResult.put("baseBottom", new ImageXY("../StemFight/Using/baseBottom.png",0,0));
+        cr.craftResult.put("baseBottom", new ImageXY("Using/baseBottom.png",0,0));
 
         cr.baseWall.put(0,"brick");
         cr.baseWall.put(1,null);
@@ -39,7 +38,7 @@ public class Crafts {
         cr.baseWall.put(7,"brick");
         cr.baseWall.put(8,"brick");
         cr.baseWall.put(9,"baseWall");
-        cr.craftResult.put("baseWall", new ImageXY("../StemFight/Using/baseWall.png",0,0));
+        cr.craftResult.put("baseWall", new ImageXY("Using/baseWall.png",0,0));
 
         cr.baseRoof.put(0,null);
         cr.baseRoof.put(1,null);
@@ -51,7 +50,7 @@ public class Crafts {
         cr.baseRoof.put(7,null);
         cr.baseRoof.put(8,"board");
         cr.baseRoof.put(9,"baseRoof");
-        cr.craftResult.put("baseRoof", new ImageXY("../StemFight/Using/baseRoof.png",0,0));
+        cr.craftResult.put("baseRoof", new ImageXY("Using/baseRoof.png",0,0));
 
         cr.base.put(0,null);
         cr.base.put(1,"baseRoof");
@@ -63,7 +62,7 @@ public class Crafts {
         cr.base.put(7,"baseBottom");
         cr.base.put(8,null);
         cr.base.put(9,"base");
-        cr.craftResult.put("base", new ImageXY("../StemFight/Using/base.png",0,0));
+        cr.craftResult.put("base", new ImageXY("Using/base.png",0,0));
 
         cr.chest.put(0,"board");
         cr.chest.put(1,"board");
@@ -75,6 +74,6 @@ public class Crafts {
         cr.chest.put(7,"board");
         cr.chest.put(8,"board");
         cr.chest.put(9,"chest");
-        cr.craftResult.put("chest", new ImageXY("../StemFight/Using/chest.png",0,0));
+        cr.craftResult.put("chest", new ImageXY("Using/chest.png",0,0));
     }
 }

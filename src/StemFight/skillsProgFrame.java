@@ -1,10 +1,5 @@
 package StemFight;
 
-import Engine.FramesForGame;
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Renderer;
-
 public class skillsProgFrame extends FramesForGame {
 
     int x = 0;
@@ -12,7 +7,7 @@ public class skillsProgFrame extends FramesForGame {
     int skillPoints = 1;
     boolean choice = true;
 
-    Image fon = new Image("../StemFight/Skills/fonSkills.png");
+    Image fon = new Image("Skills/fonSkills.png");
 
     ImageXY[] code = new ImageXY[2];
     boolean codes = false;
@@ -30,14 +25,14 @@ public class skillsProgFrame extends FramesForGame {
         this.x = x;
         this.y = y;
 
-        code[0] = new ImageXY("../StemFight/Skills/nonA_code.png", (x+80), y+40);
-        code[1] = new ImageXY("../StemFight/Skills/code.png", (x+80), y+40);
+        code[0] = new ImageXY("Skills/nonA_code.png", (x+80), y+40);
+        code[1] = new ImageXY("Skills/code.png", (x+80), y+40);
 
-        heal[0] = new ImageXY("../StemFight/Skills/nonA_heal.png",x+80, y+80);
-        heal[1] =  new ImageXY("../StemFight/Skills/heal.png", x+80, y+80);
+        heal[0] = new ImageXY("Skills/nonA_heal.png",x+80, y+80);
+        heal[1] =  new ImageXY("Skills/heal.png", x+80, y+80);
 
-        wall[0] = new ImageXY("../StemFight/Skills/nonA_wall.png",x+80, y+120);
-        wall[1] =  new ImageXY("../StemFight/Skills/wall.png", x+80, y+120);
+        wall[0] = new ImageXY("Skills/nonA_wall.png",x+80, y+120);
+        wall[1] =  new ImageXY("Skills/wall.png", x+80, y+120);
     }
 
     @Override

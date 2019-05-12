@@ -1,14 +1,11 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Renderer;
-
 public class Characteristics {
-    ImageXY fon = new ImageXY("../StemFight/Using/charFon.png", 0, 0);
-    ImageXY person = new ImageXY("../StemFight/Using/person.png", 0, 0);
-    ImageXY hp = new ImageXY("../StemFight/Skills/heart.png", 0, 0);
-    ImageXY defenced = new ImageXY("../StemFight/Using/defence.png", 0, 0);
-    ImageXY attacked = new ImageXY("../StemFight/Using/attack.png", 0, 0);
+    ImageXY fon = new ImageXY("Using/charFon.png", 0, 0);
+    ImageXY person = new ImageXY("Using/person.png", 0, 0);
+    ImageXY hp = new ImageXY("Skills/heart.png", 0, 0);
+    ImageXY defenced = new ImageXY("Using/defence.png", 0, 0);
+    ImageXY attacked = new ImageXY("Using/attack.png", 0, 0);
     int x, y;
     Integer hps = 0;
     Integer defs = 0;

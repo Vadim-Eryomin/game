@@ -1,4 +1,4 @@
-package Engine;
+package StemFight;
 
 import java.awt.image.DataBufferInt;
 
@@ -50,7 +50,7 @@ public class Renderer {
             }
         }
     }
-    public Engine.font font = Engine.font.STANDART;
+    public StemFight.font font = StemFight.font.STANDART;
     public void drawText(String text, int offx, int offy, int color){
         Image fontImage = font.fontImage;
         text = text.toUpperCase();

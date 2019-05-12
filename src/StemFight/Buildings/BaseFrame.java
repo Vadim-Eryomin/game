@@ -1,18 +1,15 @@
 package StemFight.Buildings;
 
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Game;
 
-import java.awt.event.KeyEvent;
-
 public class BaseFrame {
-    ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png",0,0);
-    ImageXY base = new ImageXY("../StemFight/Using/baseBuild.png",0,0);
-    ImageXY angry = new ImageXY("../StemFight/Using/angry.png",0,0);
-    ImageXY exp = new ImageXY("../StemFight/Skills/experience.png",0,0);
-    ImageXY hp = new ImageXY("../StemFight/Skills/heart.png",0,0);
+    ImageXY fon = new ImageXY("Using/fonBase.png",0,0);
+    ImageXY base = new ImageXY("Using/baseBuild.png",0,0);
+    ImageXY angry = new ImageXY("Using/angry.png",0,0);
+    ImageXY exp = new ImageXY("Skills/experience.png",0,0);
+    ImageXY hp = new ImageXY("Skills/heart.png",0,0);
 
     boolean angrys = false;
     String name = "Base";

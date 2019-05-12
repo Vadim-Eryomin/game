@@ -1,6 +1,4 @@
-package Engine;
-
-import StemFight.Game;
+package StemFight;
 
 public interface Player{
     int x = 0;

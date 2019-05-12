@@ -1,7 +1,7 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Building;
 import StemFight.Game;
 
@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class CraftingTable extends Building {
     public boolean made = false;
-    public ImageXY table = new ImageXY("../StemFight/Using/craftingTable.png", 0, 0);
+    public ImageXY table = new ImageXY("Using/craftingTable.png", 0, 0);
     boolean renderFrame = false;
     CraftingFrame cf = new CraftingFrame();
 

@@ -1,16 +1,15 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.CheckCrafts;
-import StemFight.Crafts;
 import StemFight.Game;
 
 import java.util.HashMap;
 
 public class FurnaceFrame {
-    ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png", 0, 0);
-    ImageXY table = new ImageXY("../StemFight/Using/table.png", 0, 0);
+    ImageXY fon = new ImageXY("Using/fonBase.png", 0, 0);
+    ImageXY table = new ImageXY("Using/table.png", 0, 0);
     CheckCrafts checkCrafts = new CheckCrafts();
 
     String name = "Furnace";
@@ -40,10 +39,10 @@ public class FurnaceFrame {
         table.y = fon.y + 20;
         stringX = table.x + 130;
         stringY = table.y;
-        pieces.put(0, new ImageXY("../StemFight/Using/piece.png", table.x, table.y));
-        pieces.put(1, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + 2 * oneTablePiece));
-        pieces.put(2, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
-        iron = new ImageXY("../StemFight/Using/iron.png",0,0);
+        pieces.put(0, new ImageXY("Using/piece.png", table.x, table.y));
+        pieces.put(1, new ImageXY("Using/piece.png", table.x, table.y + 2 * oneTablePiece));
+        pieces.put(2, new ImageXY("Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
+        iron = new ImageXY("Using/iron.png",0,0);
 
     }
 

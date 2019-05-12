@@ -1,9 +1,5 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Player;
-import Engine.Renderer;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -58,17 +54,17 @@ public class Backpack {
     public void create(int x, int y) {
         this.x = x;
         this.y = y;
-        bricks = new ImageXY("../StemFight/Using/platformPack_tile004.png",0,0);
-        shovel = new ImageXY("../StemFight/Instruments/shovel.png",0,0);
-        board = new ImageXY("../StemFight/Using/board.png",0,0);
-        extract = new ImageXY("../StemFight/Using/extract.png",0,0);
-        craftingTable = new ImageXY("../StemFight/Using/craftingTableMini.png",0,0);
-        baseBottom  = new ImageXY("../StemFight/Using/baseBottom.png",0,0);
-        baseWall  = new ImageXY("../StemFight/Using/baseWall.png",0,0);
-        baseRoof = new ImageXY("../StemFight/Using/baseRoof.png",0,0);
-        base = new ImageXY("../StemFight/Using/base.png",0,0);
-        chest = new ImageXY("../StemFight/Using/minichest.png",0,0);
-        iron = new ImageXY("../StemFight/Using/iron.png",0,0);
+        bricks = new ImageXY("Using/platformPack_tile004.png",0,0);
+        shovel = new ImageXY("Instruments/shovel.png",0,0);
+        board = new ImageXY("Using/board.png",0,0);
+        extract = new ImageXY("Using/extract.png",0,0);
+        craftingTable = new ImageXY("Using/craftingTableMini.png",0,0);
+        baseBottom  = new ImageXY("Using/baseBottom.png",0,0);
+        baseWall  = new ImageXY("Using/baseWall.png",0,0);
+        baseRoof = new ImageXY("Using/baseRoof.png",0,0);
+        base = new ImageXY("Using/base.png",0,0);
+        chest = new ImageXY("Using/minichest.png",0,0);
+        iron = new ImageXY("Using/iron.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);

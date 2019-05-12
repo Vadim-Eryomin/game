@@ -1,8 +1,5 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Renderer;
-
 public class Building {
     ImageXY building;
 

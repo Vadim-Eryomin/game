@@ -1,14 +1,14 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.Game;
 
 import java.awt.event.KeyEvent;
 
 public class Furnace {
     public boolean made = false;
-    public ImageXY table = new ImageXY("../StemFight/Using/furnace.png", 0, 0);
+    public ImageXY table = new ImageXY("Using/furnace.png", 0, 0);
     FurnaceFrame ff = new FurnaceFrame();
     public void create(int x, int y) {
         ff.create(0, 500);

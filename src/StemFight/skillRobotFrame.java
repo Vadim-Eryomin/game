@@ -1,10 +1,5 @@
 package StemFight;
 
-import Engine.FramesForGame;
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Renderer;
-
 
 public class skillRobotFrame extends FramesForGame {
     int x = 0;
@@ -12,7 +7,7 @@ public class skillRobotFrame extends FramesForGame {
     int skillPoints = 3;
     boolean choice = true;
 
-    Image fon = new Image("../StemFight/Skills/fonSkills.png");
+    Image fon = new Image("Skills/fonSkills.png");
 
     ImageXY[] gear = new ImageXY[2];
     boolean gears = false;
@@ -30,14 +25,14 @@ public class skillRobotFrame extends FramesForGame {
         this.x = x;
         this.y = y;
 
-        gear[0] = new ImageXY("../StemFight/Skills/nonA_gear.png", (x+80), y+40);
-        gear[1] = new ImageXY("../StemFight/Skills/gear.png", (x+80), y+40);
+        gear[0] = new ImageXY("Skills/nonA_gear.png", (x+80), y+40);
+        gear[1] = new ImageXY("Skills/gear.png", (x+80), y+40);
 
-        robot[0] = new ImageXY("../StemFight/Skills/nonA_brush.png",x+80, y+80);
-        robot[1] =  new ImageXY("../StemFight/Skills/brush.png", x+80, y+80);
+        robot[0] = new ImageXY("Skills/nonA_brush.png",x+80, y+80);
+        robot[1] =  new ImageXY("Skills/brush.png", x+80, y+80);
 
-        earthPick[0] = new ImageXY("../StemFight/Skills/nonA_earthPick.png",x+80, y+120);
-        earthPick[1] =  new ImageXY("../StemFight/Skills/earthPick.png", x+80, y+120);
+        earthPick[0] = new ImageXY("Skills/nonA_earthPick.png",x+80, y+120);
+        earthPick[1] =  new ImageXY("Skills/earthPick.png", x+80, y+120);
 
     }
 

@@ -1,12 +1,9 @@
 package StemFight;
 
-import Engine.Image;
-import Engine.Player;
-import Engine.Renderer;
-import static Engine.Max.range;
+import static StemFight.Max.range;
 
 public class Camera implements Player {
-    public Image image = new Image("../StemFight/Using/fon.gif");
+    public Image image = new Image("Using/fon.gif");
     public int x = 0;
     public int y = 0;
 

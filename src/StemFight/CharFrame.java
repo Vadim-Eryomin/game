@@ -1,14 +1,10 @@
 package StemFight;
 
-import Engine.FramesForGame;
-import Engine.Image;
-import Engine.Renderer;
-
 public class CharFrame extends FramesForGame {
-    Image fon = new Image("../StemFight/Skills/fonChars.png");
-    Image XP = new Image("../StemFight/Skills/experience.png");
-    Image head = new Image("../StemFight/Skills/head_focus.png");
-    Image HP = new Image("../StemFight/Skills/heart.png");
+    Image fon = new Image("Skills/fonChars.png");
+    Image XP = new Image("Skills/experience.png");
+    Image head = new Image("Skills/head_focus.png");
+    Image HP = new Image("Skills/heart.png");
     int hp = 0;
     int xp = 0;
 

@@ -1,17 +1,12 @@
 package StemFight;
 
-import Engine.FramesForGame;
-import Engine.Image;
-import Engine.ImageXY;
-import Engine.Renderer;
-
 public class skillsGraphFrame extends FramesForGame {
     int x = 0;
     int y = 0;
     int skillPoints = 1;
     boolean choice = true;
 
-    Image fon = new Image("../StemFight/Skills/fonSkills.png");
+    Image fon = new Image("Skills/fonSkills.png");
 
     ImageXY[] bulik = new ImageXY[2];
     boolean buliks = false;
@@ -29,14 +24,14 @@ public class skillsGraphFrame extends FramesForGame {
         this.x = x;
         this.y = y;
 
-        bulik[0] = new ImageXY("../StemFight/Skills/nonA_bulik.png", (x+80), y+40);
-        bulik[1] = new ImageXY("../StemFight/Skills/bulik.png", (x+80), y+40);
+        bulik[0] = new ImageXY("Skills/nonA_bulik.png", (x+80), y+40);
+        bulik[1] = new ImageXY("Skills/bulik.png", (x+80), y+40);
 
-        arrow[0] = new ImageXY("../StemFight/Skills/nonA_brush.png",x+80, y+80);
-        arrow[1] =  new ImageXY("../StemFight/Skills/brush.png", x+80, y+80);
+        arrow[0] = new ImageXY("Skills/nonA_brush.png",x+80, y+80);
+        arrow[1] =  new ImageXY("Skills/brush.png", x+80, y+80);
 
-        snake[0] = new ImageXY("../StemFight/Skills/nonA_snake.png",x+80, y+120);
-        snake[1] =  new ImageXY("../StemFight/Skills/snake.png", x+80, y+120);
+        snake[0] = new ImageXY("Skills/nonA_snake.png",x+80, y+120);
+        snake[1] =  new ImageXY("Skills/snake.png", x+80, y+120);
 
     }
 

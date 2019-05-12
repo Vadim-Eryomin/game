@@ -1,8 +1,5 @@
 package StemFight;
 
-import Engine.ImageXY;
-import Engine.Renderer;
-
 import java.util.ArrayList;
 import static StemFight.Change.*;
 
@@ -27,8 +24,8 @@ public class RobotEnemy extends Robot {
     @Override
     public void create(int x, int y) {
         super.create(x, y);
-        images.add(new ImageXY("../StemFight/Using/robotWalk.png",0,0));
-        images.add(new ImageXY("../StemFight/Using/robotWalkL.png",0,0));
+        images.add(new ImageXY("Using/robotWalk.png",0,0));
+        images.add(new ImageXY("Using/robotWalkL.png",0,0));
     }
 
     @Override

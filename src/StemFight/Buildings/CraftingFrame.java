@@ -1,7 +1,7 @@
 package StemFight.Buildings;
 
-import Engine.ImageXY;
-import Engine.Renderer;
+import StemFight.ImageXY;
+import StemFight.Renderer;
 import StemFight.CheckCrafts;
 import StemFight.Crafts;
 import StemFight.Game;
@@ -42,16 +42,16 @@ public class CraftingFrame {
         table.y = fon.y + 20;
         stringX = table.x + 130;
         stringY = table.y;
-        pieces.put(0, new ImageXY("../StemFight/Using/piece.png", table.x, table.y));
-        pieces.put(1, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y));
-        pieces.put(2, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y));
-        pieces.put(3, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + oneTablePiece));
-        pieces.put(4, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
-        pieces.put(5, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y + oneTablePiece));
-        pieces.put(6, new ImageXY("../StemFight/Using/piece.png", table.x, table.y + 2 * oneTablePiece));
-        pieces.put(7, new ImageXY("../StemFight/Using/piece.png", table.x + oneTablePiece, table.y + 2 * oneTablePiece));
-        pieces.put(8, new ImageXY("../StemFight/Using/piece.png", table.x + 2 * oneTablePiece, table.y + 2 * oneTablePiece));
-        pieces.put(9, new ImageXY("../StemFight/Using/piece.png", table.x + 3 * oneTablePiece + 10, table.y + oneTablePiece));
+        pieces.put(0, new ImageXY("Using/piece.png", table.x, table.y));
+        pieces.put(1, new ImageXY("Using/piece.png", table.x + oneTablePiece, table.y));
+        pieces.put(2, new ImageXY("Using/piece.png", table.x + 2 * oneTablePiece, table.y));
+        pieces.put(3, new ImageXY("Using/piece.png", table.x, table.y + oneTablePiece));
+        pieces.put(4, new ImageXY("Using/piece.png", table.x + oneTablePiece, table.y + oneTablePiece));
+        pieces.put(5, new ImageXY("Using/piece.png", table.x + 2 * oneTablePiece, table.y + oneTablePiece));
+        pieces.put(6, new ImageXY("Using/piece.png", table.x, table.y + 2 * oneTablePiece));
+        pieces.put(7, new ImageXY("Using/piece.png", table.x + oneTablePiece, table.y + 2 * oneTablePiece));
+        pieces.put(8, new ImageXY("Using/piece.png", table.x + 2 * oneTablePiece, table.y + 2 * oneTablePiece));
+        pieces.put(9, new ImageXY("Using/piece.png", table.x + 3 * oneTablePiece + 10, table.y + oneTablePiece));
         crafts.create(this);
 
     }

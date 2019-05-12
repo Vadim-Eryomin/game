@@ -1,6 +1,5 @@
 package StemFight;
 
-import Engine.*;
 import StemFight.Buildings.*;
 
 import java.awt.event.KeyEvent;
@@ -75,7 +74,7 @@ public class Game extends AbsractGame {
     UpdateCore updateCore = new UpdateCore();
     Image image;
     Image portals;
-    ImageXY loading = new ImageXY("../StemFight/Using/loading.png",0,0);
+    ImageXY loading = new ImageXY("Using/loading.png",0,0);
 
     int heal = 0;
 
@@ -119,8 +118,8 @@ public class Game extends AbsractGame {
         }
 
         if (world == LOADING){
-            image = new Image("../StemFight/Using/baseWorldFon.gif");
-            portals = new Image("../StemFight/Using/electrumPortal.png");
+            image = new Image("Using/baseWorldFon.gif");
+            portals = new Image("Using/electrumPortal.png");
             enemy.add(new RobotEnemy());
             enemy.get(0).create(200,100);
             world = SECOND_WORLD;

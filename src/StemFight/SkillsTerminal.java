@@ -1,18 +1,12 @@
 package StemFight;
 
-import Engine.FramesForGame;
-import Engine.ImageXY;
-import Engine.Renderer;
-
-import java.awt.event.KeyEvent;
-
 public class SkillsTerminal extends FramesForGame {
     int terminal = 0;
 
     int x = 0;
     int y = 0;
 
-    ImageXY fon = new ImageXY("../StemFight/Skills/sk.png", x, y);
+    ImageXY fon = new ImageXY("Skills/sk.png", x, y);
 
     @Override
     public void create(int x, int y) {
