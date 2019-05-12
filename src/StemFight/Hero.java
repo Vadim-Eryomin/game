@@ -18,19 +18,6 @@ public class Hero implements Player {
     int hp = 100;
     int xp = 0;
 
-    public int bricks = 0;
-    public int boards = 0;
-    public int nails = 0;
-    public int extracts = 0;
-    public int shovels = 0;
-    public int craftingTables = 1;
-    public int baseBottoms = 0;
-    public int baseWalls = 0;
-    public int baseRoofs = 0;
-    public int bases = 0;
-    public int irons = 0;
-    public int chests = 0;
-
     boolean keyFirst = false;
 
     int delayFirstSkill = 0;

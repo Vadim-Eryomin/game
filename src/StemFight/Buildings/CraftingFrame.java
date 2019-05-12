@@ -82,14 +82,14 @@ public class CraftingFrame {
                             }
                         } else {
                             if (pictureThings.get(i) != null) {
-                                if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
-                                if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseBottom")) game.hero.baseBottoms += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseWall")) game.hero.baseWalls += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseRoof")) game.hero.baseRoofs += numbersThings.get(i);
-                                if (numbers.get(i).equals("base")) game.hero.bases += numbersThings.get(i);
-                                if (numbers.get(i).equals("extract")) game.hero.extracts += numbersThings.get(i);
-                                if (numbers.get(i).equals("chest")) game.hero.chests += numbersThings.get(i);
+                                if (numbers.get(i).equals("brick")) game.backpack.brickParcticle += numbersThings.get(i);
+                                if (numbers.get(i).equals("board")) game.backpack.boards += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseBottom")) game.backpack.baseBottoms += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseWall")) game.backpack.baseWalls += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseRoof")) game.backpack.baseRoofs += numbersThings.get(i);
+                                if (numbers.get(i).equals("base")) game.backpack.bases += numbersThings.get(i);
+                                if (numbers.get(i).equals("extract")) game.backpack.extracts += numbersThings.get(i);
+                                if (numbers.get(i).equals("chest")) game.backpack.chests += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);

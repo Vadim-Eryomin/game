@@ -29,7 +29,7 @@ public class Iron implements Player {
     @Override
     public void death(Game game) {
         System.out.println("la");
-        game.hero.irons++;
+        game.backpack.irons++;
         lived = false;
     }
 }

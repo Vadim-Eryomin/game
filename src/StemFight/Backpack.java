@@ -6,43 +6,43 @@ import java.util.HashMap;
 public class Backpack {
     int things = 1;
 
-    Integer brickParcticle = 0;
+    public Integer brickParcticle = 0;
     ImageXY bricks;
 
-    int flashes = 0;
+    public int flashes = 0;
     ImageXY flash;
 
-    Integer boards = 0;
+    public Integer boards = 0;
     ImageXY board;
 
     public Integer shovels = 0;
     public ImageXY shovel;
 
-    int nails = 0;
+    public int nails = 0;
     ImageXY nail;
 
-    Integer extracts = 0;
+    public Integer extracts = 0;
     ImageXY extract;
 
-    Integer craftingTables = 0;
+    public Integer craftingTables = 1;
     ImageXY craftingTable;
 
-    Integer baseBottoms = 0;
+    public Integer baseBottoms = 0;
     ImageXY baseBottom;
 
-    Integer baseWalls = 0;
+    public Integer baseWalls = 0;
     ImageXY baseWall;
 
-    Integer baseRoofs = 0;
+    public Integer baseRoofs = 0;
     ImageXY baseRoof;
 
-    Integer bases = 0;
+    public Integer bases = 0;
     ImageXY base;
 
-    Integer chests = 0;
+    public Integer chests = 0;
     ImageXY chest;
 
-    Integer irons = 0;
+    public Integer irons = 0;
     ImageXY iron;
 
     ArrayList<ImageXY> images = new ArrayList<>();
@@ -169,17 +169,6 @@ public class Backpack {
 
 
     public void update(Game game) {
-        brickParcticle = game.hero.bricks;
-        boards = game.hero.boards;
-        shovels = game.hero.shovels;
-        craftingTables = game.hero.craftingTables;
-        baseBottoms = game.hero.baseBottoms;
-        baseWalls = game.hero.baseWalls;
-        baseRoofs = game.hero.baseRoofs;
-        bases = game.hero.bases;
-        extracts = game.hero.extracts;
-        chests = game.hero.chests;
-        irons = game.hero.irons;
         for (int i = 0; i < images.size(); i++) {
             if (numbers.get(i).equals("brick")) numbersThings.put(numbers.get(i),brickParcticle);
             if (numbers.get(i).equals("board")) numbersThings.put(numbers.get(i),boards);

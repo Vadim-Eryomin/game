@@ -25,7 +25,7 @@ public class Board implements Player {
     }
 
     public void death(Game game) {
-        game.hero.boards++;
+        game.backpack.boards++;
         lived = false;
     }
 }

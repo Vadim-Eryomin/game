@@ -19,11 +19,11 @@ public class Cursor {
                         if (imageCarry.image == null) {
                             imageCarry.get(game.backpack.pictureThings.get(game.backpack.numbers.get(i)), game.backpack.numbersThings.get(game.backpack.numbers.get(i)), game.backpack.numbers.get(i));
                             if (game.backpack.numbers.get(i).equals("brick")) {
-                                game.hero.bricks = 0;
+                                game.backpack.brickParcticle = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("board")) {
-                                game.hero.boards = 0;
+                                game.backpack.boards = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("shovel")) {
@@ -35,34 +35,34 @@ public class Cursor {
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("baseBottom")) {
-                                game.hero.baseBottoms = 0;
+                                game.backpack.baseBottoms = 0;
                                 game.backpack.baseBottoms = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("baseWall")) {
-                                game.hero.baseWalls = 0;
+                                game.backpack.baseWalls = 0;
                                 game.backpack.baseWalls = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("baseRoof")) {
-                                game.hero.baseRoofs = 0;
+                                game.backpack.baseRoofs = 0;
                                 game.backpack.baseRoofs = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("base")) {
-                                game.hero.bases = 0;
+                                game.backpack.bases = 0;
                                 game.backpack.bases = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("extract")) {
-                                game.hero.extracts = 0;
+                                game.backpack.extracts = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             if (game.backpack.numbers.get(i).equals("chest")) {
-                                game.hero.chests = 0;
+                                game.backpack.chests = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }if (game.backpack.numbers.get(i).equals("iron")) {
-                                game.hero.irons = 0;
+                                game.backpack.irons = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             doing = true;
@@ -88,7 +88,7 @@ public class Cursor {
                         }
                         if (imageCarry.imageTag.equals("crafts")){
                             game.craftingTable.create(cursor.x, cursor.y);
-                            game.hero.craftingTables--;
+                            game.backpack.craftingTables--;
                         }
                         if (imageCarry.imageTag.equals("baseBottom")){
                             game.backpack.baseBottoms += imageCarry.number;
@@ -124,37 +124,37 @@ public class Cursor {
                 }
                 else if (game.gc.input.mouseX > 1100){
                     if (imageCarry.imageTag.equals("brick")){
-                        game.hero.bricks += imageCarry.number;
+                        game.backpack.brickParcticle += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("board")){
-                        game.hero.boards += imageCarry.number;
+                        game.backpack.boards += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("shovel")){
-                        game.hero.shovels += imageCarry.number;
+                        game.backpack.shovels += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("crafts")){
-                        game.hero.craftingTables += imageCarry.number;
+                        game.backpack.craftingTables += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseBottom")){
-                        game.hero.baseBottoms += imageCarry.number;
+                        game.backpack.baseBottoms += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseWall")){
-                        game.hero.baseWalls += imageCarry.number;
+                        game.backpack.baseWalls += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("baseRoof")){
-                        game.hero.baseRoofs += imageCarry.number;
+                        game.backpack.baseRoofs += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("base")){
-                        game.hero.bases += imageCarry.number;
+                        game.backpack.bases += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("base")){
-                        game.hero.extracts += imageCarry.number;
+                        game.backpack.extracts += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("chest")){
-                        game.hero.chests += imageCarry.number;
+                        game.backpack.chests += imageCarry.number;
                     }
                     if (imageCarry.imageTag.equals("iron")){
-                        game.hero.irons += imageCarry.number;
+                        game.backpack.irons += imageCarry.number;
                     }
                     imageCarry.set();
                 }

@@ -73,9 +73,9 @@ public class FurnaceFrame {
                     }
                     else {
                         try {
-                            if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
-                            if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
-                            if (numbers.get(i).equals("iron")) game.hero.irons += numbersThings.get(i);
+                            if (numbers.get(i).equals("brick")) game.backpack.brickParcticle += numbersThings.get(i);
+                            if (numbers.get(i).equals("board")) game.backpack.boards += numbersThings.get(i);
+                            if (numbers.get(i).equals("iron")) game.backpack.irons += numbersThings.get(i);
                             numbersThings.put(i,0);
                             pictureThings.put(i,null);
                             numbers.put(i,null);

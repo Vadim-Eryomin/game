@@ -110,49 +110,49 @@ public class ChestFrame {
                                     numbers.put(i, game.cursor.imageCarry.imageTag);
                                 } else {
                                     if (numbers.get(i).equals("brick")) {
-                                        game.hero.bricks += numbersThings.get(i);
+                                        game.backpack.brickParcticle += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("board")) {
-                                        game.hero.boards += numbersThings.get(i);
+                                        game.backpack.boards += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("baseBottom")) {
-                                        game.hero.baseBottoms += numbersThings.get(i);
+                                        game.backpack.baseBottoms += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("baseWall")) {
-                                        game.hero.baseWalls += numbersThings.get(i);
+                                        game.backpack.baseWalls += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("baseRoof")) {
-                                        game.hero.baseRoofs += numbersThings.get(i);
+                                        game.backpack.baseRoofs += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("base")) {
-                                        game.hero.bases += numbersThings.get(i);
+                                        game.backpack.bases += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
                                         numbersThings.put(i, 1);
                                     }
                                     if (numbers.get(i).equals("extract")) {
-                                        game.hero.extracts += numbersThings.get(i);
+                                        game.backpack.extracts += numbersThings.get(i);
                                         game.cursor.imageCarry.number--;
                                         numbers.put(i, game.cursor.imageCarry.imageTag);
                                         pictureThings.put(i, game.cursor.imageCarry.image);
@@ -172,13 +172,13 @@ public class ChestFrame {
                             }
                         } else {
                             if (pictureThings.get(i) != null) {
-                                if (numbers.get(i).equals("brick")) game.hero.bricks += numbersThings.get(i);
-                                if (numbers.get(i).equals("board")) game.hero.boards += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseBottom")) game.hero.baseBottoms += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseWall")) game.hero.baseWalls += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseRoof")) game.hero.baseRoofs += numbersThings.get(i);
-                                if (numbers.get(i).equals("base")) game.hero.bases += numbersThings.get(i);
-                                if (numbers.get(i).equals("extract")) game.hero.extracts += numbersThings.get(i);
+                                if (numbers.get(i).equals("brick")) game.backpack.brickParcticle += numbersThings.get(i);
+                                if (numbers.get(i).equals("board")) game.backpack.boards += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseBottom")) game.backpack.baseBottoms += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseWall")) game.backpack.baseWalls += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseRoof")) game.backpack.baseRoofs += numbersThings.get(i);
+                                if (numbers.get(i).equals("base")) game.backpack.bases += numbersThings.get(i);
+                                if (numbers.get(i).equals("extract")) game.backpack.extracts += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);

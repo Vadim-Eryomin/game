@@ -29,10 +29,10 @@ public class BaseProv {
     public void update(Game game){
         if (game.collision(game.cursor.cursor, extract)){
             if (game.gc.input.isButtonDown(1)){
-                if (game.hero.boards >= 2 && game.hero.bricks >= 2){
-                    game.hero.extracts++;
-                    game.hero.boards-=2;
-                    game.hero.bricks-=2;
+                if (game.backpack.boards >= 2 && game.backpack.brickParcticle >= 2){
+                    game.backpack.extracts++;
+                    game.backpack.boards-=2;
+                    game.backpack.brickParcticle-=2;
                 }
             }
         }

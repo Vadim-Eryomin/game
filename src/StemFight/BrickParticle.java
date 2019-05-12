@@ -29,7 +29,7 @@ public class BrickParticle implements Player {
 
     @Override
     public void death(Game game) {
-        game.hero.bricks++;
+        game.backpack.brickParcticle++;
         lived = false;
     }
 }

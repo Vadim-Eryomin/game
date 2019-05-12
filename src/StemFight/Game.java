@@ -99,16 +99,16 @@ public class Game extends AbsractGame {
 
     @Override
     public void update(GameContainer gc, float dt) {
-        if (hero.shovels >= 1 && !has("shovel")) backpack.addThings("shovel");
-        if (hero.boards >= 1 && !has("board")) backpack.addThings("board");
-        if (hero.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
-        if (hero.baseBottoms >= 1 && !has("baseBottom")) backpack.addThings("baseBottom");
-        if (hero.baseWalls >= 1 && !has("baseWall")) backpack.addThings("baseWall");
-        if (hero.baseRoofs >= 1 && !has("baseRoof")) backpack.addThings("baseRoof");
-        if (hero.bases >= 1 && !has("base")) backpack.addThings("base");
-        if (hero.extracts >= 1 && !has("extract")) backpack.addThings("extract");
-        if (hero.chests >= 1 && !has("chest")) backpack.addThings("chest");
-        if (hero.irons >= 1 && !has("iron")) backpack.addThings("iron");
+        if (backpack.shovels >= 1 && !has("shovel")) backpack.addThings("shovel");
+        if (backpack.boards >= 1 && !has("board")) backpack.addThings("board");
+        if (backpack.craftingTables >= 1 && !has("crafts")) backpack.addThings("crafts");
+        if (backpack.baseBottoms >= 1 && !has("baseBottom")) backpack.addThings("baseBottom");
+        if (backpack.baseWalls >= 1 && !has("baseWall")) backpack.addThings("baseWall");
+        if (backpack.baseRoofs >= 1 && !has("baseRoof")) backpack.addThings("baseRoof");
+        if (backpack.bases >= 1 && !has("base")) backpack.addThings("base");
+        if (backpack.extracts >= 1 && !has("extract")) backpack.addThings("extract");
+        if (backpack.chests >= 1 && !has("chest")) backpack.addThings("chest");
+        if (backpack.irons >= 1 && !has("iron")) backpack.addThings("iron");
 
         if(gc.input.isKeyDown(KeyEvent.VK_L)){
             world = 1 - world;

@@ -9,7 +9,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.shovels++;
+                        game.backpack.shovels++;
                         cr.canCraft.put(cr.shovel.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.shovel.get(i) != null) try {
@@ -25,7 +25,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.baseBottoms++;
+                        game.backpack.baseBottoms++;
                         cr.canCraft.put(cr.baseBottom.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.baseBottom.get(i) != null) try {
@@ -41,7 +41,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.baseWalls++;
+                        game.backpack.baseWalls++;
                         cr.canCraft.put(cr.baseWall.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.baseWall.get(i) != null) try {
@@ -57,7 +57,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.baseRoofs++;
+                        game.backpack.baseRoofs++;
                         cr.canCraft.put(cr.baseRoof.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.baseRoof.get(i) != null) try {
@@ -73,7 +73,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.bases++;
+                        game.backpack.bases++;
                         cr.canCraft.put(cr.base.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.base.get(i) != null) try {
@@ -89,7 +89,7 @@ public class CheckCrafts {
             if (game.gc.input.isButtonDown(1)) {
                 if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
                     if (game.cursor.imageCarry.image == null) {
-                        game.hero.chests++;
+                        game.backpack.chests++;
                         cr.canCraft.put(cr.chest.get(9), false);
                         for (int i = 0; i < 9; i++) {
                             if (cr.chest.get(i) != null) try {

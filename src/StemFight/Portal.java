@@ -28,8 +28,8 @@ public class Portal implements Player {
         if (!making){
             if (game.gc.input.isKeyDown(KeyEvent.VK_E)) {
                 if (game.collision(game.hero, this)) {
-                    if (game.hero.bricks >= 20) {
-                        game.hero.bricks -= 20;
+                    if (game.backpack.brickParcticle >= 20) {
+                        game.backpack.brickParcticle -= 20;
                         using = notOpened;
                         making = true;
                         game.enemies.add(new ZombieFirstBoss());
