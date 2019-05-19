@@ -51,6 +51,9 @@ public class Backpack {
     public Integer piedestals = 0;
     ImageXY piedestal;
 
+    public Integer runeEngines = 0;
+    ImageXY runeEngine;
+
     ArrayList<ImageXY> images = new ArrayList<>();
     HashMap<Integer, String> numbers = new HashMap<>();
     HashMap<String, ImageXY> pictureThings = new HashMap<>();
@@ -73,6 +76,7 @@ public class Backpack {
         iron = new ImageXY("Using/iron.png",0,0);
         runeOfRegeneration = new ImageXY("Using/runeOfRegen.png",0,0);
         piedestal = new ImageXY("Using/runePiedes.png",0,0);
+        runeEngine = new ImageXY("Using/engine.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -189,6 +193,14 @@ public class Backpack {
             piedestal.y = y + (things/4) * 55;
             numbersThings.put("piedestal", piedestals);
             things++;
+        }if (tag.equals("runeEngine")){
+            images.add(runeEngine);
+            numbers.put(images.size()-1,"runeEngine");
+            pictureThings.put("runeEngine", runeEngine);
+            runeEngine.x = x + (things%4) * 55;
+            runeEngine.y = y + (things/4) * 55;
+            numbersThings.put("runeEngine", runeEngines);
+            things++;
         }
     }
 
@@ -208,6 +220,7 @@ public class Backpack {
             if (numbers.get(i).equals("iron")) numbersThings.put(numbers.get(i), irons);
             if (numbers.get(i).equals("runeOfRegeneration")) numbersThings.put(numbers.get(i), runeOfRegenerations);
             if (numbers.get(i).equals("piedestal")) numbersThings.put(numbers.get(i), piedestals);
+            if (numbers.get(i).equals("runeEngine")) numbersThings.put(numbers.get(i), runeEngines);
 
         }
     }

@@ -1,13 +1,16 @@
 package StemFight.Buildings;
+
 import StemFight.ImageXY;
 import StemFight.Renderer;
 import StemFight.CheckCrafts;
 import StemFight.Crafts;
 import StemFight.Game;
 import StemFight.Runix.Piedestal;
+import StemFight.Runix.RuneEngine;
 import StemFight.Runix.RuneOfRegeneration;
 
 import java.util.HashMap;
+
 public class CraftingFrame {
     ImageXY fon = new ImageXY("../StemFight/Using/fonBase.png", 0, 0);
     ImageXY table = new ImageXY("../StemFight/Using/table.png", 0, 0);
@@ -29,10 +32,12 @@ public class CraftingFrame {
     public HashMap<Integer, String> chest = new HashMap<>();
     public HashMap<Integer, String> runeOfRegeneration = new RuneOfRegeneration().craft;
     public HashMap<Integer, String> runePiedestal = new Piedestal().craft;
+    public HashMap<Integer, String> runeEngine = new RuneEngine().craft;
     public HashMap<String, Boolean> canCraft = new HashMap<>();
     public HashMap<String, ImageXY> craftResult = new HashMap<>();
     boolean breakable = false;
     int oneTablePiece = 40;
+
     public void create(int x, int y) {
         fon.x = x;
         fon.y = y;
@@ -53,9 +58,11 @@ public class CraftingFrame {
         crafts.create(this);
 
     }
+
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
+
     public void update(Game game) {
         breakable = false;
         if (game.gc.input.isButtonDown(1)) {
@@ -86,16 +93,22 @@ public class CraftingFrame {
                             }
                         } else {
                             if (pictureThings.get(i) != null) {
-                                if (numbers.get(i).equals("brick")) game.backpack.brickParcticle += numbersThings.get(i);
+                                if (numbers.get(i).equals("brick"))
+                                    game.backpack.brickParcticle += numbersThings.get(i);
                                 if (numbers.get(i).equals("board")) game.backpack.boards += numbersThings.get(i);
-                                if (numbers.get(i).equals("baseBottom")) game.backpack.baseBottoms += numbersThings.get(i);
+                                if (numbers.get(i).equals("baseBottom"))
+                                    game.backpack.baseBottoms += numbersThings.get(i);
                                 if (numbers.get(i).equals("baseWall")) game.backpack.baseWalls += numbersThings.get(i);
                                 if (numbers.get(i).equals("baseRoof")) game.backpack.baseRoofs += numbersThings.get(i);
                                 if (numbers.get(i).equals("base")) game.backpack.bases += numbersThings.get(i);
                                 if (numbers.get(i).equals("extract")) game.backpack.extracts += numbersThings.get(i);
                                 if (numbers.get(i).equals("chest")) game.backpack.chests += numbersThings.get(i);
-                                if (numbers.get(i).equals("runeOfRegeneration")) game.backpack.runeOfRegenerations += numbersThings.get(i);
-                                if (numbers.get(i).equals("piedestal")) game.backpack.piedestals += numbersThings.get(i);
+                                if (numbers.get(i).equals("runeOfRegeneration"))
+                                    game.backpack.runeOfRegenerations += numbersThings.get(i);
+                                if (numbers.get(i).equals("piedestal"))
+                                    game.backpack.piedestals += numbersThings.get(i);
+                                if (numbers.get(i).equals("runeEngine"))
+                                    game.backpack.piedestals += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);
@@ -121,6 +134,7 @@ public class CraftingFrame {
 
         }
     }
+
     public boolean craftCheck(HashMap<Integer, String> abs) {
         for (int i = 0; i < 9; i++) {
             try {
@@ -130,6 +144,7 @@ public class CraftingFrame {
         }
         return true;
     }
+
     public void renderer(Renderer renderer) {
         if (visible) {
             renderer.drawImage(fon, fon.x, fon.y);
@@ -169,6 +184,9 @@ public class CraftingFrame {
 
             if (canCraft.get("piedestal"))
                 renderer.drawImage(craftResult.get("piedestal"), pieces.get(9).x + (40 - craftResult.get("piedestal").w) / 2, pieces.get(9).y + (40 - craftResult.get("piedestal").w) / 2);
+
+            if (canCraft.get("runeEngine"))
+                renderer.drawImage(craftResult.get("runeEngine"), pieces.get(9).x + (40 - craftResult.get("runeEngine").w) / 2, pieces.get(9).y + (40 - craftResult.get("runeEngine").w) / 2);
         }
     }
 }

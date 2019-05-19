@@ -71,6 +71,9 @@ public class Cursor {
                             }if (game.backpack.numbers.get(i).equals("piedestal")) {
                                 game.backpack.piedestals = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }if (game.backpack.numbers.get(i).equals("runeEngine")) {
+                                game.backpack.runeEngines = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             doing = true;
                         }
@@ -126,6 +129,8 @@ public class Cursor {
                             game.rune.create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }if (imageCarry.imageTag.equals("piedestal")){
                             game.pied.create(game.gc.input.mouseX, game.gc.input.mouseY);
+                        }if (imageCarry.imageTag.equals("runeEngine")){
+                            game.engine.create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }
 
                         // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
@@ -167,8 +172,10 @@ public class Cursor {
                         game.backpack.irons += imageCarry.number;
                     }if (imageCarry.imageTag.equals("runeOfRegeneration")){
                         game.backpack.runeOfRegenerations += imageCarry.number;
-                    }if (imageCarry.imageTag.equals("runeOfRegeneration")){
+                    }if (imageCarry.imageTag.equals("piedestals")){
                         game.backpack.piedestals += imageCarry.number;
+                    }if (imageCarry.imageTag.equals("runeEngine")){
+                        game.backpack.runeEngines += imageCarry.number;
                     }
                     imageCarry.set();
                 }

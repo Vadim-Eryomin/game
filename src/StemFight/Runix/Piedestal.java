@@ -39,7 +39,6 @@ public class Piedestal extends Player {
 
     @Override
     public void update(Game game) {
-        System.out.println(energy);
         if (keep) {
             if (myEngine != null) {
                 if (myEngine.energy >= 1) {

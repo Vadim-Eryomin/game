@@ -78,5 +78,6 @@ public class Crafts {
 
         cr.craftResult.put("runeOfRegeneration", new ImageXY("Using/runeOfRegen.png",0,0));
         cr.craftResult.put("piedestal", new ImageXY("Using/runePiedes.png",0,0));
+        cr.craftResult.put("runeEngine", new ImageXY("Using/engine.png",0,0));
     }
 }

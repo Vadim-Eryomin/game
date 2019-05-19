@@ -16,6 +16,20 @@ public class RuneEngine extends Player {
     boolean keep = false;
     int energy = 0;
     RuneEngineProv engineProv = new RuneEngineProv();
+    public HashMap<Integer, String> craft = new HashMap<>();
+
+    public RuneEngine() {
+        craft.put(0,"board");
+        craft.put(1,"brick");
+        craft.put(2,"brick");
+        craft.put(3,"brick");
+        craft.put(4, null);
+        craft.put(5,"brick");
+        craft.put(6,"brick");
+        craft.put(7,"brick");
+        craft.put(8,"brick");
+        craft.put(9,"runeEngine");
+    }
 
     @Override
     public void create(int x, int y) {
