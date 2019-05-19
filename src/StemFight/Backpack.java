@@ -9,6 +9,9 @@ public class Backpack {
     public Integer brickParcticle = 0;
     ImageXY bricks;
 
+    public Integer runeOfRegenerations = 0;
+    public ImageXY runeOfRegeneration;
+
     public int flashes = 0;
     ImageXY flash;
 
@@ -65,6 +68,7 @@ public class Backpack {
         base = new ImageXY("Using/base.png",0,0);
         chest = new ImageXY("Using/minichest.png",0,0);
         iron = new ImageXY("Using/iron.png",0,0);
+        runeOfRegeneration = new ImageXY("Using/runeOfRegen.png",0,0);
         images.add(bricks);
         numbers.put(images.size()-1,"brick");
         pictureThings.put("brick", bricks);
@@ -165,6 +169,15 @@ public class Backpack {
             numbersThings.put("iron", irons);
             things++;
         }
+        if (tag.equals("runeOfRegeneration")){
+            images.add(iron);
+            numbers.put(images.size()-1,"runeOfRegeneration");
+            pictureThings.put("runeOfRegeneration", runeOfRegeneration);
+            runeOfRegeneration.x = x + (things%4) * 55;
+            runeOfRegeneration.y = y + (things/4) * 55;
+            numbersThings.put("runeOfRegeneration", runeOfRegenerations);
+            things++;
+        }
     }
 
 
@@ -181,6 +194,7 @@ public class Backpack {
             if (numbers.get(i).equals("extract")) numbersThings.put(numbers.get(i), extracts);
             if (numbers.get(i).equals("chest")) numbersThings.put(numbers.get(i), chests);
             if (numbers.get(i).equals("iron")) numbersThings.put(numbers.get(i), irons);
+            if (numbers.get(i).equals("runeOfRegeneration")) numbersThings.put(numbers.get(i), runeOfRegenerations);
 
         }
     }

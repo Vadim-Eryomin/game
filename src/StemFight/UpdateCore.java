@@ -108,11 +108,11 @@ public class UpdateCore {
                 new Thread() {
                     @Override
                     public void run() {
-                        for (int i = 0; i < 200; i++) {
+                        for (int i = 0; i < 100; i++) {
                             game.hero.x--;
                             e.x++;
                             try {
-                                Thread.sleep(5);
+                                Thread.sleep(3);
                             } catch (InterruptedException e1) {
                                 e1.printStackTrace();
                             }

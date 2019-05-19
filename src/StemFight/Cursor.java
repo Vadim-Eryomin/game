@@ -65,6 +65,10 @@ public class Cursor {
                                 game.backpack.irons = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
+                            if (game.backpack.numbers.get(i).equals("runeOfRegeneration")) {
+                                game.backpack.runeOfRegenerations = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }
                             doing = true;
                         }
                     }
@@ -88,7 +92,6 @@ public class Cursor {
                         }
                         if (imageCarry.imageTag.equals("crafts")){
                             game.craftingTable.create(cursor.x, cursor.y);
-                            game.backpack.craftingTables--;
                         }
                         if (imageCarry.imageTag.equals("baseBottom")){
                             game.backpack.baseBottoms += imageCarry.number;
@@ -116,6 +119,8 @@ public class Cursor {
                         }if (imageCarry.imageTag.equals("iron")){
                             game.irons.add(new Iron());
                             game.irons.get(game.irons.size()-1).create(game.gc.input.mouseX, game.gc.input.mouseY);
+                        }if (imageCarry.imageTag.equals("runeOfRegeneration")){
+                            game.rune.create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }
 
                         // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
@@ -155,6 +160,8 @@ public class Cursor {
                     }
                     if (imageCarry.imageTag.equals("iron")){
                         game.backpack.irons += imageCarry.number;
+                    }if (imageCarry.imageTag.equals("runeOfRegeneration")){
+                        game.backpack.runeOfRegenerations += imageCarry.number;
                     }
                     imageCarry.set();
                 }

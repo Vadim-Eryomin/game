@@ -4,6 +4,7 @@ import StemFight.Renderer;
 import StemFight.CheckCrafts;
 import StemFight.Crafts;
 import StemFight.Game;
+import StemFight.Runix.RuneOfRegeneration;
 
 import java.util.HashMap;
 public class CraftingFrame {
@@ -25,6 +26,7 @@ public class CraftingFrame {
     public HashMap<Integer, String> baseWall = new HashMap<>();
     public HashMap<Integer, String> base = new HashMap<>();
     public HashMap<Integer, String> chest = new HashMap<>();
+    public HashMap<Integer, String> runeOfRegeneration = new RuneOfRegeneration().craft;
     public HashMap<String, Boolean> canCraft = new HashMap<>();
     public HashMap<String, ImageXY> craftResult = new HashMap<>();
     boolean breakable = false;
@@ -90,6 +92,7 @@ public class CraftingFrame {
                                 if (numbers.get(i).equals("base")) game.backpack.bases += numbersThings.get(i);
                                 if (numbers.get(i).equals("extract")) game.backpack.extracts += numbersThings.get(i);
                                 if (numbers.get(i).equals("chest")) game.backpack.chests += numbersThings.get(i);
+                                if (numbers.get(i).equals("runeOfRegeneration")) game.backpack.runeOfRegenerations += numbersThings.get(i);
                                 pictureThings.put(i, null);
                                 numbersThings.put(i, 0);
                                 numbers.put(i, null);
@@ -157,6 +160,8 @@ public class CraftingFrame {
 
             if (canCraft.get("chest"))
                 renderer.drawImage(craftResult.get("chest"), pieces.get(9).x + (40 - craftResult.get("chest").w) / 2, pieces.get(9).y + (40 - craftResult.get("chest").w) / 2);
+            if (canCraft.get("runeOfRegeneration"))
+                renderer.drawImage(craftResult.get("runeOfRegeneration"), pieces.get(9).x + (40 - craftResult.get("runeOfRegeneration").w) / 2, pieces.get(9).y + (40 - craftResult.get("runeOfRegeneration").w) / 2);
         }
     }
 }

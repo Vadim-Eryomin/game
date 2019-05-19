@@ -100,6 +100,22 @@ public class CheckCrafts {
                     }
                 }
             }
+        }else if (cr.craftCheck(cr.runeOfRegeneration)) {
+            cr.canCraft.put(cr.runeOfRegeneration.get(9), true);
+            if (game.gc.input.isButtonDown(1)) {
+                if (game.collision(cr.pieces.get(9), game.cursor.cursor)) {
+                    if (game.cursor.imageCarry.image == null) {
+                        game.backpack.runeOfRegenerations++;
+                        cr.canCraft.put(cr.runeOfRegeneration.get(9), false);
+                        for (int i = 0; i < 9; i++) {
+                            if (cr.runeOfRegeneration.get(i) != null) try {
+                                cr.numbersThings.put(i, cr.numbersThings.get(i) - 1);
+                            } catch (NullPointerException e) {
+                            }
+                        }
+                    }
+                }
+            }
         } else {
             cr.canCraft.put(cr.shovel.get(9), false);
             cr.canCraft.put(cr.baseBottom.get(9), false);
@@ -107,6 +123,7 @@ public class CheckCrafts {
             cr.canCraft.put(cr.baseRoof.get(9), false);
             cr.canCraft.put(cr.base.get(9), false);
             cr.canCraft.put(cr.chest.get(9), false);
+            cr.canCraft.put(cr.runeOfRegeneration.get(9), false);
         }
 
     }

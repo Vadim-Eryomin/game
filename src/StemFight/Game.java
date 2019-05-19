@@ -90,7 +90,7 @@ public class Game extends AbsractGame {
     public GameContainer gc = new GameContainer(this);
 
     public Game() {
-        gc.title = "Stem Fight Version A0.8";
+        gc.title = "Stem Fight Version A1.0";
         skt.create(0, 100);
         furnace.create(500,0);
         skt.setVisible(true);
@@ -103,7 +103,6 @@ public class Game extends AbsractGame {
         backpack.create(1150, 200);
         engine.create(600, 500);
         pied.create( 500, 500);
-        rune.create(500,450);
         gc.start();
     }
 
@@ -119,6 +118,7 @@ public class Game extends AbsractGame {
         if (backpack.extracts >= 1 && !has("extract")) backpack.addThings("extract");
         if (backpack.chests >= 1 && !has("chest")) backpack.addThings("chest");
         if (backpack.irons >= 1 && !has("iron")) backpack.addThings("iron");
+        if (backpack.runeOfRegenerations >= 1 && !has("runeOfRegeneration")) backpack.addThings("runeOfRegeneration");
 
         if(gc.input.isKeyDown(KeyEvent.VK_L)){
             world = 1 - world;
