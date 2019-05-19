@@ -68,6 +68,9 @@ public class Cursor {
                             if (game.backpack.numbers.get(i).equals("runeOfRegeneration")) {
                                 game.backpack.runeOfRegenerations = 0;
                                 game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
+                            }if (game.backpack.numbers.get(i).equals("piedestal")) {
+                                game.backpack.piedestals = 0;
+                                game.backpack.numbersThings.put(game.backpack.numbers.get(i), 0);
                             }
                             doing = true;
                         }
@@ -121,6 +124,8 @@ public class Cursor {
                             game.irons.get(game.irons.size()-1).create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }if (imageCarry.imageTag.equals("runeOfRegeneration")){
                             game.rune.create(game.gc.input.mouseX, game.gc.input.mouseY);
+                        }if (imageCarry.imageTag.equals("piedestal")){
+                            game.pied.create(game.gc.input.mouseX, game.gc.input.mouseY);
                         }
 
                         // TODO: 03.05.2019 сделать классы для лопаты, основания базы...
@@ -162,6 +167,8 @@ public class Cursor {
                         game.backpack.irons += imageCarry.number;
                     }if (imageCarry.imageTag.equals("runeOfRegeneration")){
                         game.backpack.runeOfRegenerations += imageCarry.number;
+                    }if (imageCarry.imageTag.equals("runeOfRegeneration")){
+                        game.backpack.piedestals += imageCarry.number;
                     }
                     imageCarry.set();
                 }

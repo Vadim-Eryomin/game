@@ -5,11 +5,28 @@ import StemFight.ImageXY;
 import StemFight.Player;
 import StemFight.Renderer;
 
+import java.util.HashMap;
+
 public class Piedestal extends Player {
     ImageXY field = new ImageXY("Using/field500.png",0,0);
     RuneEngine myEngine = null;
     boolean keep = false;
     public int energy = 1;
+    public HashMap<Integer, String> craft = new HashMap<>();
+
+    public Piedestal() {
+        craft.put(0,"brick");
+        craft.put(1,"brick");
+        craft.put(2,"brick");
+        craft.put(3, null);
+        craft.put(4,"brick");
+        craft.put(5, null);
+        craft.put(6,"brick");
+        craft.put(7,"brick");
+        craft.put(8,"brick");
+        craft.put(9,"piedestal");
+    }
+
     @Override
     public void create(int x, int y) {
         this.x = x;
@@ -42,14 +59,13 @@ public class Piedestal extends Player {
 
     @Override
     public void renderer(Renderer renderer) {
-        renderer.drawImage(imageXY, x, y);
+        if (imageXY != null) {
+            renderer.drawImage(imageXY, x, y);
+        }
     }
 
     @Override
     public void death(Game game) {
-
-    }
-    public void search(){
 
     }
 }

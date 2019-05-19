@@ -102,7 +102,6 @@ public class Game extends AbsractGame {
         hero.create(50, 50);
         backpack.create(1150, 200);
         engine.create(600, 500);
-        pied.create( 500, 500);
         gc.start();
     }
 
@@ -119,6 +118,7 @@ public class Game extends AbsractGame {
         if (backpack.chests >= 1 && !has("chest")) backpack.addThings("chest");
         if (backpack.irons >= 1 && !has("iron")) backpack.addThings("iron");
         if (backpack.runeOfRegenerations >= 1 && !has("runeOfRegeneration")) backpack.addThings("runeOfRegeneration");
+        if (backpack.piedestals >= 1 && !has("piedestal")) backpack.addThings("piedestal");
 
         if(gc.input.isKeyDown(KeyEvent.VK_L)){
             world = 1 - world;
